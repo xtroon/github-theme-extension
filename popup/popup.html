@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Studio for GitHub</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="ts-app">
+    <!-- Top Header -->
+    <header class="ts-header">
+      <div class="ts-brand">
+        <div class="ts-brand-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#fee715" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 17L12 22L22 17" stroke="#ff007f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="#00f2fe" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="ts-brand-info">
+          <h1>Theme Studio</h1>
+          <span class="ts-badge-sub">GitHub Edition</span>
+        </div>
+      </div>
+
+      <div class="ts-header-controls">
+        <button id="btn-focus-mode" class="ts-icon-btn" title="Toggle Focus Mode (Alt+Shift+F)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </button>
+        <button id="btn-sound-toggle" class="ts-icon-btn" title="Toggle Sound FX">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+        </button>
+        <label class="ts-switch" title="Master Theme Studio Toggle">
+          <input type="checkbox" id="master-toggle" checked>
+          <span class="ts-slider round"></span>
+        </label>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="ts-tabs">
+      <button class="ts-tab-btn active" data-tab="tab-themes">
+        <span class="ts-tab-icon">🎨</span>
+        <span>Themes</span>
+      </button>
+      <button class="ts-tab-btn" data-tab="tab-backgrounds">
+        <span class="ts-tab-icon">🖼️</span>
+        <span>Anime & BG</span>
+      </button>
+      <button class="ts-tab-btn" data-tab="tab-graphs">
+        <span class="ts-tab-icon">🟩</span>
+        <span>Graph</span>
+      </button>
+      <button class="ts-tab-btn" data-tab="tab-audio">
+        <span class="ts-tab-icon">🔊</span>
+        <span>Audio & FX</span>
+      </button>
+      <button class="ts-tab-btn" data-tab="tab-studio">
+        <span class="ts-tab-icon">✨</span>
+        <span>Studio</span>
+      </button>
+    </nav>
+
+    <!-- Content Sections -->
+    <main class="ts-main">
+      <!-- Tab 1: Themes -->
+      <section id="tab-themes" class="ts-tab-pane active">
+        <div class="ts-section-header">
+          <h2>Curated Dark & Anime Themes</h2>
+          <span class="ts-count-tag" id="themes-count">12 Presets</span>
+        </div>
+        <div class="ts-themes-grid" id="themes-container">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- Tab 2: Anime Backgrounds & Glassmorphism -->
+      <section id="tab-backgrounds" class="ts-tab-pane">
+        <div class="ts-section-header">
+          <h2>Anime & Aesthetic Backgrounds</h2>
+          <label class="ts-inline-toggle">
+            <input type="checkbox" id="wallpaper-toggle" checked>
+            <span>Enabled</span>
+          </label>
+        </div>
+
+        <!-- Sliders -->
+        <div class="ts-slider-card">
+          <div class="ts-slider-row">
+            <span class="ts-slider-label">Glass Blur: <b id="lbl-blur">6px</b></span>
+            <input type="range" id="slider-blur" min="0" max="30" value="6" class="ts-range">
+          </div>
+          <div class="ts-slider-row">
+            <span class="ts-slider-label">Glass Opacity: <b id="lbl-glass-opacity">76%</b></span>
+            <input type="range" id="slider-glass-opacity" min="20" max="100" value="76" class="ts-range">
+          </div>
+          <div class="ts-slider-row">
+            <span class="ts-slider-label">Wallpaper Brightness: <b id="lbl-brightness">85%</b></span>
+            <input type="range" id="slider-brightness" min="20" max="120" value="85" class="ts-range">
+          </div>
+        </div>
+
+        <div class="ts-wallpaper-grid" id="wallpapers-container">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- Custom Wallpaper Inputs -->
+        <div class="ts-custom-bg-box">
+          <h3>Custom Wallpaper</h3>
+          <div class="ts-input-group">
+            <input type="text" id="input-custom-url" placeholder="Paste image URL (Unsplash, anime wallpaper, etc.)">
+            <button id="btn-apply-url" class="ts-btn-action">Apply</button>
+          </div>
+          <div class="ts-upload-row">
+            <label class="ts-upload-btn" for="input-upload-file">
+              📁 Upload Local Image
+              <input type="file" id="input-upload-file" accept="image/*" style="display: none;">
+            </label>
+            <button id="btn-clear-custom-bg" class="ts-btn-outline" title="Clear custom wallpaper">Clear</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tab 3: Contribution Graph Colorizer -->
+      <section id="tab-graphs" class="ts-tab-pane">
+        <div class="ts-section-header">
+          <h2>Contribution Graph Palettes</h2>
+        </div>
+
+        <!-- Graph Live Preview Mockup -->
+        <div class="ts-graph-preview-box">
+          <div class="ts-graph-preview-label">Live Preview:</div>
+          <div class="ts-graph-mini-grid" id="graph-preview-grid">
+            <!-- 7x5 mini grid of boxes -->
+          </div>
+        </div>
+
+        <div class="ts-palettes-list" id="palettes-container">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- Tab 4: Audio & Celebrations -->
+      <section id="tab-audio" class="ts-tab-pane">
+        <div class="ts-section-header">
+          <h2>Sound Effects & Celebrations</h2>
+          <label class="ts-inline-toggle">
+            <input type="checkbox" id="audio-enable-toggle" checked>
+            <span>Sound FX</span>
+          </label>
+        </div>
+
+        <div class="ts-settings-card">
+          <div class="ts-setting-item">
+            <label for="select-sound-pack">Sound Pack</label>
+            <select id="select-sound-pack" class="ts-select">
+              <option value="arcade-8bit">8-Bit Retro Arcade</option>
+              <option value="modern-chime">Modern Studio Chime</option>
+              <option value="cyberpunk-synth">Cyberpunk Synth</option>
+              <option value="anime-sparkle">Anime Sparkle</option>
+              <option value="tactile-click">Tactile Mechanical</option>
+            </select>
+          </div>
+
+          <div class="ts-slider-row" style="margin-top: 10px;">
+            <span class="ts-slider-label">Volume: <b id="lbl-volume">70%</b></span>
+            <input type="range" id="slider-volume" min="0" max="100" value="70" class="ts-range">
+          </div>
+
+          <div class="ts-test-audio-buttons">
+            <button id="btn-test-star" class="ts-test-btn">⭐ Star Sound</button>
+            <button id="btn-test-fork" class="ts-test-btn">🍴 Fork Sound</button>
+            <button id="btn-test-merge" class="ts-test-btn">🚀 Merge Fanfare</button>
+          </div>
+        </div>
+
+        <div class="ts-section-header" style="margin-top: 16px;">
+          <h2>Visual Celebrations</h2>
+        </div>
+
+        <div class="ts-settings-card">
+          <div class="ts-setting-item ts-row">
+            <div>
+              <div class="ts-item-title">Confetti Celebrations</div>
+              <div class="ts-item-desc">Shower screen with particles on stars & merges</div>
+            </div>
+            <label class="ts-switch">
+              <input type="checkbox" id="confetti-toggle" checked>
+              <span class="ts-slider round"></span>
+            </label>
+          </div>
+
+          <div class="ts-setting-item ts-row" style="margin-top: 10px;">
+            <div>
+              <div class="ts-item-title">Dynamic Repo Tint</div>
+              <div class="ts-item-desc">Tints UI to match repository language</div>
+            </div>
+            <label class="ts-switch">
+              <input type="checkbox" id="dynamic-tint-toggle" checked>
+              <span class="ts-slider round"></span>
+            </label>
+          </div>
+
+          <button id="btn-fire-confetti" class="ts-btn-primary" style="margin-top: 12px; width: 100%;">
+            🎉 Test Confetti Burst
+          </button>
+        </div>
+      </section>
+
+      <!-- Tab 5: Typography, Widget & Episode Card -->
+      <section id="tab-studio" class="ts-tab-pane">
+        <div class="ts-section-header">
+          <h2>Code Typography</h2>
+        </div>
+
+        <div class="ts-settings-card">
+          <div class="ts-setting-item">
+            <label for="select-font">Monospace Font for Code</label>
+            <select id="select-font" class="ts-select">
+              <option value="default">Default GitHub Font</option>
+              <option value="jetbrains" selected>JetBrains Mono</option>
+              <option value="fira-code">Fira Code</option>
+              <option value="cascadia">Cascadia Code</option>
+              <option value="source-code">Source Code Pro</option>
+              <option value="space-mono">Space Mono</option>
+              <option value="roboto-mono">Roboto Mono</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="ts-section-header" style="margin-top: 16px;">
+          <h2>In-Page Quick Widget</h2>
+        </div>
+
+        <div class="ts-settings-card">
+          <div class="ts-setting-item ts-row">
+            <div>
+              <div class="ts-item-title">Floating HUD Pill</div>
+              <div class="ts-item-desc">Discreet widget in bottom-right corner of GitHub</div>
+            </div>
+            <label class="ts-switch">
+              <input type="checkbox" id="widget-toggle" checked>
+              <span class="ts-slider round"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="ts-section-header" style="margin-top: 16px;">
+          <h2>Shareable Episode Card</h2>
+        </div>
+
+        <div class="ts-settings-card">
+          <p class="ts-item-desc" style="margin-bottom: 10px;">
+            Generate a personalized GitHub Episode Card with your current active theme, streak and aesthetic badge to share on X or LinkedIn.
+          </p>
+          <button id="btn-open-episode-card" class="ts-btn-primary" style="width: 100%;">
+            📸 Open Episode Card Generator
+          </button>
+        </div>
+
+        <!-- Backup & Reset -->
+        <div class="ts-section-header" style="margin-top: 16px;">
+          <h2>Settings Management</h2>
+        </div>
+        <div class="ts-settings-card" style="display: flex; gap: 8px;">
+          <button id="btn-export-settings" class="ts-btn-outline" style="flex: 1;">Export JSON</button>
+          <label class="ts-btn-outline" style="flex: 1; text-align: center; cursor: pointer;">
+            Import JSON
+            <input type="file" id="input-import-settings" accept=".json" style="display: none;">
+          </label>
+          <button id="btn-reset-settings" class="ts-btn-outline" style="color: #ff6b6b;" title="Reset everything">Reset</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Status -->
+    <footer class="ts-footer">
+      <div class="ts-footer-info">
+        <span class="ts-status-dot"></span>
+        <span id="footer-status-text">Active on GitHub</span>
+      </div>
+      <div class="ts-shortcut-hint">
+        Focus: <code>Alt+Shift+F</code>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/content/themes.js"></script>
+  <script src="/content/audio-synthesizer.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

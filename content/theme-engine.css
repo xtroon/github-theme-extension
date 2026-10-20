@@ -1,0 +1,438 @@
+/**
+ * Theme Studio for GitHub - CSS Styling Engine
+ * Glassmorphism, Primer variable overrides, contribution graph colorizer, and custom UI.
+ */
+
+:root {
+  --ts-bg: #1e1e2e;
+  --ts-canvas-subtle: #181825;
+  --ts-canvas-inset: #11111b;
+  --ts-border: #313244;
+  --ts-border-muted: #45475a;
+  --ts-fg: #cdd6f4;
+  --ts-fg-muted: #a6adc8;
+  --ts-accent: #cba6f7;
+  --ts-accent-emphasis: #89b4fa;
+  --ts-success: #a6e3a1;
+  --ts-danger: #f38ba8;
+  --ts-warning: #f9e2af;
+  --ts-glass-bg: rgba(30, 30, 46, 0.72);
+  --ts-glass-border: rgba(203, 166, 247, 0.2);
+  --ts-glass-blur: 10px;
+  --ts-code-font: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Background Wallpaper Layer */
+#theme-studio-bg-layer {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: -999999 !important;
+  pointer-events: none !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  transition: filter 0.35s ease, opacity 0.35s ease;
+}
+
+#theme-studio-bg-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: -999998 !important;
+  pointer-events: none !important;
+  background: radial-gradient(circle at center, rgba(10, 10, 20, 0.25) 0%, rgba(5, 5, 12, 0.75) 100%);
+  transition: opacity 0.35s ease;
+}
+
+/* Active Theme Applied */
+html[data-theme-studio-active="true"],
+body[data-theme-studio-active="true"] {
+  background-color: transparent !important;
+  color: var(--ts-fg) !important;
+  color-scheme: dark !important;
+}
+
+/* Override GitHub Primer CSS custom properties directly */
+html[data-theme-studio-active="true"] {
+  --color-canvas-default: var(--ts-bg) !important;
+  --color-canvas-subtle: var(--ts-canvas-subtle) !important;
+  --color-canvas-inset: var(--ts-canvas-inset) !important;
+  --color-border-default: var(--ts-border) !important;
+  --color-border-muted: var(--ts-border-muted) !important;
+  --color-border-subtle: var(--ts-border-muted) !important;
+  --color-fg-default: var(--ts-fg) !important;
+  --color-fg-muted: var(--ts-fg-muted) !important;
+  --color-fg-subtle: var(--ts-fg-muted) !important;
+  --color-accent-fg: var(--ts-accent) !important;
+  --color-accent-emphasis: var(--ts-accent-emphasis) !important;
+  --color-accent-muted: var(--ts-border) !important;
+  --color-accent-subtle: var(--ts-canvas-subtle) !important;
+  --color-success-fg: var(--ts-success) !important;
+  --color-success-emphasis: var(--ts-success) !important;
+  --color-danger-fg: var(--ts-danger) !important;
+  --color-danger-emphasis: var(--ts-danger) !important;
+  --color-attention-fg: var(--ts-warning) !important;
+  --color-attention-emphasis: var(--ts-warning) !important;
+  --color-header-bg: var(--ts-canvas-subtle) !important;
+  --color-header-text: var(--ts-fg) !important;
+  --color-header-divider: var(--ts-border) !important;
+  --color-btn-bg: var(--ts-canvas-subtle) !important;
+  --color-btn-border: var(--ts-border) !important;
+  --color-btn-text: var(--ts-fg) !important;
+  --color-btn-hover-bg: var(--ts-border) !important;
+  --color-btn-primary-bg: var(--ts-accent-emphasis) !important;
+  --color-btn-primary-border: var(--ts-accent-emphasis) !important;
+  --color-btn-primary-text: #ffffff !important;
+  --color-neutral-muted: var(--ts-canvas-subtle) !important;
+  --color-neutral-subtle: var(--ts-canvas-inset) !important;
+}
+
+/* Glassmorphism Panels */
+html[data-theme-studio-active="true"] .AppHeader,
+html[data-theme-studio-active="true"] header.Header,
+html[data-theme-studio-active="true"] header.Header-old,
+html[data-theme-studio-active="true"] .HeaderMenu,
+html[data-theme-studio-active="true"] .UnderlineNav,
+html[data-theme-studio-active="true"] .pagehead,
+html[data-theme-studio-active="true"] .repohead {
+  background: var(--ts-glass-bg) !important;
+  backdrop-filter: blur(var(--ts-glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--ts-glass-blur)) !important;
+  border-bottom: 1px solid var(--ts-glass-border) !important;
+}
+
+/* Main Cards, Boxes & Containers */
+html[data-theme-studio-active="true"] .Box,
+html[data-theme-studio-active="true"] .Box--responsive,
+html[data-theme-studio-active="true"] .timeline-comment,
+html[data-theme-studio-active="true"] .timeline-comment-header,
+html[data-theme-studio-active="true"] .discussion-timeline-actions,
+html[data-theme-studio-active="true"] .feed-item-content,
+html[data-theme-studio-active="true"] .feed-content,
+html[data-theme-studio-active="true"] .js-feed-container article,
+html[data-theme-studio-active="true"] .BorderGrid-cell,
+html[data-theme-studio-active="true"] .repo-file-upload-progress,
+html[data-theme-studio-active="true"] .repo-description-container,
+html[data-theme-studio-active="true"] .pinned-item-list-item-content,
+html[data-theme-studio-active="true"] .SelectMenu-modal,
+html[data-theme-studio-active="true"] .dropdown-menu,
+html[data-theme-studio-active="true"] .Overlay,
+html[data-theme-studio-active="true"] .Popover-message,
+html[data-theme-studio-active="true"] .Header-item--full,
+html[data-theme-studio-active="true"] .subnav-search,
+html[data-theme-studio-active="true"] .tabnav-tabs,
+html[data-theme-studio-active="true"] .org-header {
+  background: var(--ts-glass-bg) !important;
+  backdrop-filter: blur(var(--ts-glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--ts-glass-blur)) !important;
+  border-color: var(--ts-glass-border) !important;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.28) !important;
+}
+
+/* Translucent Page Body & Main Containers */
+html[data-theme-studio-active="true"] main,
+html[data-theme-studio-active="true"] .application-main,
+html[data-theme-studio-active="true"] #js-pjax-container,
+html[data-theme-studio-active="true"] .Layout,
+html[data-theme-studio-active="true"] .Layout-main,
+html[data-theme-studio-active="true"] .Layout-sidebar,
+html[data-theme-studio-active="true"] .container-xl,
+html[data-theme-studio-active="true"] .container-lg {
+  background: transparent !important;
+}
+
+/* Code Viewer & Monaco Editor */
+html[data-theme-studio-active="true"] .react-code-view,
+html[data-theme-studio-active="true"] .react-blob-view-container,
+html[data-theme-studio-active="true"] .blob-wrapper,
+html[data-theme-studio-active="true"] .blob-code,
+html[data-theme-studio-active="true"] .blob-num,
+html[data-theme-studio-active="true"] .highlight,
+html[data-theme-studio-active="true"] .cm-editor,
+html[data-theme-studio-active="true"] .cm-scroller,
+html[data-theme-studio-active="true"] pre,
+html[data-theme-studio-active="true"] code {
+  font-family: var(--ts-code-font) !important;
+}
+
+html[data-theme-studio-active="true"] .react-code-view,
+html[data-theme-studio-active="true"] .react-blob-view-container,
+html[data-theme-studio-active="true"] .blob-wrapper {
+  background: var(--ts-glass-bg) !important;
+  backdrop-filter: blur(calc(var(--ts-glass-blur) * 0.8)) !important;
+  -webkit-backdrop-filter: blur(calc(var(--ts-glass-blur) * 0.8)) !important;
+  border: 1px solid var(--ts-glass-border) !important;
+  border-radius: 8px !important;
+}
+
+/* Accent Glow on Links & Interactive Items */
+html[data-theme-studio-active="true"] a:not(.btn):hover {
+  text-shadow: 0 0 8px var(--ts-accent) !important;
+  color: var(--ts-accent) !important;
+}
+
+/* Primary Button Styling */
+html[data-theme-studio-active="true"] .btn-primary {
+  background: var(--ts-accent-emphasis) !important;
+  border-color: var(--ts-accent-emphasis) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.2s ease !important;
+}
+
+html[data-theme-studio-active="true"] .btn-primary:hover {
+  filter: brightness(1.15) !important;
+  box-shadow: 0 0 15px var(--ts-accent-emphasis) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Starring button highlight */
+html[data-theme-studio-active="true"] .starred button {
+  color: #ffd700 !important;
+}
+
+/* Contribution Graph Customizer */
+html[data-theme-studio-active="true"] .ContributionCalendar-day[data-level="0"],
+html[data-theme-studio-active="true"] rect[data-level="0"] {
+  fill: var(--ts-contrib-0, #161b22) !important;
+  background-color: var(--ts-contrib-0, #161b22) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+html[data-theme-studio-active="true"] .ContributionCalendar-day[data-level="1"],
+html[data-theme-studio-active="true"] rect[data-level="1"] {
+  fill: var(--ts-contrib-1, #0e4429) !important;
+  background-color: var(--ts-contrib-1, #0e4429) !important;
+}
+
+html[data-theme-studio-active="true"] .ContributionCalendar-day[data-level="2"],
+html[data-theme-studio-active="true"] rect[data-level="2"] {
+  fill: var(--ts-contrib-2, #006d32) !important;
+  background-color: var(--ts-contrib-2, #006d32) !important;
+}
+
+html[data-theme-studio-active="true"] .ContributionCalendar-day[data-level="3"],
+html[data-theme-studio-active="true"] rect[data-level="3"] {
+  fill: var(--ts-contrib-3, #26a641) !important;
+  background-color: var(--ts-contrib-3, #26a641) !important;
+  filter: drop-shadow(0 0 2px var(--ts-contrib-3, #26a641)) !important;
+}
+
+html[data-theme-studio-active="true"] .ContributionCalendar-day[data-level="4"],
+html[data-theme-studio-active="true"] rect[data-level="4"] {
+  fill: var(--ts-contrib-4, #39d353) !important;
+  background-color: var(--ts-contrib-4, #39d353) !important;
+  filter: drop-shadow(0 0 4px var(--ts-contrib-4, #39d353)) !important;
+}
+
+/* Contribution hover animation */
+html[data-theme-studio-active="true"] .ContributionCalendar-day:hover,
+html[data-theme-studio-active="true"] rect.ContributionCalendar-day:hover {
+  transform: scale(1.25) !important;
+  stroke: #ffffff !important;
+  stroke-width: 1px !important;
+  transition: transform 0.15s ease !important;
+}
+
+/* Focus Mode override: Clean view */
+html[data-theme-studio-focus="true"] #theme-studio-bg-layer,
+html[data-theme-studio-focus="true"] #theme-studio-bg-overlay {
+  display: none !important;
+}
+
+html[data-theme-studio-focus="true"] .AppHeader,
+html[data-theme-studio-focus="true"] .Box,
+html[data-theme-studio-focus="true"] .timeline-comment {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Floating Dock / Quick Menu */
+#theme-studio-floating-dock {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999998;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  user-select: none;
+}
+
+.ts-dock-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(20, 20, 32, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  color: #f1f1f1;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ts-dock-pill:hover {
+  transform: translateY(-2px);
+  border-color: var(--ts-accent, #cba6f7);
+  box-shadow: 0 10px 36px rgba(203, 166, 247, 0.25);
+}
+
+.ts-dock-logo {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff007f, #00f2fe);
+  display: inline-block;
+  box-shadow: 0 0 8px #ff007f;
+}
+
+.ts-dock-btn {
+  background: transparent;
+  border: none;
+  color: #cdd6f4;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+
+.ts-dock-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* Floating Quick Modal */
+#theme-studio-floating-menu {
+  position: fixed;
+  bottom: 74px;
+  right: 24px;
+  width: 320px;
+  background: rgba(18, 18, 28, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  border-radius: 14px;
+  z-index: 999998;
+  color: #cdd6f4;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+  animation: tsFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes tsFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ts-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.ts-menu-body {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ts-menu-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.ts-menu-select {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  outline: none;
+  max-width: 170px;
+}
+
+.ts-menu-select option {
+  background: #181825;
+  color: #fff;
+}
+
+.ts-menu-slider {
+  width: 120px;
+  accent-color: var(--ts-accent, #cba6f7);
+}
+
+.ts-menu-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.ts-menu-action-btn {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #e0e0e0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all 0.15s ease;
+}
+
+.ts-menu-action-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.ts-menu-action-btn.primary {
+  background: var(--ts-accent-emphasis, #89b4fa);
+  border-color: var(--ts-accent-emphasis, #89b4fa);
+  color: #fff;
+}
+
+/* Floating Cursor Glow Trail */
+.ts-cursor-particle {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 9999999;
+  background: var(--ts-accent, #cba6f7);
+  box-shadow: 0 0 10px var(--ts-accent, #cba6f7);
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
