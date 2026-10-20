@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <linearGradient id="outrunSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0d0221"/>
+      <stop offset="50%" stop-color="#240046"/>
+      <stop offset="85%" stop-color="#7209b7"/>
+      <stop offset="100%" stop-color="#f72585"/>
+    </linearGradient>
+    <linearGradient id="synthSun" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffe600"/>
+      <stop offset="100%" stop-color="#ff007f"/>
+    </linearGradient>
+    <linearGradient id="gridFade" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe"/>
+      <stop offset="70%" stop-color="#ff007f" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#240046" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#outrunSky)"/>
+
+  <!-- Glowing Sun with Horizontal Slices -->
+  <circle cx="960" cy="560" r="220" fill="url(#synthSun)"/>
+  <!-- Dark Horizon cuts -->
+  <rect x="700" y="580" width="520" height="6" fill="#240046"/>
+  <rect x="700" y="605" width="520" height="10" fill="#240046"/>
+  <rect x="700" y="635" width="520" height="16" fill="#240046"/>
+  <rect x="700" y="675" width="520" height="24" fill="#240046"/>
+  <rect x="700" y="725" width="520" height="34" fill="#240046"/>
+
+  <!-- Dark Wireframe Mountains on Horizon -->
+  <polygon points="120,780 380,560 580,780" fill="#130122" stroke="#ff007f" stroke-width="2"/>
+  <polygon points="460,780 690,610 920,780" fill="#1b0230" stroke="#ff007f" stroke-width="2"/>
+  <polygon points="1020,780 1280,590 1520,780" fill="#1b0230" stroke="#00f2fe" stroke-width="2"/>
+  <polygon points="1380,780 1620,540 1860,780" fill="#130122" stroke="#00f2fe" stroke-width="2"/>
+
+  <!-- Perspective 3D Wireframe Grid Floor -->
+  <rect x="0" y="780" width="1920" height="300" fill="#080112"/>
+  <!-- Horizontal Grid Lines -->
+  <g stroke="url(#gridFade)" stroke-width="2">
+    <line x1="0" y1="790" x2="1920" y2="790"/>
+    <line x1="0" y1="805" x2="1920" y2="805"/>
+    <line x1="0" y1="825" x2="1920" y2="825"/>
+    <line x1="0" y1="855" x2="1920" y2="855"/>
+    <line x1="0" y1="895" x2="1920" y2="895"/>
+    <line x1="0" y1="950" x2="1920" y2="950"/>
+    <line x1="0" y1="1025" x2="1920" y2="1025"/>
+  </g>
+  <!-- Vanishing Perspective Lines radiating from Sun Center -->
+  <g stroke="#00f2fe" stroke-width="1.8" opacity="0.75">
+    <line x1="960" y1="780" x2="960" y2="1080"/>
+    <line x1="960" y1="780" x2="760" y2="1080"/>
+    <line x1="960" y1="780" x2="520" y2="1080"/>
+    <line x1="960" y1="780" x2="240" y2="1080"/>
+    <line x1="960" y1="780" x2="-80" y2="1080"/>
+    <line x1="960" y1="780" x2="1160" y2="1080"/>
+    <line x1="960" y1="780" x2="1400" y2="1080"/>
+    <line x1="960" y1="780" x2="1680" y2="1080"/>
+    <line x1="960" y1="780" x2="2000" y2="1080"/>
+  </g>
+</svg>

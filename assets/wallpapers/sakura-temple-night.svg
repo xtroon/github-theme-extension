@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a0515"/>
+      <stop offset="45%" stop-color="#1e1030"/>
+      <stop offset="80%" stop-color="#3c1a4d"/>
+      <stop offset="100%" stop-color="#64245e"/>
+    </linearGradient>
+    <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff5ea" stop-opacity="1"/>
+      <stop offset="35%" stop-color="#ffd5b8" stop-opacity="0.9"/>
+      <stop offset="65%" stop-color="#ff99bb" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#3c1a4d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="fujiMist" cx="50%" cy="100%" r="70%">
+      <stop offset="0%" stop-color="#ff79c6" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#1e1030" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1920" height="1080" fill="url(#skyGrad)"/>
+
+  <!-- Stars -->
+  <g fill="#ffffff" opacity="0.8">
+    <circle cx="150" cy="80" r="1.5"/><circle cx="280" cy="140" r="1.2"/><circle cx="390" cy="95" r="2"/>
+    <circle cx="520" cy="160" r="1"/><circle cx="710" cy="85" r="1.8"/><circle cx="890" cy="190" r="1.3"/>
+    <circle cx="1080" cy="110" r="2.2"/><circle cx="1250" cy="70" r="1.4"/><circle cx="1420" cy="160" r="1.7"/>
+    <circle cx="1590" cy="90" r="1.2"/><circle cx="1780" cy="130" r="2"/><circle cx="1850" cy="220" r="1.5"/>
+    <circle cx="210" cy="310" r="1.6"/><circle cx="480" cy="280" r="1.2"/><circle cx="830" cy="340" r="1.8"/>
+    <circle cx="1320" cy="310" r="1.5"/><circle cx="1680" cy="340" r="1.3"/><circle cx="1820" cy="410" r="1.6"/>
+  </g>
+
+  <!-- Giant Glowing Moon -->
+  <circle cx="1380" cy="340" r="240" fill="url(#moonGlow)"/>
+  <circle cx="1380" cy="340" r="130" fill="#fff7ed"/>
+
+  <!-- Distant Mt Fuji Silhouette -->
+  <polygon points="550,780 960,380 1060,380 1480,780" fill="#140b20" opacity="0.95"/>
+  <polygon points="910,430 960,380 1060,380 1110,430 1070,470 1040,450 1010,480 980,450 950,470" fill="#f8e8f8" opacity="0.3"/>
+
+  <!-- Mountain Mist -->
+  <rect x="0" y="550" width="1920" height="400" fill="url(#fujiMist)"/>
+
+  <!-- Midground Hills -->
+  <path d="M0,860 Q400,740 900,820 T1920,800 L1920,1080 L0,1080 Z" fill="#0f0717"/>
+
+  <!-- Foreground Hill & Torii Gate -->
+  <path d="M0,940 Q500,880 1100,950 T1920,930 L1920,1080 L0,1080 Z" fill="#08030d"/>
+
+  <!-- Torii Gate Silhouette on hill -->
+  <g fill="#08030d" stroke="#ff79c6" stroke-width="1.5" opacity="0.95">
+    <path d="M420,720 Q560,705 700,720 L690,735 Q560,722 430,735 Z"/>
+    <rect x="445" y="748" width="230" height="12"/>
+    <rect x="480" y="725" width="20" height="230"/>
+    <rect x="620" y="725" width="20" height="230"/>
+    <rect x="550" y="725" width="20" height="35"/>
+  </g>
+
+  <!-- Sakura Branches Silhouette (Top Right & Left) -->
+  <g fill="#08030d">
+    <path d="M1920,0 Q1700,80 1550,40 T1350,180 Q1450,160 1600,120 T1920,80 Z"/>
+    <path d="M1650,90 Q1520,160 1420,280 Q1460,250 1580,180 Z"/>
+    <path d="M0,0 Q250,90 400,60 T650,220 Q530,180 380,130 T0,90 Z"/>
+  </g>
+
+  <!-- Glowing Pink Cherry Blossom Petals & Fireflies -->
+  <g fill="#ff80ab" filter="url(#glow)" opacity="0.85">
+    <ellipse cx="1480" cy="180" rx="9" ry="5" transform="rotate(25 1480 180)"/>
+    <ellipse cx="1390" cy="240" rx="8" ry="4" transform="rotate(-35 1390 240)"/>
+    <ellipse cx="1520" cy="290" rx="10" ry="5" transform="rotate(50 1520 290)"/>
+    <ellipse cx="1320" cy="350" rx="9" ry="4" transform="rotate(15 1320 350)"/>
+    <ellipse cx="1240" cy="420" rx="11" ry="6" transform="rotate(-40 1240 420)"/>
+    <ellipse cx="1150" cy="510" rx="8" ry="4" transform="rotate(30 1150 510)"/>
+    <ellipse cx="980" cy="620" rx="10" ry="5" transform="rotate(-20 980 620)"/>
+    <ellipse cx="820" cy="710" rx="9" ry="4" transform="rotate(45 820 710)"/>
+    <ellipse cx="640" cy="780" rx="8" ry="5" transform="rotate(-15 640 780)"/>
+    <ellipse cx="510" cy="840" rx="11" ry="5" transform="rotate(35 510 840)"/>
+    <!-- Firefly orbs -->
+    <circle cx="580" cy="800" r="3" fill="#ffe066"/>
+    <circle cx="750" cy="760" r="2.5" fill="#ffe066"/>
+    <circle cx="890" cy="820" r="3.5" fill="#ffe066"/>
+    <circle cx="1040" cy="790" r="2.5" fill="#ffe066"/>
+  </g>
+</svg>

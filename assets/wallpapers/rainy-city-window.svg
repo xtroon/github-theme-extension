@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <linearGradient id="rainDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e17"/>
+      <stop offset="100%" stop-color="#141a29"/>
+    </linearGradient>
+    <filter id="bokehBlur">
+      <feGaussianBlur stdDeviation="35"/>
+    </filter>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#rainDark)"/>
+
+  <!-- Distant Blurred City Lights Bokeh -->
+  <g filter="url(#bokehBlur)" opacity="0.6">
+    <circle cx="280" cy="420" r="140" fill="#00f2fe"/>
+    <circle cx="520" cy="580" r="180" fill="#ff007f"/>
+    <circle cx="860" cy="380" r="150" fill="#fee715"/>
+    <circle cx="1180" cy="520" r="190" fill="#7928ca"/>
+    <circle cx="1520" cy="390" r="160" fill="#00d2ff"/>
+    <circle cx="1740" cy="610" r="140" fill="#ff4450"/>
+    <circle cx="700" cy="650" r="120" fill="#00ff66"/>
+  </g>
+
+  <!-- Clear Glass Highlights & Wet Drops -->
+  <g fill="rgba(255, 255, 255, 0.45)" stroke="rgba(255, 255, 255, 0.2)" stroke-width="1">
+    <ellipse cx="320" cy="180" rx="8" ry="14"/>
+    <ellipse cx="322" cy="220" rx="4" ry="7"/>
+    <ellipse cx="480" cy="290" rx="10" ry="18"/>
+    <ellipse cx="640" cy="160" rx="6" ry="11"/>
+    <ellipse cx="780" cy="340" rx="12" ry="22"/>
+    <ellipse cx="920" cy="240" rx="9" ry="16"/>
+    <ellipse cx="1140" cy="190" rx="7" ry="12"/>
+    <ellipse cx="1280" cy="380" rx="11" ry="20"/>
+    <ellipse cx="1460" cy="270" rx="8" ry="15"/>
+    <ellipse cx="1620" cy="330" rx="10" ry="17"/>
+    <ellipse cx="1780" cy="220" rx="6" ry="10"/>
+
+    <ellipse cx="420" cy="520" rx="11" ry="19"/>
+    <ellipse cx="580" cy="640" rx="9" ry="16"/>
+    <ellipse cx="760" cy="580" rx="8" ry="14"/>
+    <ellipse cx="1020" cy="620" rx="12" ry="21"/>
+    <ellipse cx="1240" cy="540" rx="7" ry="13"/>
+    <ellipse cx="1540" cy="680" rx="10" ry="18"/>
+    <ellipse cx="1680" cy="590" rx="8" ry="14"/>
+
+    <!-- Water Trickle Trails -->
+    <path d="M480,308 Q482,340 480,380" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+    <path d="M1020,641 Q1024,680 1021,720" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+    <path d="M1280,400 Q1278,440 1280,490" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  </g>
+</svg>

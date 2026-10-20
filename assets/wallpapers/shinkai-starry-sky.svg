@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <linearGradient id="shinkaiSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#02010a"/>
+      <stop offset="40%" stop-color="#0a1233"/>
+      <stop offset="70%" stop-color="#142852"/>
+      <stop offset="90%" stop-color="#1b4d6e"/>
+      <stop offset="100%" stop-color="#2d7f8a"/>
+    </linearGradient>
+    <radialGradient id="nebulaCyan" cx="40%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#7928ca" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#02010a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="nebulaPink" cx="70%" cy="40%" r="45%">
+      <stop offset="0%" stop-color="#ff007f" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#4facfe" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#02010a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cometTail" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="25%" stop-color="#7dcfff"/>
+      <stop offset="70%" stop-color="#bb9af7" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#0a1233" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#shinkaiSky)"/>
+  <rect width="1920" height="1080" fill="url(#nebulaCyan)"/>
+  <rect width="1920" height="1080" fill="url(#nebulaPink)"/>
+
+  <!-- Dense Milky Way Stars -->
+  <g fill="#ffffff">
+    <circle cx="120" cy="80" r="1.5"/><circle cx="210" cy="140" r="2"/><circle cx="340" cy="60" r="1.2"/>
+    <circle cx="480" cy="180" r="2.2"/><circle cx="610" cy="90" r="1.6"/><circle cx="720" cy="220" r="1.4"/>
+    <circle cx="890" cy="130" r="2.5"/><circle cx="1040" cy="80" r="1.8"/><circle cx="1180" cy="190" r="2"/>
+    <circle cx="1320" cy="110" r="1.5"/><circle cx="1490" cy="240" r="2.3"/><circle cx="1650" cy="90" r="1.7"/>
+    <circle cx="1780" cy="170" r="2"/><circle cx="1870" cy="130" r="1.4"/><circle cx="290" cy="310" r="2.4"/>
+    <circle cx="560" cy="340" r="1.6"/><circle cx="830" cy="290" r="2.1"/><circle cx="1110" cy="350" r="1.5"/>
+    <circle cx="1390" cy="310" r="2.2"/><circle cx="1620" cy="380" r="1.8"/><circle cx="1810" cy="330" r="1.3"/>
+  </g>
+
+  <!-- Splitting Twin Comet (Your Name / Kimi no Na wa Style) -->
+  <g>
+    <!-- Main Comet Stream -->
+    <path d="M1650,40 Q1300,240 780,480" stroke="url(#cometTail)" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <path d="M1650,40 Q1300,240 780,480" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <circle cx="780" cy="480" r="6" fill="#ffffff"/>
+
+    <!-- Split Secondary Comet -->
+    <path d="M1350,210 Q1100,380 720,580" stroke="url(#cometTail)" stroke-width="4" fill="none" opacity="0.8"/>
+    <circle cx="720" cy="580" r="4" fill="#7dcfff"/>
+  </g>
+
+  <!-- Rolling Mountain & Windblown Hilltop Silhouette -->
+  <path d="M0,820 Q500,740 1000,810 T1920,780 L1920,1080 L0,1080 Z" fill="#0b172a"/>
+  <path d="M0,910 Q450,840 950,910 T1920,880 L1920,1080 L0,1080 Z" fill="#050a14"/>
+</svg>

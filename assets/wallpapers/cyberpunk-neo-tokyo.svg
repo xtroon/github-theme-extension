@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cbSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#05030a"/>
+      <stop offset="50%" stop-color="#0d081f"/>
+      <stop offset="100%" stop-color="#1f0a2e"/>
+    </linearGradient>
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe"/>
+      <stop offset="100%" stop-color="#4facfe"/>
+    </linearGradient>
+    <linearGradient id="neonPink" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff007f"/>
+      <stop offset="100%" stop-color="#7928ca"/>
+    </linearGradient>
+    <filter id="neonGlowPink">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="neonGlowCyan">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#cbSky)"/>
+
+  <!-- Distant Cyberpunk Megastructures -->
+  <g fill="#080512">
+    <polygon points="120,200 220,150 320,200 320,1080 120,1080"/>
+    <rect x="350" y="320" width="140" height="760"/>
+    <polygon points="520,240 600,180 680,240 680,1080 520,1080"/>
+    <rect x="1200" y="280" width="180" height="800"/>
+    <polygon points="1440,160 1520,100 1600,160 1600,1080 1440,1080"/>
+    <rect x="1640" y="220" width="200" height="860"/>
+  </g>
+
+  <!-- High-Rise Window Matrix Glow -->
+  <g fill="#00f2fe" opacity="0.35">
+    <rect x="150" y="240" width="4" height="6"/><rect x="165" y="240" width="4" height="6"/><rect x="180" y="240" width="4" height="6"/>
+    <rect x="150" y="280" width="4" height="6"/><rect x="195" y="280" width="4" height="6"/><rect x="220" y="280" width="4" height="6"/>
+    <rect x="1480" y="220" width="6" height="8"/><rect x="1510" y="220" width="6" height="8"/><rect x="1540" y="220" width="6" height="8"/>
+    <rect x="1480" y="250" width="6" height="8"/><rect x="1530" y="250" width="6" height="8"/>
+  </g>
+
+  <!-- Foreground Cyber Alley Buildings with Perspective -->
+  <polygon points="0,0 450,150 450,1080 0,1080" fill="#0b0817"/>
+  <polygon points="1920,0 1470,150 1470,1080 1920,1080" fill="#080612"/>
+
+  <!-- Neon Signs on Left Building -->
+  <g filter="url(#neonGlowPink)">
+    <rect x="380" y="220" width="35" height="160" rx="6" fill="none" stroke="#ff007f" stroke-width="4"/>
+    <text x="397" y="260" font-family="'Segoe UI', sans-serif" font-weight="900" font-size="24" fill="#ff007f" text-anchor="middle">電</text>
+    <text x="397" y="300" font-family="'Segoe UI', sans-serif" font-weight="900" font-size="24" fill="#ff007f" text-anchor="middle">脳</text>
+    <text x="397" y="340" font-family="'Segoe UI', sans-serif" font-weight="900" font-size="24" fill="#ff007f" text-anchor="middle">街</text>
+  </g>
+
+  <!-- Neon Billboard on Right Building -->
+  <g filter="url(#neonGlowCyan)">
+    <rect x="1510" y="280" width="160" height="70" rx="8" fill="rgba(0, 242, 254, 0.1)" stroke="#00f2fe" stroke-width="4"/>
+    <text x="1590" y="325" font-family="'Segoe UI', sans-serif" font-weight="800" font-size="20" fill="#00f2fe" text-anchor="middle" letter-spacing="3">NEO TOKYO</text>
+  </g>
+
+  <!-- Yellow Hologram Warning -->
+  <g>
+    <rect x="400" y="440" width="120" height="25" fill="#fee715" rx="3" opacity="0.9"/>
+    <text x="460" y="458" font-family="sans-serif" font-weight="900" font-size="12" fill="#000" text-anchor="middle">CYBER//DEV</text>
+  </g>
+
+  <!-- Wet Street Reflection Floor -->
+  <polygon points="0,920 1920,920 1920,1080 0,1080" fill="#040208"/>
+  <ellipse cx="400" cy="980" rx="140" ry="20" fill="#ff007f" opacity="0.25" filter="url(#neonGlowPink)"/>
+  <ellipse cx="1580" cy="990" rx="160" ry="22" fill="#00f2fe" opacity="0.25" filter="url(#neonGlowCyan)"/>
+  <ellipse cx="960" cy="1010" rx="280" ry="25" fill="#7928ca" opacity="0.2"/>
+
+  <!-- Rain Streaks Angle -->
+  <g stroke="#ffffff" stroke-width="1.2" opacity="0.25">
+    <line x1="200" y1="100" x2="160" y2="220"/>
+    <line x1="550" y1="150" x2="510" y2="280"/>
+    <line x1="850" y1="80" x2="810" y2="210"/>
+    <line x1="1200" y1="140" x2="1160" y2="270"/>
+    <line x1="1600" y1="110" x2="1560" y2="240"/>
+    <line x1="340" y1="400" x2="300" y2="540"/>
+    <line x1="720" y1="460" x2="680" y2="600"/>
+    <line x1="1050" y1="380" x2="1010" y2="520"/>
+    <line x1="1420" y1="420" x2="1380" y2="560"/>
+    <line x1="1780" y1="450" x2="1740" y2="590"/>
+    <line x1="500" y1="700" x2="460" y2="840"/>
+    <line x1="900" y1="720" x2="860" y2="860"/>
+    <line x1="1300" y1="710" x2="1260" y2="850"/>
+  </g>
+</svg>

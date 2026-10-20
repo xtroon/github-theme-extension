@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <radialGradient id="spaceDeep" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#091224"/>
+      <stop offset="70%" stop-color="#04060d"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <linearGradient id="orbitalArc" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00d2ff" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#7928ca" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#spaceDeep)"/>
+
+  <!-- Distant Pinpoint Starfield -->
+  <g fill="#ffffff" opacity="0.85">
+    <circle cx="180" cy="120" r="1"/><circle cx="320" cy="260" r="1.5"/><circle cx="490" cy="80" r="1"/>
+    <circle cx="680" cy="220" r="1.8"/><circle cx="850" cy="140" r="1.2"/><circle cx="1020" cy="90" r="2"/>
+    <circle cx="1240" cy="190" r="1.4"/><circle cx="1450" cy="110" r="1.6"/><circle cx="1680" cy="240" r="1.2"/>
+    <circle cx="1840" cy="160" r="1.8"/><circle cx="240" cy="480" r="1.5"/><circle cx="580" cy="420" r="1.2"/>
+    <circle cx="910" cy="460" r="1.6"/><circle cx="1320" cy="410" r="1.4"/><circle cx="1690" cy="490" r="1.7"/>
+  </g>
+
+  <!-- Giant Planetary Horizon Arc -->
+  <ellipse cx="960" cy="1700" rx="1400" ry="850" fill="#030814" stroke="url(#orbitalArc)" stroke-width="6"/>
+
+  <!-- Network Constellation Mesh in Orbit -->
+  <g stroke="#00d2ff" stroke-width="1" opacity="0.4" fill="none">
+    <line x1="680" y1="620" x2="820" y2="580"/>
+    <line x1="820" y1="580" x2="980" y2="610"/>
+    <line x1="980" y1="610" x2="1140" y2="560"/>
+    <line x1="1140" y1="560" x2="1280" y2="630"/>
+    <circle cx="680" cy="620" r="4" fill="#00d2ff"/>
+    <circle cx="820" cy="580" r="4" fill="#00f2fe"/>
+    <circle cx="980" cy="610" r="5" fill="#ffffff"/>
+    <circle cx="1140" cy="560" r="4" fill="#00f2fe"/>
+    <circle cx="1280" cy="630" r="4" fill="#00d2ff"/>
+  </g>
+</svg>
