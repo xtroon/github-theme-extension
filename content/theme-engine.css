@@ -51,6 +51,7 @@
 
 /* Active Theme Applied */
 html[data-theme-studio-active="true"],
+html[data-theme-studio-active="true"] body,
 body[data-theme-studio-active="true"] {
   background-color: transparent !important;
   color: var(--ts-fg) !important;

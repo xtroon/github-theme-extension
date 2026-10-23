@@ -246,6 +246,12 @@ input:checked + .ts-slider:before {
   color: #a6adc8;
 }
 
+.ts-background-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .ts-count-tag {
   font-size: 10px;
   background: rgba(255, 255, 255, 0.08);

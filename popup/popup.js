@@ -26,6 +26,7 @@
 
   // Wallpaper inputs
   const wallpaperToggle = document.getElementById('wallpaper-toggle');
+  const btnRandomWallpaper = document.getElementById('btn-random-wallpaper');
   const inputCustomUrl = document.getElementById('input-custom-url');
   const btnApplyUrl = document.getElementById('btn-apply-url');
   const inputUploadFile = document.getElementById('input-upload-file');
@@ -198,15 +199,7 @@
       `;
 
       card.addEventListener('click', () => {
-        saveSettings({
-          wallpaperId: wp.id,
-          customWallpaperUrl: '',
-          uploadedWallpaperData: '',
-          wallpaperEnabled: true
-        });
-        wallpaperToggle.checked = true;
-        inputCustomUrl.value = '';
-        highlightActiveWallpaper();
+        selectWallpaper(wp);
       });
 
       wallpapersContainer.appendChild(card);
@@ -218,6 +211,18 @@
     document.querySelectorAll('.ts-wallpaper-card').forEach(c => {
       c.classList.toggle('active', isPresetActive && c.getAttribute('data-id') === currentSettings.wallpaperId);
     });
+  }
+
+  function selectWallpaper(wallpaper) {
+    saveSettings({
+      wallpaperId: wallpaper.id,
+      customWallpaperUrl: '',
+      uploadedWallpaperData: '',
+      wallpaperEnabled: true
+    });
+    wallpaperToggle.checked = true;
+    inputCustomUrl.value = '';
+    highlightActiveWallpaper();
   }
 
   // Render Contribution Palettes
@@ -304,6 +309,13 @@
 
     wallpaperToggle.addEventListener('change', (e) => {
       saveSettings({ wallpaperEnabled: e.target.checked });
+    });
+
+    btnRandomWallpaper.addEventListener('click', () => {
+      const wallpapers = window.ThemeStudio.WALLPAPERS;
+      const available = wallpapers.filter(wp => wp.id !== currentSettings.wallpaperId);
+      const wallpaper = (available.length ? available : wallpapers)[Math.floor(Math.random() * (available.length ? available.length : wallpapers.length))];
+      selectWallpaper(wallpaper);
     });
 
     sliderBlur.addEventListener('input', (e) => {

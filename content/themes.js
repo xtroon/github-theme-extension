@@ -285,69 +285,76 @@
     }
   ];
 
+  function getWallpaperAssetUrl(filename) {
+    if (typeof chrome !== 'undefined' && chrome.runtime && typeof chrome.runtime.getURL === 'function') {
+      return chrome.runtime.getURL(`assets/wallpapers/${filename}`);
+    }
+    return `../assets/wallpapers/${filename}`;
+  }
+
   const WALLPAPERS = [
     {
       id: 'anime-sunset-lofi',
       name: 'Anime Sunset Lofi',
       category: 'Anime',
-      url: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1920&q=80',
-      thumbnail: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=300&q=70',
+      url: getWallpaperAssetUrl('anime-sunset-lofi.svg'),
+      thumbnail: getWallpaperAssetUrl('anime-sunset-lofi.svg'),
       description: 'Warm evening glow over painted anime horizon.'
     },
     {
       id: 'cyberpunk-neo-tokyo',
       name: 'Neo Tokyo Alley',
       category: 'Cyberpunk',
-      url: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1920&q=80',
-      thumbnail: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=300&q=70',
+      url: getWallpaperAssetUrl('cyberpunk-neo-tokyo.svg'),
+      thumbnail: getWallpaperAssetUrl('cyberpunk-neo-tokyo.svg'),
       description: 'Neon soaked rain reflections and cyberpunk towers.'
     },
     {
       id: 'sakura-temple-night',
       name: 'Sakura Night Shrine',
       category: 'Anime',
-      url: 'https://images.unsplash.com/photo-1528164344705-475426879c0d?auto=format&fit=crop&w=1920&q=80',
-      thumbnail: 'https://images.unsplash.com/photo-1528164344705-475426879c0d?auto=format&fit=crop&w=300&q=70',
+      url: getWallpaperAssetUrl('sakura-temple-night.svg'),
+      thumbnail: getWallpaperAssetUrl('sakura-temple-night.svg'),
       description: 'Cherry blossom petals floating under moonlight.'
     },
     {
       id: 'lofi-cozy-room',
       name: 'Cozy Lofi Study',
       category: 'Lofi',
-      url: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1920&q=80',
-      thumbnail: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=300&q=70',
+      url: getWallpaperAssetUrl('lofi-cozy-room.svg'),
+      thumbnail: getWallpaperAssetUrl('lofi-cozy-room.svg'),
       description: 'Warm desk lamp, rain outside, and relaxing vibes.'
     },
     {
       id: 'shinkai-starry-sky',
       name: 'Makoto Starry Sky',
       category: 'Anime',
-      url: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=1920&q=80',
-      thumbnail: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=300&q=70',
+      url: getWallpaperAssetUrl('shinkai-starry-sky.svg'),
+      thumbnail: getWallpaperAssetUrl('shinkai-starry-sky.svg'),
       description: 'Breathtaking anime cosmic nebula and shooting stars.'
     },
     {
       id: 'rainy-city-window',
       name: 'Rainy City Glass',
       category: 'Aesthetic',
-      url: 'https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&w=1920&q=80',
-      thumbnail: 'https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?auto=format&fit=crop&w=300&q=70',
+      url: getWallpaperAssetUrl('rainy-city-window.svg'),
+      thumbnail: getWallpaperAssetUrl('rainy-city-window.svg'),
       description: 'Melancholic raindrops running down high rise window.'
     },
     {
       id: 'minimal-deep-space',
       name: 'Minimal Deep Space',
       category: 'Dark',
-      url: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80',
-      thumbnail: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=300&q=70',
+      url: getWallpaperAssetUrl('minimal-deep-space.svg'),
+      thumbnail: getWallpaperAssetUrl('minimal-deep-space.svg'),
       description: 'Earth orbit glowing with digital network nodes.'
     },
     {
       id: 'retro-synth-grid',
       name: 'Outrun Synth Grid',
       category: 'Cyberpunk',
-      url: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1920&q=80',
-      thumbnail: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=300&q=70',
+      url: getWallpaperAssetUrl('retro-synth-grid.svg'),
+      thumbnail: getWallpaperAssetUrl('retro-synth-grid.svg'),
       description: 'Retro wireframe 80s landscape with wireframe grid.'
     }
   ];
