@@ -3,7 +3,7 @@
  * Manages default settings on install, command hotkeys, and active tab message broadcasts.
  */
 
-importScripts('/content/themes.js');
+importScripts('../content/themes.js');
 
 chrome.runtime.onInstalled.addListener(async (details) => {
   console.log('[Theme Studio] Extension installed or updated:', details.reason);
