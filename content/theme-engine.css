@@ -140,6 +140,23 @@ html[data-theme-studio-active="true"] .org-header {
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.28) !important;
 }
 
+/* Keep pinned repository cards as one consistent glass surface. */
+html[data-theme-studio-active="true"] .pinned-item-list-item {
+  background: var(--ts-glass-bg) !important;
+  backdrop-filter: blur(var(--ts-glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--ts-glass-blur)) !important;
+  border: 1px solid var(--ts-glass-border) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.28) !important;
+}
+
+html[data-theme-studio-active="true"] .pinned-item-list-item-content {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
 /* Translucent Page Body & Main Containers */
 html[data-theme-studio-active="true"] main,
 html[data-theme-studio-active="true"] .application-main,
