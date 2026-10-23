@@ -154,6 +154,24 @@ html[data-theme-studio-active="true"] .pinned-item-list-item-content {
   box-shadow: none !important;
 }
 
+/* GitHub homepage feed items use separate row wrappers from profile cards. */
+html[data-theme-studio-active="true"] .news .Box,
+html[data-theme-studio-active="true"] .news .Box-row,
+html[data-theme-studio-active="true"] .news .feed-item,
+html[data-theme-studio-active="true"] .news .js-feed-item,
+html[data-theme-studio-active="true"] .news article,
+html[data-theme-studio-active="true"] .feed-item-content {
+  background: var(--ts-glass-bg) !important;
+  backdrop-filter: blur(var(--ts-glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--ts-glass-blur)) !important;
+}
+
+html[data-theme-studio-active="true"] .news .Box-row > div,
+html[data-theme-studio-active="true"] .news .feed-item-content > div {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
 /* Translucent Page Body & Main Containers */
 html[data-theme-studio-active="true"] main,
 html[data-theme-studio-active="true"] .application-main,
