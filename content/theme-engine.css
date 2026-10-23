@@ -140,20 +140,19 @@ html[data-theme-studio-active="true"] .org-header {
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.28) !important;
 }
 
-/* Keep pinned repository cards as one consistent glass surface. */
+/* Keep pinned repository cards within GitHub's existing card boundaries. */
 html[data-theme-studio-active="true"] .pinned-item-list-item {
-  background: var(--ts-glass-bg) !important;
-  backdrop-filter: blur(var(--ts-glass-blur)) !important;
-  -webkit-backdrop-filter: blur(var(--ts-glass-blur)) !important;
-  border: 1px solid var(--ts-glass-border) !important;
-  border-radius: 6px !important;
-  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.28) !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
 }
 
 html[data-theme-studio-active="true"] .pinned-item-list-item-content {
-  background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+  background: var(--ts-glass-bg) !important;
+  backdrop-filter: blur(var(--ts-glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--ts-glass-blur)) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
   box-shadow: none !important;
 }
 
