@@ -160,6 +160,11 @@ html[data-theme-studio-active="true"] .news .Box-row,
 html[data-theme-studio-active="true"] .news .feed-item,
 html[data-theme-studio-active="true"] .news .js-feed-item,
 html[data-theme-studio-active="true"] .news article,
+html[data-theme-studio-active="true"] .js-feed-container,
+html[data-theme-studio-active="true"] .js-feed-container > *,
+html[data-theme-studio-active="true"] .js-feed-item,
+html[data-theme-studio-active="true"] .feed-item,
+html[data-theme-studio-active="true"] .feed-item > *,
 html[data-theme-studio-active="true"] .feed-item-content {
   background: var(--ts-glass-bg) !important;
   backdrop-filter: blur(var(--ts-glass-blur)) !important;
@@ -167,7 +172,9 @@ html[data-theme-studio-active="true"] .feed-item-content {
 }
 
 html[data-theme-studio-active="true"] .news .Box-row > div,
-html[data-theme-studio-active="true"] .news .feed-item-content > div {
+html[data-theme-studio-active="true"] .news .feed-item-content > div,
+html[data-theme-studio-active="true"] .js-feed-container .Box-row > div,
+html[data-theme-studio-active="true"] .js-feed-container .feed-item-content > div {
   background: transparent !important;
   box-shadow: none !important;
 }
