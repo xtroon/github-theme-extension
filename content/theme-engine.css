@@ -144,11 +144,28 @@ html[data-theme-studio-active="true"] .org-header {
 html[data-theme-studio-active="true"] main,
 html[data-theme-studio-active="true"] .application-main,
 html[data-theme-studio-active="true"] #js-pjax-container,
+html[data-theme-studio-active="true"] #dashboard,
+html[data-theme-studio-active="true"] .dashboard,
+html[data-theme-studio-active="true"] .js-dashboard,
+html[data-theme-studio-active="true"] .feed,
+html[data-theme-studio-active="true"] .news,
+html[data-theme-studio-active="true"] .repository-content,
+html[data-theme-studio-active="true"] .js-repository-container,
+html[data-theme-studio-active="true"] .js-issue-container,
+html[data-theme-studio-active="true"] .js-pull-request-container,
+html[data-theme-studio-active="true"] .js-pull-discussion,
+html[data-theme-studio-active="true"] .pull-request-tab-content,
+html[data-theme-studio-active="true"] .discussion-timeline,
+html[data-theme-studio-active="true"] .timeline,
+html[data-theme-studio-active="true"] .js-issues-toolbar,
+html[data-theme-studio-active="true"] .js-issue-row,
 html[data-theme-studio-active="true"] .Layout,
 html[data-theme-studio-active="true"] .Layout-main,
 html[data-theme-studio-active="true"] .Layout-sidebar,
 html[data-theme-studio-active="true"] .container-xl,
-html[data-theme-studio-active="true"] .container-lg {
+html[data-theme-studio-active="true"] .container-lg,
+html[data-theme-studio-active="true"] .js-pjax-container > .container-xl,
+html[data-theme-studio-active="true"] .js-pjax-container > .container-lg {
   background: transparent !important;
 }
 
