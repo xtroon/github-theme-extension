@@ -179,6 +179,39 @@ html[data-theme-studio-active="true"] .js-feed-container .feed-item-content > di
   box-shadow: none !important;
 }
 
+/* Repository and pull-request views have additional opaque route-specific panels. */
+html[data-theme-studio-active="true"] .repository-content .Box,
+html[data-theme-studio-active="true"] .repository-content .Box-header,
+html[data-theme-studio-active="true"] .repository-content .Box-body,
+html[data-theme-studio-active="true"] .repository-content .Box-footer,
+html[data-theme-studio-active="true"] .repository-content .Box-row,
+html[data-theme-studio-active="true"] .js-pull-request-container .Box,
+html[data-theme-studio-active="true"] .js-pull-request-container .Box-header,
+html[data-theme-studio-active="true"] .js-pull-request-container .Box-body,
+html[data-theme-studio-active="true"] .js-pull-request-container .Box-footer,
+html[data-theme-studio-active="true"] .js-pull-request-container .Box-row,
+html[data-theme-studio-active="true"] .js-issue-container .Box,
+html[data-theme-studio-active="true"] .js-issue-container .Box-header,
+html[data-theme-studio-active="true"] .js-issue-container .Box-body,
+html[data-theme-studio-active="true"] .js-issue-container .Box-footer,
+html[data-theme-studio-active="true"] .js-discussion,
+html[data-theme-studio-active="true"] .js-comment-container,
+html[data-theme-studio-active="true"] .review-thread-component,
+html[data-theme-studio-active="true"] .review-comment,
+html[data-theme-studio-active="true"] .discussion-item {
+  background: var(--ts-glass-bg) !important;
+  backdrop-filter: blur(var(--ts-glass-blur)) !important;
+  -webkit-backdrop-filter: blur(var(--ts-glass-blur)) !important;
+}
+
+html[data-theme-studio-active="true"] .repository-content .Box > *,
+html[data-theme-studio-active="true"] .js-pull-request-container .Box > *,
+html[data-theme-studio-active="true"] .js-issue-container .Box > *,
+html[data-theme-studio-active="true"] .js-discussion > .comment-body,
+html[data-theme-studio-active="true"] .js-comment-container .comment-body {
+  background: transparent !important;
+}
+
 /* Translucent Page Body & Main Containers */
 html[data-theme-studio-active="true"] main,
 html[data-theme-studio-active="true"] .application-main,
