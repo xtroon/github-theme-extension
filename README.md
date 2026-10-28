@@ -1,11 +1,11 @@
 <div align="center">
 
-# 🎨 Theme Studio for GitHub
+# Theme Studio for GitHub
 
-**Bring curated dark themes, syntax highlighting, frosted glassmorphism, and glowing contribution heatmaps to GitHub.**
+**A lightweight browser extension that brings customizable dark themes, code syntax highlighting, frosted glassmorphism, and contribution graph palettes to GitHub.**
 
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue?style=for-the-badge&logo=googlechrome&logoColor=white)](https://developer.chrome.com/docs/extensions/mv3/intro/)
-[![Zero Dependencies](https://img.shields.io/badge/Dependencies-0-orange?style=for-the-badge)](package.json)
+[![Zero Dependencies](https://img.shields.io/badge/Dependencies-0-orange?style=for-the-badge)](manifest.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/xtroon/github-theme-extension?style=for-the-badge&logo=github)](https://github.com/xtroon/github-theme-extension/stargazers)
 
@@ -21,28 +21,44 @@
 
 ---
 
-## 📸 Visual Showcase
+## Visual Showcase
 
-### Glassmorphism & Wallpaper Engine
+### Glassmorphism and Wallpaper Engine
 
 <table>
   <tr>
-    <td width="50%">
+    <td width="33.3%">
       <img src="assets/screenshots/preview-sakura.png" alt="Sakura Night Shrine Theme" style="border-radius: 6px;"/>
       <p align="center"><b>Sakura Night Shrine</b><br/><i>Warm ruby glow with frosted glass cards</i></p>
     </td>
-    <td width="50%">
-      <img src="assets/screenshots/preview-lofi.png" alt="Makoto Starry Sky Theme" style="border-radius: 6px;"/>
+    <td width="33.3%">
+      <img src="assets/screenshots/preview-lofi.png" alt="Cozy Starry Lofi Theme" style="border-radius: 6px;"/>
       <p align="center"><b>Cozy Starry Lofi</b><br/><i>Deep midnight canvas with ambient moonlight</i></p>
+    </td>
+    <td width="33.3%">
+      <img src="assets/screenshots/preview-shooting-stars.png" alt="Makoto Starry Sky Theme" style="border-radius: 6px;"/>
+      <p align="center"><b>Makoto Starry Sky</b><br/><i>Shooting stars with translucent profile view</i></p>
     </td>
   </tr>
 </table>
 
-### Custom Contribution Graph Palettes
+### Contribution Graph Palettes
 
-Customize your profile heatmap with vibrant, high-contrast color palettes:
+Customize your GitHub profile heatmap with vibrant, high-contrast color palettes:
 
 <table>
+  <tr>
+    <th align="center" width="25%">Palette</th>
+    <th align="center" width="75%">Preview</th>
+  </tr>
+  <tr>
+    <td align="center"><b>Electric Glacier</b></td>
+    <td><img src="assets/screenshots/contrib-glacier.png" alt="Electric Glacier Palette" width="100%" /></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Matrix Phosphor</b></td>
+    <td><img src="assets/screenshots/contrib-phosphor.png" alt="Matrix Phosphor Palette" width="100%" /></td>
+  </tr>
   <tr>
     <td align="center"><b>Sakura Petals</b></td>
     <td><img src="assets/screenshots/contrib-sakura.png" alt="Sakura Petals Palette" width="100%" /></td>
@@ -52,16 +68,16 @@ Customize your profile heatmap with vibrant, high-contrast color palettes:
     <td><img src="assets/screenshots/contrib-amethyst.png" alt="Royal Amethyst Palette" width="100%" /></td>
   </tr>
   <tr>
-    <td align="center"><b>Matrix Phosphor</b></td>
-    <td><img src="assets/screenshots/contrib-phosphor.png" alt="Matrix Phosphor Palette" width="100%" /></td>
+    <td align="center"><b>Crimson Blood</b></td>
+    <td><img src="assets/screenshots/contrib-crimson.png" alt="Crimson Blood Palette" width="100%" /></td>
   </tr>
 </table>
 
 ---
 
-## ✨ Features
+## Features
 
-### 🎨 Curated Dark & High-Contrast Themes
+### Curated Dark and High-Contrast Themes
 Includes 12 built-in color schemes calibrated for GitHub's UI components, pull request diffs, and code viewers:
 - **Catppuccin Mocha**: Pastel accents on a charcoal lavender canvas.
 - **Tokyo Night**: Indigo and electric blue accents inspired by downtown Shibuya.
@@ -76,7 +92,7 @@ Includes 12 built-in color schemes calibrated for GitHub's UI components, pull r
 - **Monokai Pro**: Vibrant amber, rose, and sky blue accents on charcoal.
 - **Abyss Deep Blue**: Deep oceanic navy with aquamarine highlights.
 
-### 💻 Full Code Syntax Highlighting Engine
+### Full Code Syntax Highlighting Engine
 Custom syntax token recoloring for both GitHub Classic (PrettyLights `.pl-*`) and React Code View (Monaco editor `.mtk*` tokens):
 - **Keywords**: Tailored keyword accent colors across all programming languages.
 - **Strings and Constants**: Distinct, high-readability tints for string literals, numbers, booleans, and builtins.
@@ -84,7 +100,7 @@ Custom syntax token recoloring for both GitHub Classic (PrettyLights `.pl-*`) an
 - **Comments**: Italicized, subdued tones designed to keep code readable without distraction.
 - **Line Numbers & Gutters**: Clean, low-opacity line numbering integrated with the active theme canvas.
 
-### 🖼️ Wallpaper Engine & Glassmorphism
+### Wallpaper Engine and Glassmorphism
 - **14 Built-in Vector Wallpapers**: High-resolution SVGs included locally (Nordic Aurora Fjord, Ghibli Forest Sanctuary, Neo Kowloon Skyline, Dark Topographic Contours, Orion Stellar Nebula, Zen Fuji Sunset, Anime Sunset Lofi, Makoto Starry Sky, Outrun Synth Grid, Cozy Lofi Study, Sakura Night Shrine, Minimal Deep Space, and Rainy City Glass).
 - **Custom Image URL**: Point to any remote image URL (Unsplash, personal CDN, direct link).
 - **Local File Upload**: Load custom background images directly from your computer, stored locally in `chrome.storage.local`.
@@ -92,7 +108,7 @@ Custom syntax token recoloring for both GitHub Classic (PrettyLights `.pl-*`) an
 - **Surface Opacity Slider**: Fine-tune card and container transparency between `20%` and `100%`.
 - **Background Brightness Slider**: Calibrate wallpaper illumination to preserve text contrast.
 
-### 📊 Contribution Graph Palettes
+### Contribution Graph Palettes
 Customize the contribution heatmap on GitHub profiles:
 - Classic GitHub Green
 - Sakura Petals (Pink / Magenta)
@@ -103,15 +119,15 @@ Customize the contribution heatmap on GitHub profiles:
 - Matrix Phosphor (Black to Green Phosphor)
 - Crimson Blood (Dark Crimson to Fiery Red)
 
-### 🎉 Celebrations
+### Celebrations
 - **Confetti Particle Canvas**: 60fps canvas particle bursts when starring a repository or merging a pull request. Can be toggled on or off from the Preferences tab.
 
-### 🎯 Focus Mode
+### Focus Mode
 Quick toggle via keyboard shortcut (`Alt + Shift + F`) or header button. Instantly hides background artwork and disables backdrop filters for a clean, minimal appearance suitable for screen sharing, meetings, and interviews.
 
 ---
 
-## 🚀 Installation and Setup
+## Installation and Setup
 
 ### Prerequisites
 Any Chromium-based browser supporting Manifest V3:
@@ -143,7 +159,7 @@ Any Chromium-based browser supporting Manifest V3:
 
 ---
 
-## ⌨️ Keyboard Shortcuts
+## Keyboard Shortcuts
 
 | Shortcut | Action | Description |
 | :--- | :--- | :--- |
@@ -151,7 +167,7 @@ Any Chromium-based browser supporting Manifest V3:
 
 ---
 
-## 🛠️ Architecture and Technical Details
+## Architecture and Technical Details
 
 - **Manifest V3**: Compliant with modern Chromium extension security standards using a lightweight service worker (`background/background.js`).
 - **No Build Tools**: Pure ES6+ JavaScript and Vanilla CSS. No `node_modules`, npm scripts, webpack, or transpilation required.
@@ -161,7 +177,7 @@ Any Chromium-based browser supporting Manifest V3:
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 github-theme-extension/
@@ -187,12 +203,12 @@ github-theme-extension/
 
 ---
 
-## ⭐️ Show Your Support
+## Show Your Support
 
-If you enjoy **Theme Studio for GitHub**, please consider giving this repository a star ⭐️! It helps more developers discover the extension and supports ongoing development.
+If you find Theme Studio for GitHub useful, please consider starring the repository on GitHub.
 
 ---
 
-## 📄 License
+## License
 
 [MIT License](LICENSE). Free for personal and commercial use.
