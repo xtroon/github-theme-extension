@@ -7,7 +7,7 @@
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue?style=for-the-badge&logo=googlechrome&logoColor=white)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![Zero Dependencies](https://img.shields.io/badge/Dependencies-0-orange?style=for-the-badge)](manifest.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-[![GitHub Stars](https://img.shields.io/github/stars/xtroon/github-theme-extension?style=for-the-badge&logo=github)](https://github.com/xtroon/github-theme-extension/stargazers)
+<!-- [![GitHub Stars](https://img.shields.io/github/stars/xtroon/github-theme-extension?style=for-the-badge&logo=github)](https://github.com/xtroon/github-theme-extension/stargazers) -->
 
 <br/>
 
