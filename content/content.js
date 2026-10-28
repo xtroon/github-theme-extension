@@ -109,26 +109,39 @@
      * Listen for messages from popup or background worker
      */
     setupMessageListener() {
-      if (!isExtensionAlive() || !chrome.runtime || !chrome.runtime.onMessage) return;
+      if (!isExtensionAlive()) return;
 
       try {
-        chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-          if (!isExtensionAlive()) return;
+        if (chrome.runtime && chrome.runtime.onMessage) {
+          chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+            if (!isExtensionAlive()) return;
 
-          if (msg.type === 'SETTINGS_UPDATED') {
-            this.settings = { ...this.settings, ...msg.settings };
-            this.applyAll();
-            sendResponse({ success: true });
-          } else if (msg.type === 'TOGGLE_FOCUS_MODE') {
-            this.toggleFocusMode();
-            sendResponse({ focusMode: this.settings.focusMode });
-          } else if (msg.type === 'TRIGGER_CONFETTI') {
-            if (window.themeConfetti) {
-              window.themeConfetti.burst(window.innerWidth / 2, window.innerHeight / 2, 'mixed');
+            if (msg.type === 'SETTINGS_UPDATED') {
+              this.settings = { ...this.settings, ...msg.settings };
+              this.applyAll();
+              sendResponse({ success: true });
+            } else if (msg.type === 'TOGGLE_FOCUS_MODE') {
+              this.toggleFocusMode();
+              sendResponse({ focusMode: this.settings.focusMode });
+            } else if (msg.type === 'TRIGGER_CONFETTI') {
+              if (window.themeConfetti) {
+                window.themeConfetti.burst(window.innerWidth / 2, window.innerHeight / 2, 'mixed');
+              }
+              sendResponse({ success: true });
             }
-            sendResponse({ success: true });
-          }
-        });
+          });
+        }
+
+        // Real-time synchronization via Chrome storage onChanged across all tabs
+        if (chrome.storage && chrome.storage.onChanged) {
+          chrome.storage.onChanged.addListener((changes, areaName) => {
+            if (!isExtensionAlive()) return;
+            if (areaName === 'local' && changes.themeStudioSettings) {
+              this.settings = { ...this.settings, ...changes.themeStudioSettings.newValue };
+              this.applyAll();
+            }
+          });
+        }
       } catch (e) {
         // Ignore if runtime is not ready
       }
@@ -169,6 +182,8 @@
         root.removeAttribute('data-theme-studio-focus');
         if (this.bgLayer) this.bgLayer.style.display = 'none';
         if (this.bgOverlay) this.bgOverlay.style.display = 'none';
+        const styleTag = document.getElementById('theme-studio-contrib-style');
+        if (styleTag) styleTag.textContent = '';
         return;
       }
 
@@ -325,8 +340,97 @@
 
       levels.forEach((color, i) => {
         root.style.setProperty(`--ts-contrib-${i}`, color);
-        root.style.setProperty(`--color-calendar-graph-day-L${i}-bg`, color);
+        if (i === 0) {
+          root.style.setProperty('--color-calendar-graph-day-bg', color);
+          root.style.setProperty('--color-calendar-graph-day-L0-bg', color);
+          root.style.setProperty('--color-calendar-winter-graph-day-bg', color);
+        } else {
+          root.style.setProperty(`--color-calendar-graph-day-L${i}-bg`, color);
+          root.style.setProperty(`--color-calendar-winter-graph-day-L${i}-bg`, color);
+        }
       });
+
+      // Inject / update dedicated style element to guarantee custom graph colors
+      // override GitHub Primer's scoped [data-color-mode] specificity and dynamic year frames
+      let styleTag = document.getElementById('theme-studio-contrib-style');
+      if (!styleTag) {
+        styleTag = document.createElement('style');
+        styleTag.id = 'theme-studio-contrib-style';
+        (document.head || document.documentElement).appendChild(styleTag);
+      }
+
+      styleTag.textContent = `
+        html[data-theme-studio-active="true"],
+        html[data-theme-studio-active="true"] [data-color-mode],
+        html[data-theme-studio-active="true"] body {
+          --color-calendar-graph-day-bg: ${levels[0]} !important;
+          --color-calendar-graph-day-L0-bg: ${levels[0]} !important;
+          --color-calendar-graph-day-L1-bg: ${levels[1]} !important;
+          --color-calendar-graph-day-L2-bg: ${levels[2]} !important;
+          --color-calendar-graph-day-L3-bg: ${levels[3]} !important;
+          --color-calendar-graph-day-L4-bg: ${levels[4]} !important;
+          --color-calendar-winter-graph-day-bg: ${levels[0]} !important;
+          --color-calendar-winter-graph-day-L1-bg: ${levels[1]} !important;
+          --color-calendar-winter-graph-day-L2-bg: ${levels[2]} !important;
+          --color-calendar-winter-graph-day-L3-bg: ${levels[3]} !important;
+          --color-calendar-winter-graph-day-L4-bg: ${levels[4]} !important;
+        }
+
+        html[data-theme-studio-active="true"] .ContributionCalendar-day[data-level="0"],
+        html[data-theme-studio-active="true"] td.ContributionCalendar-day[data-level="0"],
+        html[data-theme-studio-active="true"] rect.ContributionCalendar-day[data-level="0"],
+        html[data-theme-studio-active="true"] rect[data-level="0"],
+        html[data-theme-studio-active="true"] .ContributionCalendar-legend [data-level="0"],
+        html[data-theme-studio-active="true"] .js-calendar-graph [data-level="0"],
+        html[data-theme-studio-active="true"] [data-level="0"] {
+          background-color: ${levels[0]} !important;
+          fill: ${levels[0]} !important;
+        }
+
+        html[data-theme-studio-active="true"] .ContributionCalendar-day[data-level="1"],
+        html[data-theme-studio-active="true"] td.ContributionCalendar-day[data-level="1"],
+        html[data-theme-studio-active="true"] rect.ContributionCalendar-day[data-level="1"],
+        html[data-theme-studio-active="true"] rect[data-level="1"],
+        html[data-theme-studio-active="true"] .ContributionCalendar-legend [data-level="1"],
+        html[data-theme-studio-active="true"] .js-calendar-graph [data-level="1"],
+        html[data-theme-studio-active="true"] [data-level="1"] {
+          background-color: ${levels[1]} !important;
+          fill: ${levels[1]} !important;
+        }
+
+        html[data-theme-studio-active="true"] .ContributionCalendar-day[data-level="2"],
+        html[data-theme-studio-active="true"] td.ContributionCalendar-day[data-level="2"],
+        html[data-theme-studio-active="true"] rect.ContributionCalendar-day[data-level="2"],
+        html[data-theme-studio-active="true"] rect[data-level="2"],
+        html[data-theme-studio-active="true"] .ContributionCalendar-legend [data-level="2"],
+        html[data-theme-studio-active="true"] .js-calendar-graph [data-level="2"],
+        html[data-theme-studio-active="true"] [data-level="2"] {
+          background-color: ${levels[2]} !important;
+          fill: ${levels[2]} !important;
+        }
+
+        html[data-theme-studio-active="true"] .ContributionCalendar-day[data-level="3"],
+        html[data-theme-studio-active="true"] td.ContributionCalendar-day[data-level="3"],
+        html[data-theme-studio-active="true"] rect.ContributionCalendar-day[data-level="3"],
+        html[data-theme-studio-active="true"] rect[data-level="3"],
+        html[data-theme-studio-active="true"] .ContributionCalendar-legend [data-level="3"],
+        html[data-theme-studio-active="true"] .js-calendar-graph [data-level="3"],
+        html[data-theme-studio-active="true"] [data-level="3"] {
+          background-color: ${levels[3]} !important;
+          fill: ${levels[3]} !important;
+        }
+
+        html[data-theme-studio-active="true"] .ContributionCalendar-day[data-level="4"],
+        html[data-theme-studio-active="true"] td.ContributionCalendar-day[data-level="4"],
+        html[data-theme-studio-active="true"] rect.ContributionCalendar-day[data-level="4"],
+        html[data-theme-studio-active="true"] rect[data-level="4"],
+        html[data-theme-studio-active="true"] .ContributionCalendar-legend [data-level="4"],
+        html[data-theme-studio-active="true"] .js-calendar-graph [data-level="4"],
+        html[data-theme-studio-active="true"] [data-level="4"] {
+          background-color: ${levels[4]} !important;
+          fill: ${levels[4]} !important;
+        }
+      `;
     }
 
     /**
@@ -388,7 +492,7 @@
     }
 
     /**
-     * Watch for GitHub Turbo / PJAX client-side navigations
+     * Watch for GitHub Turbo / PJAX client-side navigations and dynamic graph updates
      * GitHub is a Single Page Application (SPA), so clicking repos or files
      * triggers Turbo navigation instead of a full page reload.
      */
@@ -401,8 +505,25 @@
 
       document.addEventListener('turbo:load', onNavigate);
       document.addEventListener('turbo:render', onNavigate);
+      document.addEventListener('turbo:frame-load', onNavigate);
       document.addEventListener('pjax:end', onNavigate);
       window.addEventListener('popstate', onNavigate);
+
+      // Observe year / graph frame switching on GitHub profile pages
+      const observeGraph = () => {
+        const graphContainer = document.querySelector('.js-yearly-contributions, .js-calendar-graph, #user-profile-frame');
+        if (graphContainer && !graphContainer.__tsObserved) {
+          graphContainer.__tsObserved = true;
+          const observer = new MutationObserver(() => {
+            this.applyContributionPalette();
+          });
+          observer.observe(graphContainer, { childList: true, subtree: true });
+        }
+      };
+
+      observeGraph();
+      document.addEventListener('turbo:load', observeGraph);
+      document.addEventListener('turbo:frame-load', observeGraph);
     }
   }
 

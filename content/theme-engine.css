@@ -443,34 +443,69 @@ html[data-theme-studio-active="true"] .starred button {
 }
 
 /* Contribution Graph Customizer */
+html[data-theme-studio-active="true"] [data-color-mode],
+html[data-theme-studio-active="true"] {
+  --color-calendar-graph-day-bg: var(--ts-contrib-0, #161b22) !important;
+  --color-calendar-graph-day-L0-bg: var(--ts-contrib-0, #161b22) !important;
+  --color-calendar-graph-day-L1-bg: var(--ts-contrib-1, #0e4429) !important;
+  --color-calendar-graph-day-L2-bg: var(--ts-contrib-2, #006d32) !important;
+  --color-calendar-graph-day-L3-bg: var(--ts-contrib-3, #26a641) !important;
+  --color-calendar-graph-day-L4-bg: var(--ts-contrib-4, #39d353) !important;
+}
+
 html[data-theme-studio-active="true"] .ContributionCalendar-day[data-level="0"],
-html[data-theme-studio-active="true"] rect[data-level="0"] {
+html[data-theme-studio-active="true"] td.ContributionCalendar-day[data-level="0"],
+html[data-theme-studio-active="true"] rect.ContributionCalendar-day[data-level="0"],
+html[data-theme-studio-active="true"] rect[data-level="0"],
+html[data-theme-studio-active="true"] .ContributionCalendar-legend [data-level="0"],
+html[data-theme-studio-active="true"] .js-calendar-graph [data-level="0"],
+html[data-theme-studio-active="true"] [data-level="0"] {
   fill: var(--ts-contrib-0, #161b22) !important;
   background-color: var(--ts-contrib-0, #161b22) !important;
   border-color: rgba(255, 255, 255, 0.05) !important;
 }
 
 html[data-theme-studio-active="true"] .ContributionCalendar-day[data-level="1"],
-html[data-theme-studio-active="true"] rect[data-level="1"] {
+html[data-theme-studio-active="true"] td.ContributionCalendar-day[data-level="1"],
+html[data-theme-studio-active="true"] rect.ContributionCalendar-day[data-level="1"],
+html[data-theme-studio-active="true"] rect[data-level="1"],
+html[data-theme-studio-active="true"] .ContributionCalendar-legend [data-level="1"],
+html[data-theme-studio-active="true"] .js-calendar-graph [data-level="1"],
+html[data-theme-studio-active="true"] [data-level="1"] {
   fill: var(--ts-contrib-1, #0e4429) !important;
   background-color: var(--ts-contrib-1, #0e4429) !important;
 }
 
 html[data-theme-studio-active="true"] .ContributionCalendar-day[data-level="2"],
-html[data-theme-studio-active="true"] rect[data-level="2"] {
+html[data-theme-studio-active="true"] td.ContributionCalendar-day[data-level="2"],
+html[data-theme-studio-active="true"] rect.ContributionCalendar-day[data-level="2"],
+html[data-theme-studio-active="true"] rect[data-level="2"],
+html[data-theme-studio-active="true"] .ContributionCalendar-legend [data-level="2"],
+html[data-theme-studio-active="true"] .js-calendar-graph [data-level="2"],
+html[data-theme-studio-active="true"] [data-level="2"] {
   fill: var(--ts-contrib-2, #006d32) !important;
   background-color: var(--ts-contrib-2, #006d32) !important;
 }
 
 html[data-theme-studio-active="true"] .ContributionCalendar-day[data-level="3"],
-html[data-theme-studio-active="true"] rect[data-level="3"] {
+html[data-theme-studio-active="true"] td.ContributionCalendar-day[data-level="3"],
+html[data-theme-studio-active="true"] rect.ContributionCalendar-day[data-level="3"],
+html[data-theme-studio-active="true"] rect[data-level="3"],
+html[data-theme-studio-active="true"] .ContributionCalendar-legend [data-level="3"],
+html[data-theme-studio-active="true"] .js-calendar-graph [data-level="3"],
+html[data-theme-studio-active="true"] [data-level="3"] {
   fill: var(--ts-contrib-3, #26a641) !important;
   background-color: var(--ts-contrib-3, #26a641) !important;
   filter: drop-shadow(0 0 2px var(--ts-contrib-3, #26a641)) !important;
 }
 
 html[data-theme-studio-active="true"] .ContributionCalendar-day[data-level="4"],
-html[data-theme-studio-active="true"] rect[data-level="4"] {
+html[data-theme-studio-active="true"] td.ContributionCalendar-day[data-level="4"],
+html[data-theme-studio-active="true"] rect.ContributionCalendar-day[data-level="4"],
+html[data-theme-studio-active="true"] rect[data-level="4"],
+html[data-theme-studio-active="true"] .ContributionCalendar-legend [data-level="4"],
+html[data-theme-studio-active="true"] .js-calendar-graph [data-level="4"],
+html[data-theme-studio-active="true"] [data-level="4"] {
   fill: var(--ts-contrib-4, #39d353) !important;
   background-color: var(--ts-contrib-4, #39d353) !important;
   filter: drop-shadow(0 0 4px var(--ts-contrib-4, #39d353)) !important;

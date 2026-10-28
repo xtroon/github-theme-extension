@@ -567,6 +567,17 @@ input:checked + .ts-switch-slider:before {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  flex: 1;
+}
+
+.ts-wallpaper-category {
+  font-size: 9px;
+  color: #c9d1d9;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 1px 4px;
+  border-radius: 3px;
+  margin-left: 4px;
+  flex-shrink: 0;
 }
 
 /* Custom Background Box */
@@ -649,22 +660,31 @@ input:checked + .ts-switch-slider:before {
   background: var(--ts-bg-inset);
   border: 1px solid var(--ts-border-subtle);
   border-radius: var(--ts-radius-sm);
-  padding: 10px;
+  padding: 12px 10px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  overflow-x: auto;
 }
 
 .ts-graph-mini-grid {
-  display: grid;
-  grid-template-rows: repeat(5, 10px);
-  grid-auto-flow: column;
-  gap: 2px;
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+  align-items: center;
+}
+
+.ts-graph-col {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
 .ts-graph-cell {
   width: 10px;
   height: 10px;
   border-radius: 2px;
+  flex-shrink: 0;
   transition: transform 0.1s ease;
 }
 

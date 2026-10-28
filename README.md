@@ -1,6 +1,6 @@
 # Theme Studio for GitHub
 
-A lightweight browser extension that brings customizable dark themes, code syntax highlighting, frosted glassmorphism, contribution graph palettes, and code typography to GitHub.
+A lightweight browser extension that brings customizable dark themes, code syntax highlighting, frosted glassmorphism, and contribution graph palettes to GitHub.
 
 Built with vanilla JavaScript and CSS. Requires no build tools, bundlers, external dependencies, or remote asset loading.
 
@@ -49,15 +49,6 @@ Customize the contribution heatmap on GitHub profiles:
 - Royal Amethyst (Obsidian to Lilac Purple)
 - Matrix Phosphor (Black to Green Phosphor)
 - Crimson Blood (Dark Crimson to Fiery Red)
-
-### Code Typography
-Override monospace fonts across all GitHub code blobs, PR diffs, and markdown blocks:
-- JetBrains Mono
-- Fira Code
-- Cascadia Code
-- Source Code Pro
-- Space Mono
-- Roboto Mono
 
 ### Celebrations
 - **Confetti Particle Canvas**: 60fps canvas particle bursts when starring a repository or merging a pull request. Can be toggled on or off from the Preferences tab.
