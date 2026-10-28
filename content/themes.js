@@ -28,6 +28,16 @@
         glassBg: 'rgba(30, 30, 46, 0.72)',
         glassBorder: 'rgba(203, 166, 247, 0.18)'
       },
+      syntax: {
+        keyword: '#cba6f7',
+        string: '#a6e3a1',
+        constant: '#fab387',
+        comment: '#6c7086',
+        entity: '#89b4fa',
+        variable: '#cdd6f4',
+        tag: '#f38ba8',
+        operator: '#89dceb'
+      },
       previewChips: ['#cba6f7', '#89b4fa', '#a6e3a1', '#1e1e2e']
     },
     {
@@ -50,6 +60,16 @@
         warning: '#e0af68',
         glassBg: 'rgba(26, 27, 38, 0.75)',
         glassBorder: 'rgba(122, 162, 247, 0.22)'
+      },
+      syntax: {
+        keyword: '#bb9af7',
+        string: '#9ece6a',
+        constant: '#ff9e64',
+        comment: '#565f89',
+        entity: '#7aa2f7',
+        variable: '#c0caf5',
+        tag: '#f7768e',
+        operator: '#89ddff'
       },
       previewChips: ['#7aa2f7', '#bb9af7', '#7dcfff', '#1a1b26']
     },
@@ -74,6 +94,16 @@
         glassBg: 'rgba(10, 10, 18, 0.78)',
         glassBorder: 'rgba(255, 0, 127, 0.35)'
       },
+      syntax: {
+        keyword: '#ff007f',
+        string: '#00ff66',
+        constant: '#fee715',
+        comment: '#00f2fe88',
+        entity: '#00f2fe',
+        variable: '#e0f7fa',
+        tag: '#ff0055',
+        operator: '#fee715'
+      },
       previewChips: ['#fee715', '#ff007f', '#00f2fe', '#0a0a12']
     },
     {
@@ -96,6 +126,16 @@
         warning: '#ffd54f',
         glassBg: 'rgba(28, 21, 32, 0.72)',
         glassBorder: 'rgba(255, 128, 171, 0.25)'
+      },
+      syntax: {
+        keyword: '#ff80ab',
+        string: '#81c784',
+        constant: '#ffd54f',
+        comment: '#a1887f',
+        entity: '#ba68c8',
+        variable: '#fce4ec',
+        tag: '#f06292',
+        operator: '#4dd0e1'
       },
       previewChips: ['#ff80ab', '#f48fb1', '#f06292', '#1c1520']
     },
@@ -120,6 +160,16 @@
         glassBg: 'rgba(0, 0, 0, 0.85)',
         glassBorder: 'rgba(255, 255, 255, 0.12)'
       },
+      syntax: {
+        keyword: '#58a6ff',
+        string: '#7ee787',
+        constant: '#ffab70',
+        comment: '#8b949e',
+        entity: '#d2a8ff',
+        variable: '#f0f6fc',
+        tag: '#7ee787',
+        operator: '#79c0ff'
+      },
       previewChips: ['#ffffff', '#58a6ff', '#222222', '#000000']
     },
     {
@@ -142,6 +192,16 @@
         warning: '#f1fa8c',
         glassBg: 'rgba(40, 42, 54, 0.75)',
         glassBorder: 'rgba(189, 147, 249, 0.25)'
+      },
+      syntax: {
+        keyword: '#ff79c6',
+        string: '#f1fa8c',
+        constant: '#bd93f9',
+        comment: '#6272a4',
+        entity: '#50fa7b',
+        variable: '#f8f8f2',
+        tag: '#ff79c6',
+        operator: '#ff79c6'
       },
       previewChips: ['#bd93f9', '#ff79c6', '#50fa7b', '#282a36']
     },
@@ -166,6 +226,16 @@
         glassBg: 'rgba(46, 52, 64, 0.76)',
         glassBorder: 'rgba(136, 192, 208, 0.22)'
       },
+      syntax: {
+        keyword: '#81a1c1',
+        string: '#a3be8c',
+        constant: '#d08770',
+        comment: '#616e88',
+        entity: '#88c0d0',
+        variable: '#eceff4',
+        tag: '#bf616a',
+        operator: '#81a1c1'
+      },
       previewChips: ['#88c0d0', '#81a1c1', '#a3be8c', '#2e3440']
     },
     {
@@ -188,6 +258,16 @@
         warning: '#ffbb33',
         glassBg: 'rgba(5, 13, 8, 0.82)',
         glassBorder: 'rgba(0, 255, 102, 0.28)'
+      },
+      syntax: {
+        keyword: '#00ff66',
+        string: '#39d353',
+        constant: '#7ee787',
+        comment: '#196c2e',
+        entity: '#00ffcc',
+        variable: '#99ffb2',
+        tag: '#00c851',
+        operator: '#00ff66'
       },
       previewChips: ['#00ff66', '#00c851', '#4dd270', '#050d08']
     },
@@ -212,6 +292,16 @@
         glassBg: 'rgba(38, 35, 53, 0.76)',
         glassBorder: 'rgba(255, 126, 219, 0.28)'
       },
+      syntax: {
+        keyword: '#ff7edb',
+        string: '#72f1b8',
+        constant: '#fede5d',
+        comment: '#848bbd',
+        entity: '#36f9f6',
+        variable: '#fe4450',
+        tag: '#fe4450',
+        operator: '#f92aad'
+      },
       previewChips: ['#ff7edb', '#fe4450', '#fede5d', '#262335']
     },
     {
@@ -234,6 +324,16 @@
         warning: '#fabd2f',
         glassBg: 'rgba(31, 29, 25, 0.8)',
         glassBorder: 'rgba(215, 153, 33, 0.24)'
+      },
+      syntax: {
+        keyword: '#d79921',
+        string: '#b8bb26',
+        constant: '#fabd2f',
+        comment: '#928374',
+        entity: '#b16286',
+        variable: '#ebdbb2',
+        tag: '#fb4934',
+        operator: '#8ec07c'
       },
       previewChips: ['#d79921', '#ebdbb2', '#b8bb26', '#1f1d19']
     },
@@ -258,6 +358,16 @@
         glassBg: 'rgba(45, 42, 46, 0.76)',
         glassBorder: 'rgba(255, 216, 102, 0.2)'
       },
+      syntax: {
+        keyword: '#ff6188',
+        string: '#ffd866',
+        constant: '#ab9df2',
+        comment: '#727072',
+        entity: '#a9dc76',
+        variable: '#fcfcfa',
+        tag: '#ff6188',
+        operator: '#78dce8'
+      },
       previewChips: ['#ffd866', '#ff6188', '#a9dc76', '#2d2a2e']
     },
     {
@@ -280,6 +390,16 @@
         warning: '#fbbf24',
         glassBg: 'rgba(11, 22, 34, 0.78)',
         glassBorder: 'rgba(0, 210, 255, 0.25)'
+      },
+      syntax: {
+        keyword: '#00d2ff',
+        string: '#34d399',
+        constant: '#fbbf24',
+        comment: '#386b99',
+        entity: '#38bdf8',
+        variable: '#d8ecf8',
+        tag: '#f43f5e',
+        operator: '#00d2ff'
       },
       previewChips: ['#00d2ff', '#0099ff', '#79b8ff', '#0b1622']
     }

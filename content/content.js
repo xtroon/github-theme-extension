@@ -246,6 +246,42 @@
         root.style.setProperty('--ts-glass-bg', glassBg);
         root.style.setProperty('--ts-glass-border', c.glassBorder);
         root.style.setProperty('--ts-glass-blur', `${this.settings.blur || 6}px`);
+
+        // Code Syntax Highlighting Tokens
+        const syn = theme.syntax || {
+          keyword: c.accentEmphasis || c.accent,
+          string: c.success,
+          constant: c.warning,
+          comment: c.fgMuted,
+          entity: c.accent,
+          variable: c.fg,
+          tag: c.danger || c.accent,
+          operator: c.accent
+        };
+
+        root.style.setProperty('--ts-syntax-keyword', syn.keyword);
+        root.style.setProperty('--ts-syntax-string', syn.string);
+        root.style.setProperty('--ts-syntax-constant', syn.constant);
+        root.style.setProperty('--ts-syntax-comment', syn.comment);
+        root.style.setProperty('--ts-syntax-entity', syn.entity);
+        root.style.setProperty('--ts-syntax-variable', syn.variable);
+        root.style.setProperty('--ts-syntax-tag', syn.tag);
+        root.style.setProperty('--ts-syntax-operator', syn.operator);
+
+        // Override GitHub Primer PrettyLights Syntax properties directly on root
+        root.style.setProperty('--color-prettylights-syntax-comment', syn.comment);
+        root.style.setProperty('--color-prettylights-syntax-constant', syn.constant);
+        root.style.setProperty('--color-prettylights-syntax-entity', syn.entity);
+        root.style.setProperty('--color-prettylights-syntax-storage-modifier-import', syn.keyword);
+        root.style.setProperty('--color-prettylights-syntax-entity-tag', syn.tag);
+        root.style.setProperty('--color-prettylights-syntax-keyword', syn.keyword);
+        root.style.setProperty('--color-prettylights-syntax-string', syn.string);
+        root.style.setProperty('--color-prettylights-syntax-variable', syn.variable);
+        root.style.setProperty('--color-prettylights-syntax-string-regexp', syn.constant);
+        root.style.setProperty('--color-prettylights-syntax-markup-heading', c.accent);
+        root.style.setProperty('--color-prettylights-syntax-markup-italic', syn.keyword);
+        root.style.setProperty('--color-prettylights-syntax-markup-bold', syn.entity);
+        root.style.setProperty('--color-prettylights-syntax-markup-code', syn.string);
       }
 
       // Dynamic repository language accent tint

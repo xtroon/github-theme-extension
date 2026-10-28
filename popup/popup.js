@@ -172,9 +172,9 @@
             <span style="color: ${theme.colors.fgMuted}; margin-left: 2px;">theme.ts</span>
           </div>
           <div class="ts-mockup-line">
-            <span style="color: ${theme.colors.accentEmphasis};">export const</span> 
-            <span style="color: ${theme.colors.accent};">theme</span> = 
-            <span style="color: ${theme.colors.success};">'${theme.name.split(' ')[0]}'</span>;
+            <span style="color: ${theme.syntax ? theme.syntax.keyword : theme.colors.accentEmphasis};">export const</span> 
+            <span style="color: ${theme.syntax ? theme.syntax.entity : theme.colors.accent};">theme</span> = 
+            <span style="color: ${theme.syntax ? theme.syntax.string : theme.colors.success};">'${theme.name.split(' ')[0]}'</span>;
           </div>
         </div>
         <div class="ts-theme-info">

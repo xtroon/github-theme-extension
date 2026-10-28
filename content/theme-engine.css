@@ -96,6 +96,22 @@ html[data-theme-studio-active="true"] {
   --color-btn-primary-text: #ffffff !important;
   --color-neutral-muted: var(--ts-canvas-subtle) !important;
   --color-neutral-subtle: var(--ts-canvas-inset) !important;
+
+  /* PrettyLights Syntax Highlighting Token Variables */
+  --color-prettylights-syntax-comment: var(--ts-syntax-comment, var(--ts-fg-muted)) !important;
+  --color-prettylights-syntax-constant: var(--ts-syntax-constant, var(--ts-warning)) !important;
+  --color-prettylights-syntax-entity: var(--ts-syntax-entity, var(--ts-accent)) !important;
+  --color-prettylights-syntax-storage-modifier-import: var(--ts-syntax-keyword, var(--ts-accent-emphasis)) !important;
+  --color-prettylights-syntax-entity-tag: var(--ts-syntax-tag, var(--ts-danger)) !important;
+  --color-prettylights-syntax-keyword: var(--ts-syntax-keyword, var(--ts-accent-emphasis)) !important;
+  --color-prettylights-syntax-string: var(--ts-syntax-string, var(--ts-success)) !important;
+  --color-prettylights-syntax-variable: var(--ts-syntax-variable, var(--ts-fg)) !important;
+  --color-prettylights-syntax-string-regexp: var(--ts-syntax-constant, var(--ts-warning)) !important;
+  --color-prettylights-syntax-markup-heading: var(--ts-accent) !important;
+  --color-prettylights-syntax-markup-italic: var(--ts-syntax-keyword, var(--ts-accent-emphasis)) !important;
+  --color-prettylights-syntax-markup-bold: var(--ts-syntax-entity, var(--ts-accent)) !important;
+  --color-prettylights-syntax-markup-code: var(--ts-syntax-string, var(--ts-success)) !important;
+  --color-prettylights-syntax-meta-diff-range: var(--ts-accent-emphasis) !important;
 }
 
 /* Glassmorphism Panels */
@@ -241,7 +257,7 @@ html[data-theme-studio-active="true"] .js-pjax-container > .container-lg {
   background: transparent !important;
 }
 
-/* Code Viewer & Monaco Editor */
+/* Code Viewer & Monaco Editor Container */
 html[data-theme-studio-active="true"] .react-code-view,
 html[data-theme-studio-active="true"] .react-blob-view-container,
 html[data-theme-studio-active="true"] .blob-wrapper,
@@ -263,6 +279,142 @@ html[data-theme-studio-active="true"] .blob-wrapper {
   -webkit-backdrop-filter: blur(calc(var(--ts-glass-blur) * 0.8)) !important;
   border: 1px solid var(--ts-glass-border) !important;
   border-radius: 8px !important;
+}
+
+/* Base Code Text and Line Coloring */
+html[data-theme-studio-active="true"] .blob-wrapper table,
+html[data-theme-studio-active="true"] .react-code-lines,
+html[data-theme-studio-active="true"] .react-code-text,
+html[data-theme-studio-active="true"] .react-code-line-contents,
+html[data-theme-studio-active="true"] .blob-code,
+html[data-theme-studio-active="true"] .blob-code-inner {
+  color: var(--ts-fg) !important;
+  background: transparent !important;
+}
+
+/* Line Numbers and Gutter */
+html[data-theme-studio-active="true"] .blob-num,
+html[data-theme-studio-active="true"] .react-line-number,
+html[data-theme-studio-active="true"] .react-code-line-number {
+  color: var(--ts-fg-muted) !important;
+  opacity: 0.55 !important;
+  background: transparent !important;
+}
+
+/* Highlighted / Focused Code Line */
+html[data-theme-studio-active="true"] .highlighted-line,
+html[data-theme-studio-active="true"] .blob-code-hunk,
+html[data-theme-studio-active="true"] .react-code-line-highlighted {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* =========================================================
+   SYNTAX HIGHLIGHTING: PrettyLights Token Overrides
+   ========================================================= */
+
+/* Keywords (const, let, function, return, class, import, export, if, else) */
+html[data-theme-studio-active="true"] .pl-k {
+  color: var(--ts-syntax-keyword, #cba6f7) !important;
+  font-weight: 500 !important;
+}
+
+/* Strings and String Delimiters */
+html[data-theme-studio-active="true"] .pl-s,
+html[data-theme-studio-active="true"] .pl-pds,
+html[data-theme-studio-active="true"] .pl-s .pl-pse .pl-s1,
+html[data-theme-studio-active="true"] .pl-sr,
+html[data-theme-studio-active="true"] .pl-sr .pl-cce,
+html[data-theme-studio-active="true"] .pl-s .pl-s1 {
+  color: var(--ts-syntax-string, #a6e3a1) !important;
+}
+
+/* Constants, Numbers, Booleans, Built-in Globals */
+html[data-theme-studio-active="true"] .pl-c1 {
+  color: var(--ts-syntax-constant, #fab387) !important;
+}
+
+/* Comments (Italicized and Tinted) */
+html[data-theme-studio-active="true"] .pl-c,
+html[data-theme-studio-active="true"] .pl-c * {
+  color: var(--ts-syntax-comment, #6c7086) !important;
+  font-style: italic !important;
+}
+
+/* Function Names, Method Invocations */
+html[data-theme-studio-active="true"] .pl-en {
+  color: var(--ts-syntax-entity, #89b4fa) !important;
+}
+
+/* Classes, Custom Types, Constructor Identifiers */
+html[data-theme-studio-active="true"] .pl-e {
+  color: var(--ts-syntax-entity, #89b4fa) !important;
+  font-weight: 500 !important;
+}
+
+/* Variables and Member Properties */
+html[data-theme-studio-active="true"] .pl-v {
+  color: var(--ts-syntax-variable, #cdd6f4) !important;
+}
+
+html[data-theme-studio-active="true"] .pl-smi {
+  color: var(--ts-fg, #cdd6f4) !important;
+}
+
+/* HTML, JSX & XML Tags */
+html[data-theme-studio-active="true"] .pl-ent {
+  color: var(--ts-syntax-tag, #f38ba8) !important;
+}
+
+/* Markdown Headings in Code Views */
+html[data-theme-studio-active="true"] .pl-mh,
+html[data-theme-studio-active="true"] .pl-mh .pl-en {
+  color: var(--ts-accent) !important;
+  font-weight: 600 !important;
+}
+
+/* URLs and Hyperlinks in Code */
+html[data-theme-studio-active="true"] .pl-corl {
+  color: var(--ts-accent) !important;
+  text-decoration: underline !important;
+}
+
+/* Git Diff Colors */
+html[data-theme-studio-active="true"] .pl-md {
+  color: var(--ts-danger) !important;
+}
+
+html[data-theme-studio-active="true"] .pl-mi1 {
+  color: var(--ts-success) !important;
+}
+
+html[data-theme-studio-active="true"] .pl-mc {
+  color: var(--ts-warning) !important;
+}
+
+/* =========================================================
+   SYNTAX HIGHLIGHTING: React Code View / Monaco Tokens
+   ========================================================= */
+
+html[data-theme-studio-active="true"] .mtk1 { color: var(--ts-fg) !important; }
+html[data-theme-studio-active="true"] .mtk2,
+html[data-theme-studio-active="true"] .mtk3 { color: var(--ts-syntax-comment) !important; font-style: italic !important; }
+html[data-theme-studio-active="true"] .mtk4,
+html[data-theme-studio-active="true"] .mtk5 { color: var(--ts-syntax-string) !important; }
+html[data-theme-studio-active="true"] .mtk6 { color: var(--ts-syntax-constant) !important; }
+html[data-theme-studio-active="true"] .mtk7 { color: var(--ts-syntax-keyword) !important; font-weight: 500 !important; }
+html[data-theme-studio-active="true"] .mtk8 { color: var(--ts-syntax-entity) !important; }
+html[data-theme-studio-active="true"] .mtk9 { color: var(--ts-syntax-entity) !important; }
+html[data-theme-studio-active="true"] .mtk10 { color: var(--ts-syntax-variable) !important; }
+html[data-theme-studio-active="true"] .mtk11 { color: var(--ts-syntax-operator, var(--ts-accent)) !important; }
+html[data-theme-studio-active="true"] .mtk12 { color: var(--ts-syntax-string) !important; }
+
+/* Inline Code Elements in Comments, Issues & Markdown */
+html[data-theme-studio-active="true"] :not(pre) > code {
+  color: var(--ts-accent) !important;
+  background-color: var(--ts-canvas-subtle) !important;
+  border: 1px solid var(--ts-border) !important;
+  border-radius: 4px !important;
+  padding: 0.18em 0.38em !important;
 }
 
 /* Links & Interactive Items */
