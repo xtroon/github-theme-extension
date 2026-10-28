@@ -1,134 +1,144 @@
-# 🎨 Theme Studio for GitHub - Dark Themes & Anime Backgrounds
+# Theme Studio for GitHub
 
-> Supercharge your GitHub with custom anime & aesthetic backgrounds, frosted glassmorphism, curated dark themes, procedural sound effects, interactive celebrations, and custom contribution graphs.
+A lightweight browser extension that brings customizable dark themes, frosted glassmorphism, procedural audio feedback, contribution graph palettes, and code typography to GitHub.
 
-Inspired by **Theme Studio for LeetCode**, built specifically for developers who love coding on GitHub in style.
-
----
-
-## ✨ Features
-
-### 1. 🎭 12 Curated Aesthetic & Dark Themes
-- **Catppuccin Mocha**: Soothing pastel colors on a deep charcoal-lavender canvas.
-- **Tokyo Night**: Electric blue & purple night lights inspired by downtown Shibuya.
-- **Cyberpunk 2077**: High voltage neon yellow (`#fee715`), magenta (`#ff007f`), and electric cyan.
-- **Sakura Blossom**: Anime cherry blossom petals and warm dusk.
-- **Midnight OLED**: Ultra-deep pitch black (`#000000`) for maximum OLED contrast and battery saving.
-- **Dracula Pro**: Glowing purple, coral pink, and mint accents.
-- **Nordic Frost**: Arctic blue and polar night gray.
-- **Matrix Terminal**: Phosphor green glow on an ominous terminal void.
-- **Synthwave '84**: 80s outrun neon pink, sunset orange, and violet grid.
-- **Vintage Sepia**: Warm antique book tones to reduce eye fatigue.
-- **Monokai Pro**: Vibrant coder palette with amber, rose, mint, and sky on charcoal.
-- **Abyss Deep Blue**: Bioluminescent aquamarine on deep oceanic depths.
-
-### 2. 🌸 Aesthetic Background Engine (Glassmorphism)
-- **14 Built-in Aesthetic Wallpapers**: Nordic Aurora Fjord, Ghibli Forest Sanctuary, Neo Kowloon Skyline, Dark Topographic Contours, Orion Stellar Nebula, Zen Fuji Sunset, Anime Sunset Lofi, Makoto Starry Sky, Outrun Synth Grid, Cozy Lofi Study, Sakura Night Shrine, Minimal Deep Space, and Rainy City Glass.
-- **Custom Image URL Support**: Paste any wallpaper link from Unsplash, Imgur, Danbooru, or Google Images.
-- **Local File Upload**: Upload your own anime wallpaper from your computer (saved locally in browser storage).
-- **Glassmorphism Controls**:
-  - **Glass Blur Slider**: From 0px to 30px smooth backdrop blur.
-  - **Glass Opacity Slider**: Fine-tune GitHub card transparency from 20% to 100%.
-  - **Brightness & Contrast Sliders**: Calibrate your wallpaper to ensure code readability is always 100% crisp.
-
-### 3. 🔊 Procedural Web Audio Effects (Zero Latency)
-- **Star Sound**: Arcade coin chime / level-up arpeggio upon starring a repository.
-- **Fork Sound**: Dual-tone warp effect.
-- **Merge PR Victory Fanfare**: Celebratory brass fanfare upon merging a pull request!
-- **Commit / Push**: Tactile mechanical click and chime.
-- **Sound Packs**: *8-Bit Retro Arcade*, *Modern Studio Chime*, *Cyberpunk Synth*, *Anime Sparkle*, and *Tactile Mechanical*.
-- **Volume Slider** & Mute toggle.
-
-### 4. 🎉 Visual Celebrations & Confetti
-- **Particle Explosions**: Starbursts and 60fps canvas confetti showers when you star a repo or merge a pull request.
-- **Dynamic Repo Language Tint**: Automatically tints accent colors to match the primary language of the repo you're viewing (JavaScript yellow, TypeScript blue, Python blue/gold, Rust copper, Go cyan, etc.).
-
-### 5. 🟩 Custom Contribution Graph Palettes
-- **GitHub Classic Green**
-- **Sakura Petals** (Pink/Magenta)
-- **Cyberpunk Neon** (Violet to Neon Yellow)
-- **Solar Flare** (Dark Embers to Blazing Fire)
-- **Electric Glacier** (Navy to Glowing Ice Cyan)
-- **Royal Amethyst** (Obsidian to Lilac Purple)
-- **Matrix Phosphor** (Jet Black to Green Phosphor)
-- **Crimson Blood** (Dark Crimson to Fiery Red)
-- Interactive hover effects and neon glow on active contribution squares.
-
-### 6. 🔤 Code Typography
-- Select your preferred monospace font for all GitHub code blobs, PR diffs, and markdown blocks:
-  - **JetBrains Mono**
-  - **Fira Code**
-  - **Cascadia Code**
-  - **Source Code Pro**
-  - **Space Mono**
-  - **Roboto Mono**
-
-### 7. ⚡ Focus Mode (`Alt+Shift+F`)
-- Need to present during a meeting, interview, or clean screen sharing?
-- Press `Alt+Shift+F` (or click the Focus Mode button) to immediately hide wallpapers, blur, and audio effects for a pristine, minimalist GitHub view.
-
-### 8. 📸 Shareable Episode Card / Profile Card
-- Generate a beautiful stat card showcasing your username, avatar, active theme badge, and current vibe to download or share directly on **X (Twitter)** or **LinkedIn**!
-
-### 9. 🚀 In-Page Floating Quick HUD
-- A sleek floating pill dock on the bottom-right of GitHub lets you tweak blur, switch themes, or trigger celebrations without having to click the extension popup.
+Built with vanilla JavaScript and CSS. Requires no build tools, bundlers, external dependencies, or remote asset loading.
 
 ---
 
-## 📦 How to Install in 10 Seconds
+## Features
 
-1. Open your Chromium browser (**Google Chrome**, **Brave**, **Microsoft Edge**, **Arc**, etc.).
-2. Navigate to:
-   ```text
-   chrome://extensions
+### Curated Dark and High-Contrast Themes
+Includes 12 built-in color schemes calibrated for GitHub's UI components, pull request diffs, and code viewers:
+- **Catppuccin Mocha**: Pastel accents on a charcoal lavender canvas.
+- **Tokyo Night**: Indigo and electric blue accents inspired by downtown Shibuya.
+- **Cyberpunk 2077**: High-contrast yellow, magenta, and cyan accents on deep obsidian.
+- **Sakura Blossom**: Soft rose and twilight violet tones.
+- **Midnight OLED**: Pure black (`#000000`) surfaces for OLED power efficiency and maximum contrast.
+- **Dracula Pro**: Purple, coral, and mint tones on dark slate.
+- **Nordic Frost**: Polar night blue-gray palette with arctic cyan accents.
+- **Matrix Terminal**: Phosphor green monochrome on an obsidian void.
+- **Synthwave '84**: Retro sunset orange and neon violet palette.
+- **Vintage Sepia**: Low-contrast warm parchment tones to reduce eye strain during long sessions.
+- **Monokai Pro**: Vibrant amber, rose, and sky blue accents on charcoal.
+- **Abyss Deep Blue**: Deep oceanic navy with aquamarine highlights.
+
+### Background Engine and Glassmorphism
+- **14 Built-in Vector Wallpapers**: High-resolution SVGs included locally (Nordic Aurora Fjord, Ghibli Forest Sanctuary, Neo Kowloon Skyline, Dark Topographic Contours, Orion Stellar Nebula, Zen Fuji Sunset, Anime Sunset Lofi, Makoto Starry Sky, Outrun Synth Grid, Cozy Lofi Study, Sakura Night Shrine, Minimal Deep Space, and Rainy City Glass).
+- **Custom Image URL**: Point to any remote image URL (Unsplash, personal CDN, direct link).
+- **Local File Upload**: Load custom background images directly from your computer, stored locally in `chrome.storage.local`.
+- **Glass Blur Slider**: Adjust backdrop filter diffusion from 0px to 30px.
+- **Surface Opacity Slider**: Fine-tune card and container transparency between 20% and 100%.
+- **Background Brightness Slider**: Calibrate wallpaper illumination to preserve text contrast.
+
+### Procedural Audio Feedback
+Synthesizes zero-latency audio cues using the browser's native Web Audio API (no external sound files, 100% offline):
+- **Star Sound**: Synthesized level-up chime triggered when starring a repository.
+- **Fork Sound**: Dual-tone warp effect triggered when forking a repository.
+- **Merge PR Fanfare**: Celebratory brass fanfare triggered when merging a pull request.
+- **Sound Profiles**: Choose between 8-Bit Retro Arcade, Modern Clean Chime, Cyberpunk Synth, Anime Acoustic, and Tactile Mechanical.
+- **Volume Control**: Independent master gain adjustment and quick mute toggle.
+
+### Interaction Celebrations
+- **Confetti Particle Canvas**: 60fps canvas particle bursts on stars and merges.
+- **Repository Language Tint**: Automatically adapts accent colors to match the primary language of the active repository (JavaScript yellow, TypeScript blue, Python blue/gold, Rust copper, Go cyan, etc.).
+
+### Contribution Graph Palettes
+Customize the contribution heatmap on GitHub profiles:
+- Classic GitHub Green
+- Sakura Petals (Pink/Magenta)
+- Cyberpunk Neon (Violet to Neon Yellow)
+- Solar Flare (Dark Embers to Amber Orange)
+- Electric Glacier (Navy to Glowing Ice Cyan)
+- Royal Amethyst (Obsidian to Lilac Purple)
+- Matrix Phosphor (Black to Green Phosphor)
+- Crimson Blood (Dark Crimson to Fiery Red)
+
+### Code Typography
+Override monospace fonts across all GitHub code blobs, PR diffs, and markdown blocks:
+- JetBrains Mono
+- Fira Code
+- Cascadia Code
+- Source Code Pro
+- Space Mono
+- Roboto Mono
+
+### Focus Mode
+Quick toggle via keyboard shortcut (`Alt + Shift + F`) or header button. Instantly hides background artwork and disables backdrop filters for a clean, minimal appearance suitable for screen sharing, meetings, and interviews.
+
+### In-Page Floating HUD Dock
+A compact, non-intrusive floating pill dock anchored to the bottom-right of GitHub pages. Provides instant access to theme switching, blur adjustments, focus mode, and celebrations without opening the extension popup.
+
+---
+
+## Installation and Setup
+
+### Prerequisites
+Any Chromium-based browser supporting Manifest V3:
+- Google Chrome
+- Brave Browser
+- Microsoft Edge
+- Arc Browser
+- Opera / Vivaldi
+
+### Step-by-Step Setup
+1. Clone or download this repository to your machine:
+   ```bash
+   git clone https://github.com/xtroon/github-theme-extension.git
    ```
-   *(or `edge://extensions` / `brave://extensions`)*
-3. Enable **"Developer mode"** via the toggle switch in the top-right corner.
-4. Click the **"Load unpacked"** button in the top-left.
-5. Select this directory:
-   ```text
-   E:\All Projects\heroku-github-theme
-   ```
-6. Open [github.com](https://github.com) and enjoy your brand new Theme Studio!
+   *(Or download the ZIP file and extract it to a local folder).*
+
+2. Open the Extensions management page in your browser:
+   - Chrome / Brave: `chrome://extensions`
+   - Microsoft Edge: `edge://extensions`
+   - Arc: Open Settings > Extensions
+
+3. Toggle on **Developer mode** using the switch in the top-right corner.
+
+4. Click the **Load unpacked** button in the top-left toolbar.
+
+5. Select the root folder of this project (`heroku-github-theme` or your cloned directory containing `manifest.json`).
+
+6. Open or refresh any page on [github.com](https://github.com). Click the extension icon in your browser toolbar to configure your settings.
 
 ---
 
-## ⌨️ Shortcuts
+## Keyboard Shortcuts
 
-| Shortcut | Action |
-| :--- | :--- |
-| `Alt + Shift + F` | Toggle **Focus Mode** (clean presentation view) |
-| Click **Star ⭐** | Play level-up chime & starburst confetti |
-| Click **Merge PR 🚀** | Play victory fanfare & celebration confetti shower |
-
----
-
-## 🛠️ Tech Stack & Architecture
-
-- **Manifest V3** compliant.
-- **Web Audio API** procedural synthesizer (no external audio files, works 100% offline).
-- **Hardware-accelerated CSS Glassmorphism** with backdrop-filter.
-- **Vanilla JavaScript (ES6+)** with zero heavy frameworks for instant 60fps load times.
-- **GitHub Turbo / PJAX Observer**: Never breaks across SPA page navigation.
+| Shortcut | Action | Description |
+| :--- | :--- | :--- |
+| `Alt + Shift + F` | Toggle Focus Mode | Instantly disables background artwork and blur for clean screen sharing. |
+| Star repository | Star audio cue | Plays synthesized chime and starburst particle effect. |
+| Merge pull request | Merge victory fanfare | Plays celebratory fanfare and confetti shower. |
 
 ---
 
-## 📁 Project Structure
+## Architecture and Technical Details
+
+- **Manifest V3**: Compliant with modern Chromium extension security standards using service workers (`background/background.js`).
+- **No Build Tools**: Pure ES6+ JavaScript and Vanilla CSS. No `node_modules`, npm scripts, webpack, or transpilation required.
+- **Zero Layout Shift (CLS)**: CSS variables are injected directly into the document root at `document_start` before page rendering begins.
+- **Web Audio API**: All sound effects are mathematically generated via oscillators and gain nodes without downloading MP3 or WAV files.
+- **GitHub SPA / Turbo Compatibility**: Uses DOM MutationObservers to track GitHub Turbo / PJAX page transitions and ensure themes and listeners never detach during client-side navigation.
+
+---
+
+## Project Structure
 
 ```text
 heroku-github-theme/
 ├── assets/
-│   └── wallpapers/                  # 14 curated built-in SVG wallpapers
+│   └── wallpapers/                  # 14 built-in SVG wallpapers
 ├── background/
 │   └── background.js                # Background service worker (shortcuts & storage)
 ├── content/
 │   ├── audio-synthesizer.js         # Web Audio procedural sound synthesis
-│   ├── confetti.js                  # Particle celebration effects
-│   ├── content.js                   # Main content observer & event listeners
+│   ├── confetti.js                  # Canvas particle celebration effects
+│   ├── content.js                   # Main DOM observer & event listeners
 │   ├── in-page-widget.js            # Floating quick controls HUD dock
 │   ├── theme-engine.css             # Glassmorphism & custom variables
 │   └── themes.js                    # Curated themes & wallpaper definitions
-├── icons/                           # Extension toolbar & store icons
+├── icons/                           # Extension toolbar & management icons
 ├── popup/
 │   ├── popup.html                   # Extension popup interface
 │   ├── popup.css                    # GitHub Primer Dark stylesheet
@@ -136,3 +146,9 @@ heroku-github-theme/
 ├── manifest.json                    # Extension Manifest V3 configuration
 └── README.md                        # Documentation
 ```
+
+---
+
+## License
+
+MIT License. Free for personal and commercial use.
