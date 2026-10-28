@@ -56,23 +56,43 @@
       });
     }
 
+    isContextValid() {
+      return typeof chrome !== 'undefined' && Boolean(chrome.runtime && chrome.runtime.id);
+    }
+
     async loadSettings() {
-      if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+      if (this.isContextValid() && chrome.storage && chrome.storage.local) {
         return new Promise((resolve) => {
-          chrome.storage.local.get(['themeStudioSettings'], (result) => {
-            if (result && result.themeStudioSettings) {
-              this.settings = { ...this.settings, ...result.themeStudioSettings };
-            }
+          try {
+            chrome.storage.local.get(['themeStudioSettings'], (result) => {
+              if (chrome.runtime?.lastError) {
+                resolve();
+                return;
+              }
+              if (result && result.themeStudioSettings) {
+                this.settings = { ...this.settings, ...result.themeStudioSettings };
+              }
+              resolve();
+            });
+          } catch (e) {
             resolve();
-          });
+          }
         });
       }
     }
 
     async updateSettings(partial) {
       this.settings = { ...this.settings, ...partial };
-      if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
-        chrome.storage.local.set({ themeStudioSettings: this.settings });
+      if (this.isContextValid() && chrome.storage && chrome.storage.local) {
+        try {
+          chrome.storage.local.set({ themeStudioSettings: this.settings }, () => {
+            if (chrome.runtime?.lastError) {
+              // Silently handle context invalidation if unpacked extension reloaded in devtools
+            }
+          });
+        } catch (e) {
+          // Extension context invalidated during development reload
+        }
       }
       this.applyAll();
     }
