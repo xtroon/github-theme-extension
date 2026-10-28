@@ -3,7 +3,7 @@
   "name": "Theme Studio for GitHub - Themes & Anime Backgrounds",
   "short_name": "GitHub Theme Studio",
   "version": "1.0.0",
-  "description": "Supercharge your GitHub with anime & aesthetic backgrounds, glassmorphism, curated themes, custom contribution graphs, audio effects & focus mode.",
+  "description": "Customize your GitHub experience with curated themes, aesthetic backgrounds, custom contribution graphs, audio feedback & focus mode.",
   "icons": {
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",
@@ -56,7 +56,7 @@
         "default": "Alt+Shift+F",
         "mac": "Alt+Shift+F"
       },
-      "description": "Toggle Theme Studio Focus Mode (Emergency clean view)"
+      "description": "Toggle Theme Studio Focus Mode (Clean presentation view)"
     }
   },
   "web_accessible_resources": [

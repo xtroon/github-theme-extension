@@ -265,10 +265,10 @@ html[data-theme-studio-active="true"] .blob-wrapper {
   border-radius: 8px !important;
 }
 
-/* Accent Glow on Links & Interactive Items */
+/* Links & Interactive Items */
 html[data-theme-studio-active="true"] a:not(.btn):hover {
-  text-shadow: 0 0 8px var(--ts-accent) !important;
   color: var(--ts-accent) !important;
+  text-decoration: underline !important;
 }
 
 /* Primary Button Styling */
@@ -276,13 +276,12 @@ html[data-theme-studio-active="true"] .btn-primary {
   background: var(--ts-accent-emphasis) !important;
   border-color: var(--ts-accent-emphasis) !important;
   color: #ffffff !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
-  transition: all 0.2s ease !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) !important;
+  transition: all 0.15s ease !important;
 }
 
 html[data-theme-studio-active="true"] .btn-primary:hover {
-  filter: brightness(1.15) !important;
-  box-shadow: 0 0 15px var(--ts-accent-emphasis) !important;
+  filter: brightness(1.1) !important;
   transform: translateY(-1px) !important;
 }
 
@@ -364,70 +363,72 @@ html[data-theme-studio-focus="true"] .timeline-comment {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: rgba(20, 20, 32, 0.85);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
-  color: #f1f1f1;
-  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(22, 27, 34, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(240, 246, 252, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  color: #f0f6fc;
+  font-size: 12px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.15s ease;
 }
 
 .ts-dock-pill:hover {
-  transform: translateY(-2px);
-  border-color: var(--ts-accent, #cba6f7);
-  box-shadow: 0 10px 36px rgba(203, 166, 247, 0.25);
+  border-color: var(--ts-accent, #58a6ff);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
 }
 
 .ts-dock-logo {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ff007f, #00f2fe);
-  display: inline-block;
-  box-shadow: 0 0 8px #ff007f;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background: #21262d;
+  border: 1px solid #30363d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f0f6fc;
 }
 
 .ts-dock-btn {
   background: transparent;
   border: none;
-  color: #cdd6f4;
+  color: #8b949e;
   cursor: pointer;
   padding: 4px;
-  border-radius: 6px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.15s ease;
+  transition: all 0.15s ease;
 }
 
 .ts-dock-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  background: rgba(240, 246, 252, 0.1);
+  color: #f0f6fc;
 }
 
 /* Floating Quick Modal */
 #theme-studio-floating-menu {
   position: fixed;
-  bottom: 74px;
+  bottom: 64px;
   right: 24px;
-  width: 320px;
-  background: rgba(18, 18, 28, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
-  border-radius: 14px;
+  width: 300px;
+  background: rgba(22, 27, 34, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #30363d;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
   z-index: 999998;
-  color: #cdd6f4;
+  color: #f0f6fc;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow: hidden;
-  animation: tsFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: tsFadeIn 0.15s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes tsFadeIn {

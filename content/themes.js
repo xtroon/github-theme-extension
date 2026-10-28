@@ -356,6 +356,54 @@
       url: getWallpaperAssetUrl('retro-synth-grid.svg'),
       thumbnail: getWallpaperAssetUrl('retro-synth-grid.svg'),
       description: 'Retro wireframe 80s landscape with wireframe grid.'
+    },
+    {
+      id: 'nordic-aurora-borealis',
+      name: 'Nordic Aurora Fjord',
+      category: 'Nature',
+      url: getWallpaperAssetUrl('nordic-aurora-borealis.svg'),
+      thumbnail: getWallpaperAssetUrl('nordic-aurora-borealis.svg'),
+      description: 'Emerald and cyan polar night aurora dancing over arctic waters.'
+    },
+    {
+      id: 'ghibli-forest-sanctuary',
+      name: 'Ghibli Forest Canopy',
+      category: 'Anime',
+      url: getWallpaperAssetUrl('ghibli-forest-sanctuary.svg'),
+      thumbnail: getWallpaperAssetUrl('ghibli-forest-sanctuary.svg'),
+      description: 'Volumetric sunbeams piercing through lush mossy ancient woodland.'
+    },
+    {
+      id: 'cyberpunk-rain-skyline',
+      name: 'Neo Kowloon Night',
+      category: 'Cyberpunk',
+      url: getWallpaperAssetUrl('cyberpunk-rain-skyline.svg'),
+      thumbnail: getWallpaperAssetUrl('cyberpunk-rain-skyline.svg'),
+      description: 'Futuristic megastructures, maglev monorail, and rain-slicked neon.'
+    },
+    {
+      id: 'dark-topographic-grid',
+      name: 'Topographic Contours',
+      category: 'Minimal',
+      url: getWallpaperAssetUrl('dark-topographic-grid.svg'),
+      thumbnail: getWallpaperAssetUrl('dark-topographic-grid.svg'),
+      description: 'Matte dark charcoal elevation lines with electric cyan peak accents.'
+    },
+    {
+      id: 'deep-space-nebula',
+      name: 'Orion Stellar Nebula',
+      category: 'Sci-Fi',
+      url: getWallpaperAssetUrl('deep-space-nebula.svg'),
+      thumbnail: getWallpaperAssetUrl('deep-space-nebula.svg'),
+      description: 'Cosmic magenta and cyan swirling gas clouds with binary stars.'
+    },
+    {
+      id: 'zen-mountain-dusk',
+      name: 'Zen Fuji Sunset',
+      category: 'Aesthetic',
+      url: getWallpaperAssetUrl('zen-mountain-dusk.svg'),
+      thumbnail: getWallpaperAssetUrl('zen-mountain-dusk.svg'),
+      description: 'Mount Fuji silhouette, sunset dusk gradient, and falling sakura petals.'
     }
   ];
 

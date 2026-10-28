@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <linearGradient id="topoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080c12"/>
+      <stop offset="50%" stop-color="#0d141e"/>
+      <stop offset="100%" stop-color="#05080c"/>
+    </linearGradient>
+
+    <!-- Glowing Accent Gradient for Peak Contours -->
+    <linearGradient id="peakAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.3"/>
+    </linearGradient>
+
+    <radialGradient id="centerGlow" cx="65%" cy="45%" r="45%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.12"/>
+      <stop offset="60%" stop-color="#080c12" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Deep Matte Canvas -->
+  <rect width="1920" height="1080" fill="url(#topoBg)"/>
+
+  <!-- Subtle Radial Depth Light -->
+  <rect width="1920" height="1080" fill="url(#centerGlow)"/>
+
+  <!-- Fine Isometric Coordinate Grid Dots -->
+  <g fill="#1e293b" opacity="0.4">
+    <circle cx="240" cy="180" r="1.5"/>
+    <circle cx="480" cy="180" r="1.5"/>
+    <circle cx="720" cy="180" r="1.5"/>
+    <circle cx="960" cy="180" r="1.5"/>
+    <circle cx="1200" cy="180" r="1.5"/>
+    <circle cx="1440" cy="180" r="1.5"/>
+    <circle cx="1680" cy="180" r="1.5"/>
+
+    <circle cx="240" cy="360" r="1.5"/>
+    <circle cx="480" cy="360" r="1.5"/>
+    <circle cx="720" cy="360" r="1.5"/>
+    <circle cx="960" cy="360" r="1.5"/>
+    <circle cx="1200" cy="360" r="1.5"/>
+    <circle cx="1440" cy="360" r="1.5"/>
+    <circle cx="1680" cy="360" r="1.5"/>
+
+    <circle cx="240" cy="540" r="1.5"/>
+    <circle cx="480" cy="540" r="1.5"/>
+    <circle cx="720" cy="540" r="1.5"/>
+    <circle cx="960" cy="540" r="1.5"/>
+    <circle cx="1200" cy="540" r="1.5"/>
+    <circle cx="1440" cy="540" r="1.5"/>
+    <circle cx="1680" cy="540" r="1.5"/>
+
+    <circle cx="240" cy="720" r="1.5"/>
+    <circle cx="480" cy="720" r="1.5"/>
+    <circle cx="720" cy="720" r="1.5"/>
+    <circle cx="960" cy="720" r="1.5"/>
+    <circle cx="1200" cy="720" r="1.5"/>
+    <circle cx="1440" cy="720" r="1.5"/>
+    <circle cx="1680" cy="720" r="1.5"/>
+
+    <circle cx="240" cy="900" r="1.5"/>
+    <circle cx="480" cy="900" r="1.5"/>
+    <circle cx="720" cy="900" r="1.5"/>
+    <circle cx="960" cy="900" r="1.5"/>
+    <circle cx="1200" cy="900" r="1.5"/>
+    <circle cx="1440" cy="900" r="1.5"/>
+    <circle cx="1680" cy="900" r="1.5"/>
+  </g>
+
+  <!-- Flowing Topographic Contour Curves -->
+  <!-- Outer Lowland Contours (Muted Slate) -->
+  <g fill="none" stroke="#1e293b" stroke-width="1.2" opacity="0.75">
+    <path d="M-100,850 Q300,950 700,780 T1450,880 Q1750,750 2050,820"/>
+    <path d="M-100,780 Q320,880 720,710 T1460,800 Q1760,680 2050,750"/>
+    <path d="M-100,710 Q340,810 740,640 T1480,720 Q1770,610 2050,680"/>
+    <path d="M-100,640 Q360,740 760,570 T1500,640 Q1780,540 2050,610"/>
+    <path d="M-100,570 Q380,670 780,500 T1520,560 Q1790,470 2050,540"/>
+  </g>
+
+  <!-- Intermediate Elevation Contours -->
+  <g fill="none" stroke="#334155" stroke-width="1.4" opacity="0.85">
+    <path d="M-100,500 Q400,600 800,430 T1540,480 Q1800,400 2050,470"/>
+    <path d="M-100,430 Q420,530 820,360 T1560,400 Q1810,330 2050,400"/>
+    <path d="M-100,360 Q440,460 840,290 T1580,320 Q1820,260 2050,330"/>
+    <path d="M-100,290 Q460,390 860,220 T1600,240 Q1830,190 2050,260"/>
+  </g>
+
+  <!-- High Elevation Ridges & Peak Contours (Cyan Highlight Accent) -->
+  <g fill="none">
+    <!-- Concentric Mountain Peaks -->
+    <path d="M820,440 Q980,240 1250,280 Q1520,320 1480,520 Q1420,700 1150,660 Q880,620 820,440 Z" stroke="#0284c7" stroke-width="1.8" opacity="0.6"/>
+    <path d="M900,430 Q1020,280 1220,310 Q1420,340 1390,500 Q1340,630 1140,600 Q940,570 900,430 Z" stroke="#0ea5e9" stroke-width="2" opacity="0.75"/>
+    <path d="M980,420 Q1060,320 1200,340 Q1320,360 1300,480 Q1260,570 1120,540 Q980,520 980,420 Z" stroke="url(#peakAccent)" stroke-width="2.5"/>
+    <path d="M1060,420 Q1110,360 1190,370 Q1260,380 1240,450 Q1210,510 1120,490 Q1040,480 1060,420 Z" stroke="#38bdf8" stroke-width="2.8"/>
+    <!-- Summit Core -->
+    <ellipse cx="1140" cy="430" rx="35" ry="25" stroke="#f0f9ff" stroke-width="2.5"/>
+    <circle cx="1140" cy="430" r="3" fill="#38bdf8"/>
+  </g>
+
+  <!-- Map Elevation Labels -->
+  <g fill="#64748b" font-family="monospace" font-size="10" letter-spacing="1">
+    <text x="520" y="580">+120m</text>
+    <text x="680" y="470">+240m</text>
+    <text x="860" y="380">+480m</text>
+    <text x="1080" y="340">+760m</text>
+    <text x="1155" y="435" fill="#38bdf8" font-weight="bold">+1,024m PK</text>
+  </g>
+
+  <!-- Technical Corner Marks -->
+  <g stroke="#334155" stroke-width="1.5" fill="none">
+    <path d="M50,80 L50,50 L80,50"/>
+    <path d="M1840,50 L1870,50 L1870,80"/>
+    <path d="M50,1000 L50,1030 L80,1030"/>
+    <path d="M1870,1000 L1870,1030 L1840,1030"/>
+  </g>
+</svg>

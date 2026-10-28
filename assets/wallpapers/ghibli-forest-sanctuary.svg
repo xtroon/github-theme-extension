@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ghibliSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#04120b"/>
+      <stop offset="30%" stop-color="#082416"/>
+      <stop offset="65%" stop-color="#0e3a24"/>
+      <stop offset="100%" stop-color="#144d30"/>
+    </linearGradient>
+
+    <!-- Sunbeam Rays Gradient -->
+    <linearGradient id="sunBeam" x1="0%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#fff5b3" stop-opacity="0.32"/>
+      <stop offset="40%" stop-color="#a8e6cf" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0e3a24" stop-opacity="0"/>
+    </linearGradient>
+
+    <radialGradient id="spiritGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="35%" stop-color="#a8ff78" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#78ffd6" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="streamGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b4938"/>
+      <stop offset="50%" stop-color="#2d735a"/>
+      <stop offset="100%" stop-color="#0f2b20"/>
+    </linearGradient>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <!-- Deep Forest Canopy Background -->
+  <rect width="1920" height="1080" fill="url(#ghibliSky)"/>
+
+  <!-- Distant Tree Silhouettes (Deep layer) -->
+  <g fill="#071a10" opacity="0.9">
+    <rect x="250" y="0" width="90" height="750"/>
+    <rect x="520" y="0" width="110" height="800"/>
+    <rect x="880" y="0" width="140" height="780"/>
+    <rect x="1250" y="0" width="80" height="740"/>
+    <rect x="1540" y="0" width="120" height="820"/>
+  </g>
+
+  <!-- Volumetric Sunlight Beams (Komorebi) -->
+  <g opacity="0.85">
+    <polygon points="550,-50 780,-50 1150,1080 820,1080" fill="url(#sunBeam)"/>
+    <polygon points="800,-50 960,-50 1480,1080 1240,1080" fill="url(#sunBeam)" opacity="0.75"/>
+    <polygon points="320,-50 480,-50 820,1080 600,1080" fill="url(#sunBeam)" opacity="0.65"/>
+    <polygon points="1200,-50 1340,-50 1850,1080 1620,1080" fill="url(#sunBeam)" opacity="0.6"/>
+  </g>
+
+  <!-- Midground Ancient Tree Trunks with Gnarled Roots -->
+  <g fill="#040e08">
+    <!-- Left Giant Trunk -->
+    <path d="M-50,-20 L280,-20 Q220,400 320,700 Q400,900 620,1080 L-50,1080 Z"/>
+    <!-- Right Giant Trunk -->
+    <path d="M1680,-20 L2000,-20 L2000,1080 L1450,1080 Q1600,850 1560,600 Q1520,300 1680,-20 Z"/>
+    <!-- Central Ancient Trunk -->
+    <path d="M780,200 Q740,550 680,800 Q620,950 420,1080 L1150,1080 Q980,920 920,780 Q860,540 850,200 Z"/>
+  </g>
+
+  <!-- Lush Moss Canopy Leaves & Overhang Foliage -->
+  <g fill="#0c2f1d">
+    <path d="M-50,0 Q180,180 420,120 Q650,240 880,140 Q1100,260 1400,160 Q1700,220 1980,60 L1980,0 Z"/>
+    <path d="M-50,80 Q250,280 550,200 Q850,320 1150,220 Q1450,340 1850,190 L1980,120 L1980,0 L-50,0 Z" fill="#071f13" opacity="0.7"/>
+  </g>
+
+  <!-- Rolling Mossy Forest Floor -->
+  <path d="M-20,760 Q320,680 720,740 Q1120,660 1520,720 Q1780,690 1950,750 L1950,1080 L-20,1080 Z" fill="#082215"/>
+
+  <!-- Clear Forest Stream Running Across Foreground -->
+  <path d="M620,1080 Q780,920 940,840 Q1120,760 1340,740 Q1420,735 1500,740 L1520,780 Q1220,810 1020,900 Q840,990 740,1080 Z" fill="url(#streamGrad)"/>
+
+  <!-- Water Shimmering Highlights -->
+  <g stroke="#a8ff78" stroke-width="1.2" opacity="0.4" fill="none">
+    <line x1="880" y1="920" x2="980" y2="905"/>
+    <line x1="940" y1="875" x2="1080" y2="855"/>
+    <line x1="1120" y1="815" x2="1240" y2="800"/>
+    <line x1="1260" y1="775" x2="1360" y2="765"/>
+  </g>
+
+  <!-- Lush Ferns & Foliage Silhouettes on Riverbank -->
+  <g fill="#030b06">
+    <path d="M-20,1080 L-20,910 Q150,890 320,950 Q480,1010 640,1080 Z"/>
+    <path d="M1380,1080 Q1540,960 1740,980 Q1860,940 1950,960 L1950,1080 Z"/>
+    
+    <!-- Delicate Fern Fronds -->
+    <path d="M180,940 Q240,880 320,870 Q250,900 180,940 Z" fill="#0d3a24"/>
+    <path d="M220,950 Q300,890 390,895 Q310,920 220,950 Z" fill="#0a2e1d"/>
+    <path d="M1520,980 Q1600,910 1690,920 Q1610,940 1520,980 Z" fill="#0d3a24"/>
+  </g>
+
+  <!-- Glowing Forest Spirit Motes / Fireflies (Kodama-inspired) -->
+  <g filter="url(#softGlow)">
+    <circle cx="580" cy="540" r="9" fill="url(#spiritGlow)"/>
+    <circle cx="680" cy="460" r="6" fill="url(#spiritGlow)"/>
+    <circle cx="820" cy="620" r="11" fill="url(#spiritGlow)"/>
+    <circle cx="980" cy="520" r="8" fill="url(#spiritGlow)"/>
+    <circle cx="1120" cy="660" r="12" fill="url(#spiritGlow)"/>
+    <circle cx="1280" cy="580" r="7" fill="url(#spiritGlow)"/>
+    <circle cx="1420" cy="480" r="10" fill="url(#spiritGlow)"/>
+    <circle cx="740" cy="740" r="5" fill="url(#spiritGlow)"/>
+    <circle cx="1040" cy="780" r="7" fill="url(#spiritGlow)"/>
+    <circle cx="1320" cy="720" r="6" fill="url(#spiritGlow)"/>
+    <circle cx="420" cy="680" r="8" fill="url(#spiritGlow)"/>
+  </g>
+</svg>

@@ -46,9 +46,7 @@
   const btnFireConfetti = document.getElementById('btn-fire-confetti');
   const btnOpenEpisodeCard = document.getElementById('btn-open-episode-card');
 
-  // Backup & Reset
-  const btnExportSettings = document.getElementById('btn-export-settings');
-  const inputImportSettings = document.getElementById('input-import-settings');
+  // Reset
   const btnResetSettings = document.getElementById('btn-reset-settings');
 
   // Initialize
@@ -161,11 +159,28 @@
       });
 
       card.innerHTML = `
-        <div class="ts-theme-top">
-          <div class="ts-theme-name">${theme.name}</div>
+        <div class="ts-active-indicator" title="Active Theme">
+          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <div class="ts-theme-mockup" style="background: ${theme.colors.canvasInset}; border-color: ${theme.colors.border};">
+          <div class="ts-mockup-header">
+            <span class="ts-mockup-dot" style="background: #ff5f56;"></span>
+            <span class="ts-mockup-dot" style="background: #ffbd2e;"></span>
+            <span class="ts-mockup-dot" style="background: #27c93f;"></span>
+            <span style="color: ${theme.colors.fgMuted}; margin-left: 2px;">theme.ts</span>
+          </div>
+          <div class="ts-mockup-line">
+            <span style="color: ${theme.colors.accentEmphasis};">export const</span> 
+            <span style="color: ${theme.colors.accent};">theme</span> = 
+            <span style="color: ${theme.colors.success};">'${theme.name.split(' ')[0]}'</span>;
+          </div>
+        </div>
+        <div class="ts-theme-info">
+          <div class="ts-theme-name" title="${theme.name}">${theme.name}</div>
           <span class="ts-theme-badge">${theme.badge}</span>
         </div>
-        <div class="ts-theme-desc">${theme.description}</div>
         <div class="ts-theme-chips">${chipsHtml}</div>
       `;
 
@@ -195,7 +210,15 @@
       card.style.backgroundImage = `url("${wp.thumbnail}")`;
 
       card.innerHTML = `
-        <div class="ts-wallpaper-label">${wp.name}</div>
+        <div class="ts-active-indicator" title="Active Wallpaper">
+          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <div class="ts-wallpaper-overlay">
+          <span class="ts-wallpaper-title">${wp.name}</span>
+          <span class="ts-pill-tag" style="font-size: 8px; padding: 1px 4px;">${wp.category}</span>
+        </div>
       `;
 
       card.addEventListener('click', () => {
@@ -264,25 +287,28 @@
     graphPreviewGrid.innerHTML = '';
     const pal = window.ThemeStudio.CONTRIBUTION_PALETTES.find(p => p.id === currentSettings.contributionPaletteId) || window.ThemeStudio.CONTRIBUTION_PALETTES[0];
 
-    // Seeded random distribution for aesthetic look
+    // Update legend cells
+    for (let l = 0; l <= 4; l++) {
+      const legEl = document.querySelector(`.ts-legend-cell.lvl-${l}`);
+      if (legEl && pal.levels[l]) {
+        legEl.style.backgroundColor = pal.levels[l];
+      }
+    }
+
+    // Realistic commit distribution
     for (let i = 0; i < 70; i++) {
       const cell = document.createElement('div');
       cell.className = 'ts-graph-cell';
 
-      // Distribute levels 0..4 realistically
       const rand = Math.sin(i * 999) * 10000;
       const frac = rand - Math.floor(rand);
       let level = 0;
-      if (frac > 0.85) level = 4;
-      else if (frac > 0.65) level = 3;
-      else if (frac > 0.45) level = 2;
-      else if (frac > 0.25) level = 1;
+      if (frac > 0.82) level = 4;
+      else if (frac > 0.62) level = 3;
+      else if (frac > 0.42) level = 2;
+      else if (frac > 0.22) level = 1;
 
       cell.style.background = pal.levels[level];
-      if (level >= 3) {
-        cell.style.boxShadow = `0 0 3px ${pal.levels[level]}`;
-      }
-
       graphPreviewGrid.appendChild(cell);
     }
   }
@@ -438,41 +464,15 @@
       }
     });
 
-    // Backup & Restore
-    btnExportSettings.addEventListener('click', () => {
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentSettings, null, 2));
-      const downloadAnchor = document.createElement('a');
-      downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", "theme-studio-github-settings.json");
-      document.body.appendChild(downloadAnchor);
-      downloadAnchor.click();
-      downloadAnchor.remove();
-    });
-
-    inputImportSettings.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = async (ev) => {
-          try {
-            const imported = JSON.parse(ev.target.result);
-            await saveSettings(imported);
-            syncUIWithSettings();
-            alert('Settings imported successfully!');
-          } catch (err) {
-            alert('Invalid JSON configuration file.');
-          }
-        };
-        reader.readAsText(file);
-      }
-    });
-
-    btnResetSettings.addEventListener('click', async () => {
-      if (confirm('Reset all Theme Studio settings to default?')) {
-        await saveSettings(window.ThemeStudio.DEFAULT_SETTINGS);
-        syncUIWithSettings();
-      }
-    });
+    // Reset to defaults
+    if (btnResetSettings) {
+      btnResetSettings.addEventListener('click', async () => {
+        if (confirm('Reset all Theme Studio settings to default?')) {
+          await saveSettings(window.ThemeStudio.DEFAULT_SETTINGS);
+          syncUIWithSettings();
+        }
+      });
+    }
   }
 
   document.addEventListener('DOMContentLoaded', init);

@@ -343,45 +343,50 @@
       this.modalEl = document.createElement('div');
       this.modalEl.id = 'theme-studio-episode-modal';
       this.modalEl.innerHTML = `
-        <div style="position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(8px); z-index: 1000000; display: flex; align-items: center; justify-content: center; font-family: -apple-system, BlinkMacSystemFont, sans-serif;">
-          <div style="background: rgba(22, 22, 34, 0.95); border: 1px solid rgba(255,255,255,0.18); border-radius: 16px; width: 440px; max-width: 90vw; padding: 24px; box-shadow: 0 24px 60px rgba(0,0,0,0.8); color: #fff;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-              <h3 style="margin: 0; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-                <span>✨</span> Episode Card • Theme Studio
+        <div style="position: fixed; inset: 0; background: rgba(1, 4, 9, 0.75); backdrop-filter: blur(6px); z-index: 1000000; display: flex; align-items: center; justify-content: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+          <div style="background: #161b22; border: 1px solid #30363d; border-radius: 10px; width: 440px; max-width: 90vw; padding: 20px; box-shadow: 0 16px 40px rgba(0,0,0,0.6); color: #f0f6fc;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <h3 style="margin: 0; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                Developer Profile Snapshot
               </h3>
-              <button id="ts-close-card-modal" style="background: transparent; border: none; color: #888; font-size: 16px; cursor: pointer;">✕</button>
+              <button id="ts-close-card-modal" style="background: transparent; border: none; color: #8b949e; font-size: 14px; cursor: pointer;">✕</button>
             </div>
             
             <!-- Snapshot Preview Card -->
-            <div id="ts-card-canvas-box" style="position: relative; overflow: hidden; border-radius: 12px; padding: 20px; border: 1px solid var(--ts-accent, #cba6f7); background: linear-gradient(135deg, rgba(20, 20, 35, 0.85), rgba(10, 10, 20, 0.95)); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-              <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">
-                <img src="${avatarUrl}" style="width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--ts-accent, #cba6f7);" />
+            <div id="ts-card-canvas-box" style="position: relative; overflow: hidden; border-radius: 8px; padding: 18px; border: 1px solid #30363d; background: #0d1117;">
+              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
+                <img src="${avatarUrl}" style="width: 48px; height: 48px; border-radius: 50%; border: 1px solid #30363d;" />
                 <div>
-                  <div style="font-weight: 700; font-size: 16px; color: #fff;">@${username}</div>
-                  <div style="font-size: 12px; color: var(--ts-accent, #cba6f7); font-weight: 500;">Active Theme: ${activeTheme}</div>
+                  <div style="font-weight: 600; font-size: 15px; color: #f0f6fc;">@${username}</div>
+                  <div style="font-size: 12px; color: #58a6ff; font-weight: 500;">Active Theme: ${activeTheme}</div>
                 </div>
               </div>
-              <div style="background: rgba(255,255,255,0.06); border-radius: 8px; padding: 10px 14px; display: flex; justify-content: space-around; text-align: center; font-size: 12px; margin-bottom: 12px;">
+              <div style="background: #161b22; border: 1px solid #21262d; border-radius: 6px; padding: 10px 14px; display: flex; justify-content: space-around; text-align: center; font-size: 11px; margin-bottom: 12px;">
                 <div>
-                  <div style="color: #aaa;">Status</div>
-                  <div style="font-weight: 600; color: #a6e3a1;">Leveling Up 🚀</div>
+                  <div style="color: #8b949e;">Status</div>
+                  <div style="font-weight: 600; color: #3fb950;">Active</div>
                 </div>
                 <div>
-                  <div style="color: #aaa;">Vibe</div>
-                  <div style="font-weight: 600; color: #89b4fa;">Aesthetic Code</div>
+                  <div style="color: #8b949e;">Preset</div>
+                  <div style="font-weight: 600; color: #58a6ff;">${activeTheme}</div>
+                </div>
+                <div>
+                  <div style="color: #8b949e;">Engine</div>
+                  <div style="font-weight: 600; color: #c9d1d9;">Theme Studio</div>
                 </div>
               </div>
-              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: #888;">
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: #6e7681;">
                 <span>Theme Studio for GitHub</span>
-                <span style="color: var(--ts-accent, #cba6f7);">github.com</span>
+                <span style="color: #58a6ff;">github.com</span>
               </div>
             </div>
 
-            <div style="display: flex; gap: 10px; margin-top: 18px;">
-              <button id="ts-share-twitter" style="flex: 1; padding: 10px; border-radius: 8px; border: none; background: #1d9bf0; color: #fff; font-weight: 600; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
-                Share on X / Twitter
+            <div style="display: flex; gap: 8px; margin-top: 14px;">
+              <button id="ts-share-twitter" style="flex: 1; padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(240, 246, 252, 0.1); background: #1f6feb; color: #fff; font-weight: 500; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                Share on X
               </button>
-              <button id="ts-copy-link" style="padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); color: #fff; font-size: 12px; cursor: pointer;">
+              <button id="ts-copy-link" style="padding: 8px 14px; border-radius: 6px; border: 1px solid #30363d; background: #21262d; color: #c9d1d9; font-size: 12px; cursor: pointer;">
                 Copy Text
               </button>
             </div>

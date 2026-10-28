@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cyberSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#05050d"/>
+      <stop offset="40%" stop-color="#0d0d1e"/>
+      <stop offset="75%" stop-color="#16122c"/>
+      <stop offset="100%" stop-color="#090814"/>
+    </linearGradient>
+
+    <!-- Neon Cyan Glow -->
+    <linearGradient id="holoCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#4facfe" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <!-- Neon Magenta Glow -->
+    <linearGradient id="holoPink" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff007f" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#7928ca" stop-opacity="0.3"/>
+    </linearGradient>
+
+    <filter id="neonBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+    <filter id="cityHaze" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+
+    <linearGradient id="wetStreet" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#141126"/>
+      <stop offset="40%" stop-color="#0a0815"/>
+      <stop offset="100%" stop-color="#030308"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky Canvas -->
+  <rect width="1920" height="1080" fill="url(#cyberSky)"/>
+
+  <!-- Background Ambient City Neon Haze -->
+  <circle cx="960" cy="620" r="450" fill="#ff007f" opacity="0.1" filter="url(#cityHaze)"/>
+  <circle cx="500" cy="580" r="350" fill="#00f2fe" opacity="0.12" filter="url(#cityHaze)"/>
+  <circle cx="1450" cy="540" r="380" fill="#ffe600" opacity="0.08" filter="url(#cityHaze)"/>
+
+  <!-- Distant Background Megastructures (Layer 1) -->
+  <g fill="#0b0a17">
+    <rect x="80" y="380" width="120" height="700"/>
+    <rect x="230" y="320" width="160" height="760"/>
+    <rect x="420" y="260" width="140" height="820"/>
+    <rect x="600" y="350" width="200" height="730"/>
+    <rect x="840" y="220" width="150" height="860"/>
+    <polygon points="915,140 910,220 920,220"/>
+    <rect x="1030" y="290" width="180" height="790"/>
+    <rect x="1250" y="340" width="130" height="740"/>
+    <rect x="1420" y="270" width="170" height="810"/>
+    <rect x="1630" y="330" width="150" height="750"/>
+  </g>
+
+  <!-- Midground Towering Skyscrapers (Layer 2) with Lit Windows -->
+  <g fill="#100f22" stroke="#ff007f" stroke-width="0.5" stroke-opacity="0.2">
+    <!-- Tower Left -->
+    <rect x="150" y="420" width="180" height="660"/>
+    <!-- Center Mega Arcology Tower -->
+    <polygon points="860,180 780,260 780,1080 1020,1080 1020,260 940,180"/>
+    <!-- Tower Right -->
+    <rect x="1100" y="380" width="220" height="700"/>
+    <rect x="1360" y="440" width="190" height="640"/>
+    <rect x="520" y="460" width="160" height="620"/>
+  </g>
+
+  <!-- Glowing Skyscraper Windows Matrices -->
+  <g fill="#00f2fe" opacity="0.65">
+    <rect x="800" y="300" width="4" height="6"/>
+    <rect x="815" y="300" width="4" height="6"/>
+    <rect x="830" y="300" width="4" height="6"/>
+    <rect x="800" y="330" width="4" height="6"/>
+    <rect x="845" y="330" width="4" height="6"/>
+    <rect x="830" y="360" width="4" height="6"/>
+    <rect x="940" y="300" width="4" height="6"/>
+    <rect x="970" y="300" width="4" height="6"/>
+    <rect x="955" y="330" width="4" height="6"/>
+    <rect x="940" y="360" width="4" height="6"/>
+    <rect x="985" y="360" width="4" height="6"/>
+    <rect x="800" y="420" width="4" height="6"/>
+    <rect x="815" y="420" width="4" height="6"/>
+    <rect x="955" y="420" width="4" height="6"/>
+    <rect x="970" y="420" width="4" height="6"/>
+    <!-- Yellow/Amber Window Clusters -->
+    <g fill="#ffe600">
+      <rect x="180" y="460" width="5" height="7"/>
+      <rect x="210" y="460" width="5" height="7"/>
+      <rect x="195" y="480" width="5" height="7"/>
+      <rect x="240" y="520" width="5" height="7"/>
+      <rect x="270" y="520" width="5" height="7"/>
+      <rect x="1130" y="420" width="5" height="7"/>
+      <rect x="1160" y="420" width="5" height="7"/>
+      <rect x="1200" y="450" width="5" height="7"/>
+      <rect x="1240" y="450" width="5" height="7"/>
+    </g>
+  </g>
+
+  <!-- Giant Holographic Billboards on High Rises -->
+  <g>
+    <!-- Cyan Holo Display -->
+    <rect x="540" y="500" width="120" height="60" fill="url(#holoCyan)" rx="4"/>
+    <text x="600" y="535" fill="#ffffff" font-family="sans-serif" font-weight="900" font-size="14" letter-spacing="3" text-anchor="middle" opacity="0.95">CYBER_NET</text>
+    
+    <!-- Magenta Holo Display -->
+    <rect x="1130" y="490" width="140" height="70" fill="url(#holoPink)" rx="4"/>
+    <text x="1200" y="530" fill="#ffffff" font-family="sans-serif" font-weight="900" font-size="16" letter-spacing="4" text-anchor="middle" opacity="0.95">KOWLOON 2099</text>
+  </g>
+
+  <!-- Elevated Maglev Monorail Track -->
+  <g>
+    <!-- Track Girder Bridge Structure -->
+    <path d="M-50,720 Q480,680 960,710 T2000,680" stroke="#1b1735" stroke-width="18" fill="none"/>
+    <path d="M-50,720 Q480,680 960,710 T2000,680" stroke="#00f2fe" stroke-width="2" fill="none" opacity="0.75"/>
+    
+    <!-- Maglev Train High-Speed Light Trail -->
+    <path d="M650,705 Q850,715 1100,705" stroke="#00f2fe" stroke-width="6" fill="none" filter="url(#neonBlur)" opacity="0.85"/>
+    <path d="M680,705 Q850,715 1070,705" stroke="#ffffff" stroke-width="2.5" fill="none"/>
+    <!-- Red Tail Light Trail -->
+    <path d="M500,708 L650,705" stroke="#ff0055" stroke-width="5" fill="none" filter="url(#neonBlur)" opacity="0.9"/>
+  </g>
+
+  <!-- Foreground Wet Street / Reflections -->
+  <rect x="0" y="800" width="1920" height="280" fill="url(#wetStreet)"/>
+
+  <!-- Wet Asphalt Neon Reflections -->
+  <g filter="url(#neonBlur)">
+    <ellipse cx="600" cy="880" rx="180" ry="25" fill="#00f2fe" opacity="0.3"/>
+    <ellipse cx="900" cy="900" rx="220" ry="30" fill="#ff007f" opacity="0.32"/>
+    <ellipse cx="1200" cy="870" rx="190" ry="25" fill="#ffe600" opacity="0.25"/>
+    <ellipse cx="1400" cy="920" rx="160" ry="20" fill="#00f2fe" opacity="0.25"/>
+  </g>
+
+  <!-- Vertical Neon Rain Streaks -->
+  <g stroke="#ffffff" stroke-width="1" opacity="0.15" stroke-linecap="round">
+    <line x1="240" y1="200" x2="220" y2="280"/>
+    <line x1="480" y1="350" x2="460" y2="430"/>
+    <line x1="720" y1="180" x2="700" y2="260"/>
+    <line x1="950" y1="420" x2="930" y2="500"/>
+    <line x1="1180" y1="250" x2="1160" y2="330"/>
+    <line x1="1420" y1="380" x2="1400" y2="460"/>
+    <line x1="1650" y1="220" x2="1630" y2="300"/>
+    <line x1="350" y1="580" x2="330" y2="660"/>
+    <line x1="820" y1="640" x2="800" y2="720"/>
+    <line x1="1300" y1="600" x2="1280" y2="680"/>
+  </g>
+</svg>

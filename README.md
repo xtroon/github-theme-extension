@@ -22,8 +22,8 @@ Inspired by **Theme Studio for LeetCode**, built specifically for developers who
 - **Monokai Pro**: Vibrant coder palette with amber, rose, mint, and sky on charcoal.
 - **Abyss Deep Blue**: Bioluminescent aquamarine on deep oceanic depths.
 
-### 2. 🌸 Anime & Aesthetic Background Engine (Glassmorphism)
-- **Built-in Anime Wallpapers**: High-resolution anime sunset lofi, Makoto Shinkai starry night sky, Neo Tokyo cyberpunk rain alley, Ghibli scenic meadow, and cozy lofi study.
+### 2. 🌸 Aesthetic Background Engine (Glassmorphism)
+- **14 Built-in Aesthetic Wallpapers**: Nordic Aurora Fjord, Ghibli Forest Sanctuary, Neo Kowloon Skyline, Dark Topographic Contours, Orion Stellar Nebula, Zen Fuji Sunset, Anime Sunset Lofi, Makoto Starry Sky, Outrun Synth Grid, Cozy Lofi Study, Sakura Night Shrine, Minimal Deep Space, and Rainy City Glass.
 - **Custom Image URL Support**: Paste any wallpaper link from Unsplash, Imgur, Danbooru, or Google Images.
 - **Local File Upload**: Upload your own anime wallpaper from your computer (saved locally in browser storage).
 - **Glassmorphism Controls**:
@@ -110,3 +110,29 @@ Inspired by **Theme Studio for LeetCode**, built specifically for developers who
 - **Hardware-accelerated CSS Glassmorphism** with backdrop-filter.
 - **Vanilla JavaScript (ES6+)** with zero heavy frameworks for instant 60fps load times.
 - **GitHub Turbo / PJAX Observer**: Never breaks across SPA page navigation.
+
+---
+
+## 📁 Project Structure
+
+```text
+heroku-github-theme/
+├── assets/
+│   └── wallpapers/                  # 14 curated built-in SVG wallpapers
+├── background/
+│   └── background.js                # Background service worker (shortcuts & storage)
+├── content/
+│   ├── audio-synthesizer.js         # Web Audio procedural sound synthesis
+│   ├── confetti.js                  # Particle celebration effects
+│   ├── content.js                   # Main content observer & event listeners
+│   ├── in-page-widget.js            # Floating quick controls HUD dock
+│   ├── theme-engine.css             # Glassmorphism & custom variables
+│   └── themes.js                    # Curated themes & wallpaper definitions
+├── icons/                           # Extension toolbar & store icons
+├── popup/
+│   ├── popup.html                   # Extension popup interface
+│   ├── popup.css                    # GitHub Primer Dark stylesheet
+│   └── popup.js                     # Dashboard controller & live sync
+├── manifest.json                    # Extension Manifest V3 configuration
+└── README.md                        # Documentation
+```

@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <linearGradient id="zenDusk" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#14081c"/>
+      <stop offset="35%" stop-color="#3c1032"/>
+      <stop offset="60%" stop-color="#7a183d"/>
+      <stop offset="80%" stop-color="#c2410c"/>
+      <stop offset="92%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+
+    <!-- Crimson Sun Glow -->
+    <radialGradient id="sunDusk" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffedd5" stop-opacity="1"/>
+      <stop offset="35%" stop-color="#f97316" stop-opacity="0.85"/>
+      <stop offset="70%" stop-color="#be123c" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#14081c" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="lakeWater" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d0b25"/>
+      <stop offset="45%" stop-color="#190616"/>
+      <stop offset="100%" stop-color="#090208"/>
+    </linearGradient>
+
+    <linearGradient id="fujiSnow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fdf4ff"/>
+      <stop offset="60%" stop-color="#fbcfe8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#3c1032" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Twilight Sky Canvas -->
+  <rect width="1920" height="1080" fill="url(#zenDusk)"/>
+
+  <!-- Giant Crimson Dusk Sun -->
+  <circle cx="1200" cy="540" r="280" fill="url(#sunDusk)"/>
+  <circle cx="1200" cy="540" r="100" fill="#fffbeb" opacity="0.95"/>
+
+  <!-- Crescent Moon -->
+  <path d="M420,160 A45,45 0 0,0 460,230 A38,38 0 0,1 420,160 Z" fill="#fef08a" opacity="0.85"/>
+
+  <!-- Mount Fuji Silhouette -->
+  <!-- Main Volcanic Cone -->
+  <polygon points="620,780 1020,380 1080,380 1480,780" fill="#1b0819"/>
+  <!-- Fuji Symmetrical Slopes -->
+  <path d="M480,780 Q850,720 1020,380 L1080,380 Q1250,720 1620,780 Z" fill="#170716"/>
+  <!-- Snow-capped Peak (Symmetrical anime style) -->
+  <path d="M960,510 Q1010,480 1020,380 L1080,380 Q1090,480 1140,510 Q1100,560 1050,520 Q1000,560 960,510 Z" fill="url(#fujiSnow)"/>
+
+  <!-- Distant Mountain Ranges (Layer 1) -->
+  <polygon points="-50,780 200,680 480,750 780,690 1050,760 1420,700 1720,750 2000,680 2000,1080 -50,1080" fill="#100410" opacity="0.9"/>
+
+  <!-- Calm Lake Surface -->
+  <rect x="0" y="740" width="1920" height="340" fill="url(#lakeWater)"/>
+
+  <!-- Sun & Mountain Water Glow Reflection -->
+  <ellipse cx="1200" cy="830" rx="320" ry="45" fill="#f97316" opacity="0.25"/>
+  <ellipse cx="1200" cy="870" rx="220" ry="30" fill="#f59e0b" opacity="0.2"/>
+
+  <!-- Water Surface Ripple Lines -->
+  <g stroke="#f472b6" stroke-width="1.2" opacity="0.3" fill="none">
+    <line x1="850" y1="770" x2="1550" y2="770"/>
+    <line x1="920" y1="790" x2="1480" y2="790"/>
+    <line x1="780" y1="815" x2="1620" y2="815"/>
+    <line x1="880" y1="840" x2="1520" y2="840"/>
+    <line x1="1000" y1="870" x2="1400" y2="870"/>
+    <line x1="820" y1="900" x2="1580" y2="900"/>
+    <line x1="950" y1="935" x2="1450" y2="935"/>
+  </g>
+
+  <!-- Foreground Shoreline & Hillside Silhouette with Pagoda -->
+  <g fill="#070208">
+    <path d="M-50,1080 L-50,820 Q220,800 480,880 Q720,950 1000,1080 Z"/>
+
+    <!-- Five-Story Traditional Pagoda Temple Silhouette -->
+    <!-- Base -->
+    <rect x="220" y="660" width="70" height="150"/>
+    <!-- Tier 1 -->
+    <path d="M190,665 L320,665 L305,650 L205,650 Z"/>
+    <rect x="225" y="615" width="60" height="35"/>
+    <!-- Tier 2 -->
+    <path d="M195,615 L315,615 L300,600 L210,600 Z"/>
+    <rect x="230" y="570" width="50" height="30"/>
+    <!-- Tier 3 -->
+    <path d="M200,570 L310,570 L295,555 L215,555 Z"/>
+    <rect x="235" y="525" width="40" height="30"/>
+    <!-- Tier 4 -->
+    <path d="M205,525 L305,525 L290,510 L220,510 Z"/>
+    <rect x="240" y="480" width="30" height="30"/>
+    <!-- Tier 5 (Top Roof & Spire) -->
+    <path d="M210,480 L300,480 L285,465 L225,465 Z"/>
+    <polygon points="255,410 252,465 258,465"/>
+
+    <!-- Japanese Pine Trees on Hillside -->
+    <!-- Pine 1 -->
+    <ellipse cx="140" cy="740" rx="35" ry="15"/>
+    <ellipse cx="170" cy="725" rx="30" ry="12"/>
+    <ellipse cx="130" cy="710" rx="25" ry="10"/>
+    <line x1="150" y1="740" x2="160" y2="830" stroke="#070208" stroke-width="8"/>
+    
+    <!-- Pine 2 -->
+    <ellipse cx="380" cy="780" rx="45" ry="18"/>
+    <ellipse cx="420" cy="760" rx="35" ry="15"/>
+    <line x1="400" y1="780" x2="390" y2="870" stroke="#070208" stroke-width="9"/>
+  </g>
+
+  <!-- Floating Sakura Blossom Petals Drifting in the Wind -->
+  <g fill="#f472b6" opacity="0.85">
+    <path d="M680,420 Q695,410 700,425 Q705,440 690,445 Q675,440 680,420 Z" transform="rotate(25, 690, 430)"/>
+    <path d="M820,520 Q835,510 840,525 Q845,540 830,545 Q815,540 820,520 Z" transform="rotate(-15, 830, 530)"/>
+    <path d="M520,340 Q532,330 538,342 Q544,354 532,358 Q520,354 520,340 Z" transform="rotate(40, 530, 345)"/>
+    <path d="M1020,480 Q1035,470 1040,485 Q1045,500 1030,505 Q1015,500 1020,480 Z" transform="rotate(10, 1030, 490)"/>
+    <path d="M1180,620 Q1195,610 1200,625 Q1205,640 1190,645 Q1175,640 1180,620 Z" transform="rotate(-30, 1190, 630)"/>
+    <path d="M1350,560 Q1362,550 1368,562 Q1374,574 1362,578 Q1350,574 1350,560 Z" transform="rotate(18, 1360, 565)"/>
+    <path d="M1520,680 Q1535,670 1540,685 Q1545,700 1530,705 Q1515,700 1520,680 Z" transform="rotate(5, 1530, 690)"/>
+    <path d="M920,660 Q935,650 940,665 Q945,680 930,685 Q915,680 920,660 Z" transform="rotate(-22, 930, 670)"/>
+  </g>
+</svg>
