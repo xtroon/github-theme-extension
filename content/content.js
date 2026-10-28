@@ -1,30 +1,129 @@
 /**
  * Theme Studio for GitHub - Core Content Script
- * Applies CSS variables, background wallpapers, event listeners for stars/merges/forks,
- * Turbo navigation observers, and the Shareable Episode Card modal.
+ * -----------------------------------------------------------
+ * This script runs directly on GitHub pages. It is responsible for:
+ * 1. Loading user theme preferences from chrome.storage.local
+ * 2. Injecting CSS variables to theme GitHub (colors, fonts, glassmorphism)
+ * 3. Rendering dynamic background wallpapers with blur & contrast filters
+ * 4. Listening for GitHub interactions (Stars, Forks, Merges) for audio/confetti
+ * 5. Re-applying themes seamlessly during GitHub Turbo / SPA page navigations
+ * 6. Displaying the Profile Snapshot Card modal
  */
 
 (function () {
   'use strict';
 
+  // =========================================================
+  // 1. EXTENSION CONTEXT & SAFETY HELPERS
+  // =========================================================
+
+  /**
+   * Checks whether the Chrome extension context is still active.
+   * When an unpacked extension is reloaded or updated in chrome://extensions,
+   * any open tabs retain the old content script, but its context is invalidated.
+   * This helper prevents calling Chrome APIs when invalidated, eliminating
+   * "Error: Extension context invalidated" crashes.
+   */
+  function isExtensionAlive() {
+    try {
+      return Boolean(typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.id);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // Prevent multiple duplicate content script instances from running simultaneously
+  if (window.__themeStudioLoaded && window.themeStudioContent) {
+    try {
+      if (window.themeStudioWidget) {
+        window.themeStudioWidget.remove();
+      }
+    } catch (e) {}
+  }
+  window.__themeStudioLoaded = true;
+
+  // =========================================================
+  // 2. THEME ENGINE CLASS
+  // =========================================================
+
   class ThemeStudioContent {
     constructor() {
+      // Load default settings as safe initial fallback
       this.settings = window.ThemeStudio ? { ...window.ThemeStudio.DEFAULT_SETTINGS } : {};
       this.bgLayer = null;
       this.bgOverlay = null;
       this.modalEl = null;
     }
 
+    /**
+     * Initialize the theme engine on the page
+     */
     async init() {
+      // 1. Load saved preferences from storage
       await this.loadSettings();
+
+      // 2. Setup background DOM elements
       this.setupDOM();
+
+      // 3. Apply themes, wallpaper, font, and contribution graph colors
       this.applyAll();
+
+      // 4. Attach interactive listeners (hotkeys, stars, forks, merges)
       this.attachEventListeners();
+
+      // 5. Watch for GitHub Turbo / Single-Page-App navigations
       this.observeNavigations();
 
-      // Listen for Chrome runtime messages
-      if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.onMessage) {
+      // 6. Listen for messages from the popup or background service worker
+      this.setupMessageListener();
+    }
+
+    /**
+     * Safely load settings from chrome.storage.local
+     */
+    async loadSettings() {
+      if (!isExtensionAlive()) return;
+
+      try {
+        if (chrome.storage && chrome.storage.local) {
+          const result = await chrome.storage.local.get(['themeStudioSettings']);
+          if (result && result.themeStudioSettings) {
+            this.settings = { ...this.settings, ...result.themeStudioSettings };
+          }
+        }
+      } catch (err) {
+        // Fail gracefully to default settings if context is invalidated
+      }
+    }
+
+    /**
+     * Update settings in memory and persist to chrome.storage.local
+     */
+    async updateSettings(partial) {
+      this.settings = { ...this.settings, ...partial };
+      this.applyAll();
+
+      if (!isExtensionAlive()) return;
+
+      try {
+        if (chrome.storage && chrome.storage.local) {
+          await chrome.storage.local.set({ themeStudioSettings: this.settings });
+        }
+      } catch (err) {
+        // Fail gracefully if context is invalidated
+      }
+    }
+
+    /**
+     * Listen for messages from popup or background worker
+     */
+    setupMessageListener() {
+      if (!isExtensionAlive() || !chrome.runtime || !chrome.runtime.onMessage) return;
+
+      try {
         chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+          if (!isExtensionAlive()) return;
+
           if (msg.type === 'SETTINGS_UPDATED') {
             this.settings = { ...this.settings, ...msg.settings };
             this.applyAll();
@@ -45,58 +144,14 @@
             sendResponse({ success: true });
           }
         });
-      }
-
-      // In-page keyboard shortcut fallback (Alt+Shift+F)
-      window.addEventListener('keydown', (e) => {
-        if (e.altKey && e.shiftKey && (e.key === 'F' || e.key === 'f')) {
-          e.preventDefault();
-          this.toggleFocusMode();
-        }
-      });
-    }
-
-    isContextValid() {
-      return typeof chrome !== 'undefined' && Boolean(chrome.runtime && chrome.runtime.id);
-    }
-
-    async loadSettings() {
-      if (this.isContextValid() && chrome.storage && chrome.storage.local) {
-        return new Promise((resolve) => {
-          try {
-            chrome.storage.local.get(['themeStudioSettings'], (result) => {
-              if (chrome.runtime?.lastError) {
-                resolve();
-                return;
-              }
-              if (result && result.themeStudioSettings) {
-                this.settings = { ...this.settings, ...result.themeStudioSettings };
-              }
-              resolve();
-            });
-          } catch (e) {
-            resolve();
-          }
-        });
+      } catch (e) {
+        // Ignore if runtime is not ready
       }
     }
 
-    async updateSettings(partial) {
-      this.settings = { ...this.settings, ...partial };
-      if (this.isContextValid() && chrome.storage && chrome.storage.local) {
-        try {
-          chrome.storage.local.set({ themeStudioSettings: this.settings }, () => {
-            if (chrome.runtime?.lastError) {
-              // Silently handle context invalidation if unpacked extension reloaded in devtools
-            }
-          });
-        } catch (e) {
-          // Extension context invalidated during development reload
-        }
-      }
-      this.applyAll();
-    }
-
+    /**
+     * Create the background image layer and tint overlay in the DOM
+     */
     setupDOM() {
       if (!this.bgLayer) {
         this.bgLayer = document.getElementById('theme-studio-bg-layer');
@@ -121,10 +176,13 @@
       }
     }
 
+    /**
+     * Apply all theme colors, CSS variables, wallpapers, and fonts to the page
+     */
     applyAll() {
       const root = document.documentElement;
 
-      // Check if disabled or in Focus Mode
+      // Handle disabled state or focus mode
       if (!this.settings.enabled) {
         root.removeAttribute('data-theme-studio-active');
         root.removeAttribute('data-theme-studio-focus');
@@ -146,14 +204,14 @@
         if (this.bgOverlay) this.bgOverlay.style.display = 'block';
       }
 
-      // Configure Audio
+      // Configure Audio settings
       if (window.themeAudio) {
         window.themeAudio.setEnabled(this.settings.soundEnabled && !this.settings.focusMode);
         window.themeAudio.setVolume(this.settings.soundVolume);
         window.themeAudio.setSoundPack(this.settings.soundPack);
       }
 
-      // Apply Theme Colors
+      // Apply Theme Palette Colors
       const theme = this.findTheme(this.settings.themeId);
       if (theme) {
         const c = theme.colors;
@@ -170,7 +228,7 @@
         root.style.setProperty('--ts-danger', c.danger);
         root.style.setProperty('--ts-warning', c.warning);
 
-        // Glassmorphism properties
+        // Glassmorphism background transparency
         const glassOpacity = (this.settings.glassOpacity || 76) / 100;
         const hexToRgba = (hex, alpha) => {
           let clean = hex.replace('#', '');
@@ -190,21 +248,21 @@
         root.style.setProperty('--ts-glass-blur', `${this.settings.blur || 6}px`);
       }
 
-      // Dynamic repo language tint
+      // Dynamic repository language accent tint
       if (this.settings.dynamicRepoTint) {
         this.detectAndApplyRepoLanguage();
       }
 
-      // Apply Background Wallpaper
+      // Apply custom or preset wallpaper
       this.applyWallpaper();
 
-      // Apply Contribution Graph Palette
+      // Apply contribution graph palette
       this.applyContributionPalette();
 
-      // Apply Code Font
+      // Apply editor and code monospace font
       this.applyFont();
 
-      // Floating Widget toggle
+      // Floating Quick HUD Widget toggle
       if (this.settings.floatingWidgetEnabled && !this.settings.focusMode) {
         if (window.themeStudioWidget) window.themeStudioWidget.init();
       } else {
@@ -217,6 +275,9 @@
       return window.ThemeStudio.THEMES.find(t => t.id === id) || window.ThemeStudio.THEMES[0];
     }
 
+    /**
+     * Apply background wallpaper image and CSS filters
+     */
     applyWallpaper() {
       if (!this.bgLayer) return;
 
@@ -242,7 +303,6 @@
       if (imgUrl) {
         this.bgLayer.style.backgroundImage = `url("${imgUrl}")`;
       } else {
-        // Fallback procedural starry dark gradient
         this.bgLayer.style.backgroundImage = 'radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%)';
       }
 
@@ -252,6 +312,9 @@
       this.bgLayer.style.filter = `blur(${blurVal}px) brightness(${brightVal}%) contrast(${contrastVal}%)`;
     }
 
+    /**
+     * Apply color palette to GitHub's contribution heat map grid
+     */
     applyContributionPalette() {
       const root = document.documentElement;
       let levels = ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'];
@@ -269,6 +332,9 @@
       });
     }
 
+    /**
+     * Apply selected code font to code elements
+     */
     applyFont() {
       const root = document.documentElement;
       const fontDef = window.ThemeStudio ? window.ThemeStudio.FONTS.find(f => f.id === this.settings.fontId) : null;
@@ -277,8 +343,10 @@
       }
     }
 
+    /**
+     * Automatically detect the dominant language badge on GitHub repo pages
+     */
     detectAndApplyRepoLanguage() {
-      // Find language badge on repository pages: .BorderGrid-cell span[itemprop="programmingLanguage"]
       const langEl = document.querySelector('[itemprop="programmingLanguage"], .repository-lang-stats-graph .language-color');
       if (langEl && window.ThemeStudio && window.ThemeStudio.LANGUAGE_COLORS) {
         const langName = (langEl.textContent || '').trim();
@@ -289,6 +357,9 @@
       }
     }
 
+    /**
+     * Toggle distraction-free focus mode
+     */
     toggleFocusMode() {
       const newFocus = !this.settings.focusMode;
       this.updateSettings({ focusMode: newFocus });
@@ -297,9 +368,24 @@
       }
     }
 
+    /**
+     * Attach interactive event listeners for stars, forks, merges, and shortcuts
+     */
     attachEventListeners() {
-      // Star button listener
+      // In-page keyboard shortcut fallback (Alt+Shift+F)
+      window.addEventListener('keydown', (e) => {
+        if (!isExtensionAlive()) return;
+        if (e.altKey && e.shiftKey && (e.key === 'F' || e.key === 'f')) {
+          e.preventDefault();
+          this.toggleFocusMode();
+        }
+      });
+
+      // Interactive GitHub click listeners (Stars, Forks, Merges)
       document.addEventListener('click', (e) => {
+        if (!isExtensionAlive()) return;
+
+        // Star button
         const starBtn = e.target.closest('button[data-hydro-click*="star"], form[action*="/star"] button, [aria-label*="Star this repository"], [aria-label*="star this repository"]');
         if (starBtn) {
           setTimeout(() => {
@@ -313,7 +399,7 @@
           return;
         }
 
-        // Fork button listener
+        // Fork button
         const forkBtn = e.target.closest('form[action*="/fork"] button, a[href*="/fork"], [aria-label*="Fork your own copy"]');
         if (forkBtn) {
           if (this.settings.soundEnabled && window.themeAudio) {
@@ -322,7 +408,7 @@
           return;
         }
 
-        // Merge pull request listener
+        // Merge pull request button
         const mergeBtn = e.target.closest('button.btn-primary[name="apply_commit"], button[value="merge"], .js-merge-commit-button');
         if (mergeBtn) {
           if (this.settings.soundEnabled && window.themeAudio) {
@@ -336,9 +422,14 @@
       });
     }
 
+    /**
+     * Watch for GitHub Turbo / PJAX client-side navigations
+     * GitHub is a Single Page Application (SPA), so clicking repos or files
+     * triggers Turbo navigation instead of a full page reload.
+     */
     observeNavigations() {
-      // GitHub Turbo / PJAX event hooks
       const onNavigate = () => {
+        if (!isExtensionAlive()) return;
         this.setupDOM();
         this.applyAll();
       };
@@ -349,11 +440,13 @@
       window.addEventListener('popstate', onNavigate);
     }
 
-    // Shareable Episode Card / Profile Card generator modal
+    /**
+     * Shareable Developer Snapshot Card Modal
+     */
     openEpisodeCardModal() {
       if (this.modalEl) this.modalEl.remove();
 
-      // Scrape username, avatar, stats
+      // Scrape username, avatar, active theme
       const userMeta = document.querySelector('meta[name="user-login"]');
       const username = userMeta ? userMeta.getAttribute('content') : (document.querySelector('.p-nickname')?.textContent.trim() || 'GitHub Developer');
       const avatarEl = document.querySelector('img.avatar-user, img.avatar');
@@ -373,7 +466,6 @@
               <button id="ts-close-card-modal" style="background: transparent; border: none; color: #8b949e; font-size: 14px; cursor: pointer;">✕</button>
             </div>
             
-            <!-- Snapshot Preview Card -->
             <div id="ts-card-canvas-box" style="position: relative; overflow: hidden; border-radius: 8px; padding: 18px; border: 1px solid #30363d; background: #0d1117;">
               <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
                 <img src="${avatarUrl}" style="width: 48px; height: 48px; border-radius: 50%; border: 1px solid #30363d;" />
@@ -433,6 +525,10 @@
       });
     }
   }
+
+  // =========================================================
+  // 3. BOOTSTRAP INITIALIZATION
+  // =========================================================
 
   window.themeStudioContent = new ThemeStudioContent();
   if (document.readyState === 'loading') {

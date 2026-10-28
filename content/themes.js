@@ -286,8 +286,12 @@
   ];
 
   function getWallpaperAssetUrl(filename) {
-    if (typeof chrome !== 'undefined' && chrome.runtime && typeof chrome.runtime.getURL === 'function') {
-      return chrome.runtime.getURL(`assets/wallpapers/${filename}`);
+    try {
+      if (typeof chrome !== 'undefined' && chrome.runtime && typeof chrome.runtime.getURL === 'function') {
+        return chrome.runtime.getURL(`assets/wallpapers/${filename}`);
+      }
+    } catch (e) {
+      // Gracefully fall back if extension context was invalidated
     }
     return `../assets/wallpapers/${filename}`;
   }
