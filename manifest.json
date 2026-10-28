@@ -3,7 +3,7 @@
   "name": "Theme Studio for GitHub - Themes & Anime Backgrounds",
   "short_name": "GitHub Theme Studio",
   "version": "1.0.0",
-  "description": "Customize your GitHub experience with curated themes, aesthetic backgrounds, custom contribution graphs, audio feedback & focus mode.",
+  "description": "Customize your GitHub experience with curated themes, code syntax highlighting, aesthetic wallpapers, custom contribution graphs, celebrations & focus mode.",
   "icons": {
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",
@@ -42,9 +42,7 @@
       ],
       "js": [
         "content/themes.js",
-        "content/audio-synthesizer.js",
         "content/confetti.js",
-        "content/in-page-widget.js",
         "content/content.js"
       ],
       "run_at": "document_start"

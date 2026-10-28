@@ -10,7 +10,6 @@
   // DOM Elements
   const masterToggle = document.getElementById('master-toggle');
   const btnFocusMode = document.getElementById('btn-focus-mode');
-  const btnSoundToggle = document.getElementById('btn-sound-toggle');
   const themesContainer = document.getElementById('themes-container');
   const wallpapersContainer = document.getElementById('wallpapers-container');
   const palettesContainer = document.getElementById('palettes-container');
@@ -32,21 +31,10 @@
   const inputUploadFile = document.getElementById('input-upload-file');
   const btnClearCustomBg = document.getElementById('btn-clear-custom-bg');
 
-  // Audio & Effects
-  const audioEnableToggle = document.getElementById('audio-enable-toggle');
-  const selectSoundPack = document.getElementById('select-sound-pack');
-  const sliderVolume = document.getElementById('slider-volume');
-  const lblVolume = document.getElementById('lbl-volume');
+  // Celebrations & Preferences
   const confettiToggle = document.getElementById('confetti-toggle');
-  const dynamicTintToggle = document.getElementById('dynamic-tint-toggle');
-
-  // Typography & Studio
-  const selectFont = document.getElementById('select-font');
-  const widgetToggle = document.getElementById('widget-toggle');
   const btnFireConfetti = document.getElementById('btn-fire-confetti');
-  const btnOpenEpisodeCard = document.getElementById('btn-open-episode-card');
-
-  // Reset
+  const selectFont = document.getElementById('select-font');
   const btnResetSettings = document.getElementById('btn-reset-settings');
 
   // Initialize
@@ -108,7 +96,6 @@
   function syncUIWithSettings() {
     masterToggle.checked = currentSettings.enabled;
     btnFocusMode.classList.toggle('active', currentSettings.focusMode);
-    btnSoundToggle.classList.toggle('active', currentSettings.soundEnabled);
 
     wallpaperToggle.checked = currentSettings.wallpaperEnabled;
     sliderBlur.value = currentSettings.blur || 6;
@@ -122,26 +109,19 @@
 
     inputCustomUrl.value = currentSettings.customWallpaperUrl || '';
 
-    audioEnableToggle.checked = currentSettings.soundEnabled;
-    selectSoundPack.value = currentSettings.soundPack || 'arcade-8bit';
-    sliderVolume.value = Math.round((currentSettings.soundVolume || 0.7) * 100);
-    lblVolume.innerText = `${Math.round((currentSettings.soundVolume || 0.7) * 100)}%`;
-
-    confettiToggle.checked = currentSettings.confettiEnabled;
-    dynamicTintToggle.checked = currentSettings.dynamicRepoTint;
-
-    selectFont.value = currentSettings.fontId || 'jetbrains';
-    widgetToggle.checked = currentSettings.floatingWidgetEnabled;
+    if (confettiToggle) confettiToggle.checked = currentSettings.confettiEnabled;
+    if (selectFont) selectFont.value = currentSettings.fontId || 'jetbrains';
 
     highlightActiveTheme();
     highlightActiveWallpaper();
     highlightActivePalette();
     renderMiniGraphPreview();
 
-    // Set local audio volume for preview
-    if (window.themeAudio) {
-      window.themeAudio.setVolume(currentSettings.soundVolume);
-      window.themeAudio.setSoundPack(currentSettings.soundPack);
+    const footerText = document.getElementById('footer-status-text');
+    if (footerText) {
+      footerText.innerText = currentSettings.enabled
+        ? (currentSettings.focusMode ? 'Focus Mode Active' : 'Active on GitHub')
+        : 'Disabled';
     }
   }
 
@@ -187,7 +167,6 @@
       card.addEventListener('click', () => {
         saveSettings({ themeId: theme.id });
         highlightActiveTheme();
-        if (window.themeAudio) window.themeAudio.playStar();
       });
 
       themesContainer.appendChild(card);
@@ -207,130 +186,117 @@
       const card = document.createElement('div');
       card.className = `ts-wallpaper-card ${wp.id === currentSettings.wallpaperId && !currentSettings.customWallpaperUrl && !currentSettings.uploadedWallpaperData ? 'active' : ''}`;
       card.setAttribute('data-id', wp.id);
-      card.style.backgroundImage = `url("${wp.thumbnail}")`;
 
       card.innerHTML = `
-        <div class="ts-active-indicator" title="Active Wallpaper">
-          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-        </div>
-        <div class="ts-wallpaper-overlay">
-          <span class="ts-wallpaper-title">${wp.name}</span>
-          <span class="ts-pill-tag" style="font-size: 8px; padding: 1px 4px;">${wp.category}</span>
+        <div class="ts-wp-img" style="background-image: url('${wp.thumbnail}');"></div>
+        <div class="ts-wp-info">
+          <div class="ts-wp-name" title="${wp.name}">${wp.name}</div>
+          <span class="ts-wp-category">${wp.category}</span>
         </div>
       `;
 
-      card.addEventListener('click', () => {
-        selectWallpaper(wp);
-      });
-
+      card.addEventListener('click', () => selectWallpaper(wp));
       wallpapersContainer.appendChild(card);
     });
   }
 
-  function highlightActiveWallpaper() {
-    const isPresetActive = !currentSettings.customWallpaperUrl && !currentSettings.uploadedWallpaperData;
-    document.querySelectorAll('.ts-wallpaper-card').forEach(c => {
-      c.classList.toggle('active', isPresetActive && c.getAttribute('data-id') === currentSettings.wallpaperId);
-    });
-  }
-
-  function selectWallpaper(wallpaper) {
+  function selectWallpaper(wp) {
     saveSettings({
-      wallpaperId: wallpaper.id,
+      wallpaperId: wp.id,
       customWallpaperUrl: '',
       uploadedWallpaperData: '',
       wallpaperEnabled: true
     });
     wallpaperToggle.checked = true;
-    inputCustomUrl.value = '';
     highlightActiveWallpaper();
+  }
+
+  function highlightActiveWallpaper() {
+    const isCustom = Boolean(currentSettings.customWallpaperUrl || currentSettings.uploadedWallpaperData);
+    document.querySelectorAll('.ts-wallpaper-card').forEach(c => {
+      const active = !isCustom && c.getAttribute('data-id') === currentSettings.wallpaperId;
+      c.classList.toggle('active', active);
+    });
   }
 
   // Render Contribution Palettes
   function renderContributionPalettes() {
     palettesContainer.innerHTML = '';
     window.ThemeStudio.CONTRIBUTION_PALETTES.forEach(pal => {
-      const card = document.createElement('div');
-      card.className = `ts-palette-card ${pal.id === currentSettings.contributionPaletteId ? 'active' : ''}`;
-      card.setAttribute('data-id', pal.id);
+      const item = document.createElement('div');
+      item.className = `ts-palette-item ${pal.id === currentSettings.contributionPaletteId ? 'active' : ''}`;
+      item.setAttribute('data-id', pal.id);
 
-      let swatchesHtml = '';
-      pal.levels.forEach(col => {
-        swatchesHtml += `<div class="ts-swatch" style="background: ${col};"></div>`;
+      let chips = '';
+      pal.levels.forEach(c => {
+        chips += `<span class="ts-palette-chip" style="background: ${c};"></span>`;
       });
 
-      card.innerHTML = `
-        <div class="ts-palette-name">${pal.name}</div>
-        <div class="ts-palette-swatches">${swatchesHtml}</div>
+      item.innerHTML = `
+        <span class="ts-palette-name">${pal.name}</span>
+        <div class="ts-palette-chips">${chips}</div>
       `;
 
-      card.addEventListener('click', () => {
+      item.addEventListener('click', () => {
         saveSettings({ contributionPaletteId: pal.id });
         highlightActivePalette();
         renderMiniGraphPreview();
       });
 
-      palettesContainer.appendChild(card);
+      palettesContainer.appendChild(item);
     });
   }
 
   function highlightActivePalette() {
-    document.querySelectorAll('.ts-palette-card').forEach(c => {
-      c.classList.toggle('active', c.getAttribute('data-id') === currentSettings.contributionPaletteId);
+    document.querySelectorAll('.ts-palette-item').forEach(el => {
+      el.classList.toggle('active', el.getAttribute('data-id') === currentSettings.contributionPaletteId);
     });
   }
 
-  // Render Mini Contribution Graph (14 columns x 5 rows)
+  // Render Mini Graph Preview
   function renderMiniGraphPreview() {
     graphPreviewGrid.innerHTML = '';
-    const pal = window.ThemeStudio.CONTRIBUTION_PALETTES.find(p => p.id === currentSettings.contributionPaletteId) || window.ThemeStudio.CONTRIBUTION_PALETTES[0];
+    const pal = window.ThemeStudio.CONTRIBUTION_PALETTES.find(p => p.id === currentSettings.contributionPaletteId)
+      || window.ThemeStudio.CONTRIBUTION_PALETTES[0];
 
-    // Update legend cells
-    for (let l = 0; l <= 4; l++) {
-      const legEl = document.querySelector(`.ts-legend-cell.lvl-${l}`);
-      if (legEl && pal.levels[l]) {
-        legEl.style.backgroundColor = pal.levels[l];
+    const weeks = 20;
+    const days = 7;
+
+    for (let w = 0; w < weeks; w++) {
+      const col = document.createElement('div');
+      col.className = 'ts-graph-col';
+      for (let d = 0; d < days; d++) {
+        const cell = document.createElement('div');
+        cell.className = 'ts-graph-cell';
+
+        const rand = Math.random();
+        let lvl = 0;
+        if (rand > 0.85) lvl = 4;
+        else if (rand > 0.70) lvl = 3;
+        else if (rand > 0.50) lvl = 2;
+        else if (rand > 0.30) lvl = 1;
+
+        cell.style.background = pal.levels[lvl];
+        col.appendChild(cell);
       }
-    }
-
-    // Realistic commit distribution
-    for (let i = 0; i < 70; i++) {
-      const cell = document.createElement('div');
-      cell.className = 'ts-graph-cell';
-
-      const rand = Math.sin(i * 999) * 10000;
-      const frac = rand - Math.floor(rand);
-      let level = 0;
-      if (frac > 0.82) level = 4;
-      else if (frac > 0.62) level = 3;
-      else if (frac > 0.42) level = 2;
-      else if (frac > 0.22) level = 1;
-
-      cell.style.background = pal.levels[level];
-      graphPreviewGrid.appendChild(cell);
+      graphPreviewGrid.appendChild(col);
     }
   }
 
-  // Attach event listeners
+  // Attach Event Listeners
   function attachListeners() {
     masterToggle.addEventListener('change', (e) => {
       saveSettings({ enabled: e.target.checked });
+      const footerText = document.getElementById('footer-status-text');
+      if (footerText) footerText.innerText = e.target.checked ? 'Active on GitHub' : 'Disabled';
     });
 
     btnFocusMode.addEventListener('click', () => {
       const newFocus = !currentSettings.focusMode;
       saveSettings({ focusMode: newFocus });
       btnFocusMode.classList.toggle('active', newFocus);
-      if (window.themeAudio) window.themeAudio.playFocusMode(newFocus);
-    });
-
-    btnSoundToggle.addEventListener('click', () => {
-      const newSound = !currentSettings.soundEnabled;
-      saveSettings({ soundEnabled: newSound });
-      audioEnableToggle.checked = newSound;
-      btnSoundToggle.classList.toggle('active', newSound);
+      const footerText = document.getElementById('footer-status-text');
+      if (footerText) footerText.innerText = newFocus ? 'Focus Mode Active' : 'Active on GitHub';
     });
 
     wallpaperToggle.addEventListener('change', (e) => {
@@ -398,71 +364,26 @@
       highlightActiveWallpaper();
     });
 
-    audioEnableToggle.addEventListener('change', (e) => {
-      saveSettings({ soundEnabled: e.target.checked });
-      btnSoundToggle.classList.toggle('active', e.target.checked);
-    });
+    if (confettiToggle) {
+      confettiToggle.addEventListener('change', (e) => {
+        saveSettings({ confettiEnabled: e.target.checked });
+      });
+    }
 
-    selectSoundPack.addEventListener('change', (e) => {
-      saveSettings({ soundPack: e.target.value });
-      if (window.themeAudio) {
-        window.themeAudio.setSoundPack(e.target.value);
-        window.themeAudio.playStar();
-      }
-    });
+    if (selectFont) {
+      selectFont.addEventListener('change', (e) => {
+        saveSettings({ fontId: e.target.value });
+      });
+    }
 
-    sliderVolume.addEventListener('input', (e) => {
-      const vol = parseInt(e.target.value, 10) / 100;
-      lblVolume.innerText = `${e.target.value}%`;
-      saveSettings({ soundVolume: vol });
-      if (window.themeAudio) window.themeAudio.setVolume(vol);
-    });
-
-    // Sound test buttons
-    document.getElementById('btn-test-star').addEventListener('click', () => {
-      if (window.themeAudio) window.themeAudio.playStar();
-    });
-
-    document.getElementById('btn-test-fork').addEventListener('click', () => {
-      if (window.themeAudio) window.themeAudio.playFork();
-    });
-
-    document.getElementById('btn-test-merge').addEventListener('click', () => {
-      if (window.themeAudio) window.themeAudio.playMerge();
-    });
-
-    confettiToggle.addEventListener('change', (e) => {
-      saveSettings({ confettiEnabled: e.target.checked });
-    });
-
-    dynamicTintToggle.addEventListener('change', (e) => {
-      saveSettings({ dynamicRepoTint: e.target.checked });
-    });
-
-    selectFont.addEventListener('change', (e) => {
-      saveSettings({ fontId: e.target.value });
-    });
-
-    widgetToggle.addEventListener('change', (e) => {
-      saveSettings({ floatingWidgetEnabled: e.target.checked });
-    });
-
-    btnFireConfetti.addEventListener('click', async () => {
-      if (window.themeAudio) window.themeAudio.playMerge();
-      const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
-      if (tabs[0]) {
-        chrome.tabs.sendMessage(tabs[0].id, { type: 'TRIGGER_CONFETTI' }).catch(() => {});
-      }
-    });
-
-    btnOpenEpisodeCard.addEventListener('click', async () => {
-      const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
-      if (tabs[0]) {
-        chrome.tabs.sendMessage(tabs[0].id, { type: 'OPEN_EPISODE_CARD' }).catch(() => {
-          alert('Please navigate to an open GitHub tab to view your Episode Card!');
-        });
-      }
-    });
+    if (btnFireConfetti) {
+      btnFireConfetti.addEventListener('click', async () => {
+        const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+        if (tabs[0]) {
+          chrome.tabs.sendMessage(tabs[0].id, { type: 'TRIGGER_CONFETTI' }).catch(() => {});
+        }
+      });
+    }
 
     // Reset to defaults
     if (btnResetSettings) {

@@ -584,17 +584,9 @@
     { id: 'roboto-mono', name: 'Roboto Mono', css: '"Roboto Mono", monospace' }
   ];
 
-  const SOUND_PACKS = [
-    { id: 'arcade-8bit', name: '8-Bit Retro Arcade' },
-    { id: 'modern-chime', name: 'Modern Studio Chime' },
-    { id: 'cyberpunk-synth', name: 'Cyberpunk Synth' },
-    { id: 'anime-sparkle', name: 'Anime Sparkle' },
-    { id: 'tactile-click', name: 'Tactile Mechanical' }
-  ];
-
   const DEFAULT_SETTINGS = {
     enabled: true,
-    focusMode: false, // Shortcut toggles focusMode: true to disable all overlays
+    focusMode: false, // Shortcut (Alt+Shift+F) toggles focusMode: true for clean distraction-free view
     themeId: 'catppuccin-mocha',
     wallpaperEnabled: true,
     wallpaperId: 'anime-sunset-lofi',
@@ -607,29 +599,7 @@
     contributionPaletteId: 'sakura-pink',
     customContributionLevels: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
     fontId: 'jetbrains',
-    soundEnabled: true,
-    soundVolume: 0.7,
-    soundPack: 'arcade-8bit',
-    confettiEnabled: true,
-    cursorGlowEnabled: false,
-    floatingWidgetEnabled: true,
-    dynamicRepoTint: true // Shifts accent color slightly based on primary repo language (JS/Python/Rust/Go)
-  };
-
-  const LANGUAGE_COLORS = {
-    JavaScript: '#f7df1e',
-    TypeScript: '#3178c6',
-    Python: '#3776ab',
-    Rust: '#dea584',
-    Go: '#00add8',
-    Java: '#b07219',
-    Cpp: '#f34b7d',
-    Ruby: '#701516',
-    PHP: '#4f5d95',
-    HTML: '#e34c26',
-    CSS: '#563d7c',
-    Swift: '#ffac45',
-    Kotlin: '#a97bff'
+    confettiEnabled: true
   };
 
   // Export to global / window for content scripts and popup
@@ -638,9 +608,7 @@
     WALLPAPERS,
     CONTRIBUTION_PALETTES,
     FONTS,
-    SOUND_PACKS,
-    DEFAULT_SETTINGS,
-    LANGUAGE_COLORS
+    DEFAULT_SETTINGS
   };
 
   if (typeof window !== 'undefined') {

@@ -34,13 +34,6 @@
           <span class="ts-btn-tag">Focus</span>
         </button>
 
-        <button id="btn-sound-toggle" class="ts-tool-btn" title="Toggle Sound Feedback" aria-label="Toggle sound">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-          </svg>
-        </button>
-
         <div class="ts-divider-vert"></div>
 
         <label class="ts-switch" title="Master Extension Toggle">
@@ -78,14 +71,6 @@
           <rect width="7" height="7" x="3" y="14" rx="1"/>
         </svg>
         <span>Graph</span>
-      </button>
-      <button class="ts-tab-btn" data-tab="tab-audio">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
-        </svg>
-        <span>Audio</span>
       </button>
       <button class="ts-tab-btn" data-tab="tab-studio">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -231,114 +216,12 @@
         </div>
       </section>
 
-      <!-- Tab 4: Audio & Celebrations -->
-      <section id="tab-audio" class="ts-tab-pane">
-        <div class="ts-pane-header">
-          <div>
-            <h2 class="ts-pane-title">Audio Feedback</h2>
-            <p class="ts-pane-desc">Procedural mechanical and arcade sound cues</p>
-          </div>
-          <label class="ts-toggle-label">
-            <input type="checkbox" id="audio-enable-toggle" checked>
-            <span>Audio FX</span>
-          </label>
-        </div>
-
-        <div class="ts-panel-card">
-          <div class="ts-control-row">
-            <div class="ts-control-info">
-              <label for="select-sound-pack" class="ts-control-label">Sound Profile</label>
-              <span class="ts-control-hint">Synthesis frequency & timbre</span>
-            </div>
-            <select id="select-sound-pack" class="ts-select">
-              <option value="arcade-8bit">8-Bit Retro Arcade</option>
-              <option value="modern-chime">Modern Clean Chime</option>
-              <option value="cyberpunk-synth">Cyberpunk Synth</option>
-              <option value="anime-sparkle">Anime Acoustic</option>
-              <option value="tactile-click">Tactile Mechanical</option>
-            </select>
-          </div>
-
-          <div class="ts-control-row">
-            <div class="ts-control-info">
-              <label for="slider-volume" class="ts-control-label">Volume Level</label>
-              <span class="ts-control-hint">Master output gain</span>
-            </div>
-            <div class="ts-slider-wrapper">
-              <input type="range" id="slider-volume" min="0" max="100" value="70" class="ts-range">
-              <span class="ts-value-chip" id="lbl-volume">70%</span>
-            </div>
-          </div>
-
-          <div class="ts-audio-test-row">
-            <button id="btn-test-star" class="ts-btn-secondary ts-audio-btn" type="button">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-              </svg>
-              <span>Star Audio</span>
-            </button>
-            <button id="btn-test-fork" class="ts-btn-secondary ts-audio-btn" type="button">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="18" r="3"></circle>
-                <circle cx="6" cy="6" r="3"></circle>
-                <circle cx="18" cy="6" r="3"></circle>
-                <path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path>
-                <path d="M12 12v3"></path>
-              </svg>
-              <span>Fork Audio</span>
-            </button>
-            <button id="btn-test-merge" class="ts-btn-secondary ts-audio-btn" type="button">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="18" cy="18" r="3"></circle>
-                <circle cx="6" cy="6" r="3"></circle>
-                <path d="M6 21V9a9 9 0 0 0 9 9"></path>
-              </svg>
-              <span>Merge Fanfare</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="ts-subheading">Interactive Celebrations</div>
-        <div class="ts-panel-card">
-          <div class="ts-switch-item">
-            <div class="ts-switch-text">
-              <div class="ts-switch-title">Confetti Particle Shower</div>
-              <div class="ts-switch-desc">Burst particles when starring a repository or merging a PR</div>
-            </div>
-            <label class="ts-switch">
-              <input type="checkbox" id="confetti-toggle" checked>
-              <span class="ts-switch-slider"></span>
-            </label>
-          </div>
-
-          <div class="ts-switch-item" style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--ts-border-subtle);">
-            <div class="ts-switch-text">
-              <div class="ts-switch-title">Repository Language Tint</div>
-              <div class="ts-switch-desc">Dynamically adapt accents based on primary repository language</div>
-            </div>
-            <label class="ts-switch">
-              <input type="checkbox" id="dynamic-tint-toggle" checked>
-              <span class="ts-switch-slider"></span>
-            </label>
-          </div>
-
-          <button id="btn-fire-confetti" class="ts-btn-primary" style="margin-top: 12px; width: 100%;" type="button">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="m19 11-8-8-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0L19 11Z"/>
-              <path d="m5 2 5 5"/>
-              <path d="M2 5l5 5"/>
-            </svg>
-            <span>Trigger Test Confetti</span>
-          </button>
-        </div>
-      </section>
-
-      <!-- Tab 5: Preferences & Studio -->
+      <!-- Tab 4: Preferences & Tools -->
       <section id="tab-studio" class="ts-tab-pane">
         <div class="ts-pane-header">
           <div>
-            <h2 class="ts-pane-title">Preferences & Tools</h2>
-            <p class="ts-pane-desc">Code fonts, in-page HUD dock and backups</p>
+            <h2 class="ts-pane-title">Preferences</h2>
+            <p class="ts-pane-desc">Code fonts, celebrations & reset</p>
           </div>
         </div>
 
@@ -358,38 +241,34 @@
               <option value="roboto-mono">Roboto Mono</option>
             </select>
           </div>
+        </div>
 
-          <div class="ts-switch-item" style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--ts-border-subtle);">
+        <div class="ts-subheading">Celebration Effects</div>
+        <div class="ts-panel-card">
+          <div class="ts-switch-item">
             <div class="ts-switch-text">
-              <div class="ts-switch-title">In-Page Quick Dock</div>
-              <div class="ts-switch-desc">Compact floating HUD in the bottom-right corner of GitHub</div>
+              <div class="ts-switch-title">Confetti Particle Shower</div>
+              <div class="ts-switch-desc">Burst particles when starring a repository or merging a PR</div>
             </div>
             <label class="ts-switch">
-              <input type="checkbox" id="widget-toggle" checked>
+              <input type="checkbox" id="confetti-toggle" checked>
               <span class="ts-switch-slider"></span>
             </label>
           </div>
-        </div>
-
-        <div class="ts-subheading">Profile Card Generator</div>
-        <div class="ts-panel-card">
-          <p class="ts-card-desc">
-            Generate an exportable GitHub profile snapshot displaying your active theme, contribution streak, and styling stats.
-          </p>
-          <button id="btn-open-episode-card" class="ts-btn-secondary" style="width: 100%; margin-top: 10px;" type="button">
+          <button id="btn-fire-confetti" class="ts-btn-primary" style="margin-top: 12px; width: 100%;" type="button">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
-              <circle cx="9" cy="9" r="2"/>
-              <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+              <path d="m19 11-8-8-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0L19 11Z"/>
+              <path d="m5 2 5 5"/>
+              <path d="M2 5l5 5"/>
             </svg>
-            <span>Open Profile Card Modal</span>
+            <span>Trigger Test Confetti</span>
           </button>
         </div>
 
         <div class="ts-subheading">Reset Preferences</div>
         <div class="ts-panel-card">
           <p class="ts-card-desc" style="margin-bottom: 8px;">
-            Restore all default themes, fonts, wallpapers, and audio effects.
+            Restore all default themes, fonts, wallpapers, and celebration settings.
           </p>
           <button id="btn-reset-settings" class="ts-btn-danger" style="width: 100%;" title="Reset all settings to default" type="button">
             Reset All to Defaults
@@ -412,7 +291,6 @@
   </div>
 
   <script src="../content/themes.js"></script>
-  <script src="../content/audio-synthesizer.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>
