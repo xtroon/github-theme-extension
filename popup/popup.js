@@ -402,6 +402,24 @@
         }
       });
     }
+
+    // GitHub Repository Redirects for Star
+    const REPO_URL = 'https://github.com/xtroon/github-theme-extension';
+    const openRepo = (e) => {
+      if (e) e.preventDefault();
+      if (typeof chrome !== 'undefined' && chrome.tabs && chrome.tabs.create) {
+        chrome.tabs.create({ url: REPO_URL });
+      } else {
+        window.open(REPO_URL, '_blank', 'noopener,noreferrer');
+      }
+    };
+
+    ['brand-link', 'btn-star-repo'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('click', openRepo);
+      }
+    });
   }
 
   document.addEventListener('DOMContentLoaded', init);

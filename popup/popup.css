@@ -67,6 +67,19 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--ts-radius-sm);
+  transition: opacity 0.15s ease;
+}
+
+.ts-brand:hover {
+  opacity: 0.85;
+}
+
+.ts-brand:hover .ts-brand-logo {
+  border-color: var(--ts-accent);
+  color: var(--ts-accent);
 }
 
 .ts-brand-logo {
@@ -79,6 +92,7 @@ body {
   align-items: center;
   justify-content: center;
   color: var(--ts-fg-default);
+  transition: all 0.15s ease;
 }
 
 .ts-brand-title {
@@ -128,6 +142,27 @@ body {
   background: var(--ts-accent-emphasis);
   border-color: var(--ts-accent-emphasis);
   color: #ffffff;
+}
+
+.ts-star-link {
+  text-decoration: none;
+  color: var(--ts-fg-muted);
+}
+
+.ts-star-link:hover {
+  color: #f0f6fc;
+  border-color: rgba(227, 179, 65, 0.6);
+  background: rgba(227, 179, 65, 0.12);
+}
+
+.ts-star-link .ts-star-icon {
+  color: #e3b341;
+  fill: #e3b341;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ts-star-link:hover .ts-star-icon {
+  transform: scale(1.25) rotate(15deg);
 }
 
 .ts-btn-tag {

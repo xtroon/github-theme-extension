@@ -84,7 +84,7 @@ Any Chromium-based browser supporting Manifest V3:
 
 4. Click the **Load unpacked** button in the top-left toolbar.
 
-5. Select the root folder of this project (`heroku-github-theme` or your cloned directory containing `manifest.json`).
+5. Select the root folder of this project (your cloned directory containing `manifest.json`).
 
 6. Open or refresh any page on [github.com](https://github.com). Click the extension icon in your browser toolbar to configure your settings.
 
