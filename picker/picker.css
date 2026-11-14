@@ -1,0 +1,45 @@
+:root {
+    --ts-bg-app: #0d1117;
+    --ts-bg-elevated: #21262d;
+    --ts-border: #30363d;
+    --ts-fg-default: #f0f6fc;
+    --ts-fg-muted: #8b949e;
+    --ts-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+    --ts-radius-sm: 4px;
+}
+
+body {
+    background-color: var(--ts-bg-app);
+    color: var(--ts-fg-default);
+    font-family: var(--ts-font-sans);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.ts-pane-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ts-fg-default);
+  line-height: 1.3;
+}
+
+.ts-pane-desc {
+  font-size: 11px;
+  color: var(--ts-fg-muted);
+}
+
+.ts-btn-file {
+  flex: 1;
+  background: var(--ts-bg-elevated);
+  border: 1px solid var(--ts-border);
+  color: var(--ts-fg-default);
+  border-radius: var(--ts-radius-sm);
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
